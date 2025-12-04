@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>3D Twins Embed Viewer</title>
+  <title>3D Twins Web Viewer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     html, body {
@@ -24,32 +24,27 @@
 </head>
 <body>
   <script>
-    // Obtener parámetro t de la URL
+    // Función para obtener el parámetro t de la URL
     function getSceneToken() {
-      try {
-        const params = new URLSearchParams(window.location.search);
-        return params.get('t') || '';
-      } catch(e) {
-        console.error('Error leyendo token de la URL:', e);
-        return '';
-      }
+      const params = new URLSearchParams(window.location.search);
+      return params.get('t') || '';
     }
 
     const sceneToken = getSceneToken();
 
     if(sceneToken) {
-      // Construir el SRC para el Web Component
-      const realSrc = `https://viewer.3dtwins.tech/?t=${encodeURIComponent(sceneToken)}`;
+      // 1️⃣ Construir la URL interna apuntando al Web Component en viewer.3dtwins.tech
+      const viewerSrc = `https://viewer.3dtwins.tech/?t=${encodeURIComponent(sceneToken)}`;
 
-      // Crear el Web Component
+      // 2️⃣ Crear dinámicamente el Web Component
       const viewerEl = document.createElement('d3-twins-viewer');
-      viewerEl.setAttribute('src', realSrc);
+      viewerEl.setAttribute('src', viewerSrc);
       document.body.appendChild(viewerEl);
 
-      // Cargar el script del Web Component desde viewer.3dtwins.tech
+      // 3️⃣ Cargar el script del Web Component
       const scriptEl = document.createElement('script');
       scriptEl.type = 'module';
-      scriptEl.src = 'https://viewer.3dtwins.tech/index.html'; // tu Web Component
+      scriptEl.src = 'https://viewer.3dtwins.tech/index.html';
       document.head.appendChild(scriptEl);
 
     } else {
