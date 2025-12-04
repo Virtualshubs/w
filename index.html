@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>3D Twins Web Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="https://viewer.3dtwins.tech/3d-twins-viewer.js"></script>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000; /* opcional */
+    }
+    d3-twins-viewer {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Obtener parámetro t de la URL
+    function getSceneToken() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('t') || '';
+      } catch(e) {
+        console.error('Error leyendo token de la URL:', e);
+        return '';
+      }
+    }
+
+    // Insertar dinámicamente el Web Component con la URL correcta
+    const sceneToken = getSceneToken();
+    if(sceneToken) {
+      const viewerEl = document.createElement('d3-twins-viewer');
+      // Pasamos la URL "ficticia" viewer.3dtwins.tech con el token
+      viewerEl.setAttribute('src', `https://viewer.3dtwins.tech/?t=${encodeURIComponent(sceneToken)}`);
+      document.body.appendChild(viewerEl);
+    } else {
+      document.body.innerHTML = '<p style="color:white; text-align:center;">No se encontró escena.</p>';
+    }
+  </script>
+</body>
+</html>
