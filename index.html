@@ -41,7 +41,7 @@
     if(sceneToken) {
       const viewerEl = document.createElement('d3-twins-viewer');
       // Pasamos la URL "ficticia" viewer.3dtwins.tech con el token
-      viewerEl.setAttribute('src', `https://viewer.3dtwins.tech/?t=${encodeURIComponent(sceneToken)}`);
+      viewerEl.setAttribute('src', `https://web.3dtwins.tech/?t=${encodeURIComponent(sceneToken)}`);
       document.body.appendChild(viewerEl);
     } else {
       document.body.innerHTML = '<p style="color:white; text-align:center;">No se encontró escena.</p>';
