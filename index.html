@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>3D Twins Web Viewer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script type="module" src="https://viewer.3dtwins.tech/index.html"></script>
   <style>
     body, html {
       margin: 0;
@@ -14,7 +13,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #000; /* opcional */
+      background: #000;
     }
     d3-twins-viewer {
       width: 100%;
@@ -36,13 +35,23 @@
       }
     }
 
-    // Insertar dinámicamente el Web Component con la URL correcta
     const sceneToken = getSceneToken();
+
     if(sceneToken) {
+      // Construir el SRC real del Web Component en VWARE.3DTWINS
+      const realSrc = `https://viewer.3dtwins.tech/?t=${encodeURIComponent(sceneToken)}`;
+
+      // Insertar dinámicamente el Web Component
       const viewerEl = document.createElement('d3-twins-viewer');
-      // Pasamos la URL "ficticia" viewer.3dtwins.tech con el token
-      viewerEl.setAttribute('src', `https://viewer.3dtwins.tech/?t=${encodeURIComponent(sceneToken)}`);
+      viewerEl.setAttribute('src', realSrc);
       document.body.appendChild(viewerEl);
+
+      // Cargar el script del Web Component desde VWARE
+      const scriptEl = document.createElement('script');
+      scriptEl.type = 'module';
+      scriptEl.src = 'https://viewer.3dtwins.tech/index.html';
+      document.head.appendChild(scriptEl);
+
     } else {
       document.body.innerHTML = '<p style="color:white; text-align:center;">No se encontró escena.</p>';
     }
