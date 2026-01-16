@@ -1,164 +1,316 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Registro — 3DTwins</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3dtwins Registro</title>
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-
-  <style>
-    /* Tu CSS existente */
+<style>
   body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
-  background: #0b0f1a;
-  color: #fff;
-}
+    font-family: "Inter", sans-serif;
+    background: #e9e9e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
 
-    .page {
-  min-height: 100svh; /* 👈 clave */
-  display: flex;
-  justify-content: center;
-  padding: 40px 16px;
-}
-.register-box { padding: 32px; border-radius:16px; background: rgba(255,255,255,0.03); }
-    input, button { width:100%; padding:12px; margin-bottom:12px; border-radius:10px; border:none;}
-    button { background: #4f5dff; color:#fff; cursor:pointer;}
-   .register-box input[type="email"],
-.register-box input[type="password"] {
-  width: 100%;
-  padding: 12px 14px;
-  font-size: 14px;
-  color: #eaeaea;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 10px;
-  outline: none;
-  transition: 
-    border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease;
-}
+  .login-box {
+    background: #d0d0d0a9;
+    padding: 30px 25px;
+    border-radius: 12px;
+    width: 360px;
+    box-sizing: border-box;
+  }
 
-/* Placeholder */
-.register-box input::placeholder {
-  color: rgba(255, 255, 255, 0.45);
-}
+  h1, h2 {
+    text-align: center;
+    color: #005913;
+  }
 
-/* Hover */
-.register-box input:hover {
-  border-color: rgba(255, 255, 255, 0.25);
-}
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+  }
 
-/* Focus */
-.register-box input:focus {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: #6cf2c2; /* verde/tech */
-  box-shadow: 0 0 0 3px rgba(108, 242, 194, 0.15);
-}
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
 
-/* Estado válido (cuando cumple reglas) */
-.register-box input.valid {
-  border-color: #2ecc71;
-}
+  input {
+    width: 100%;
+    padding: 12px 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+  }
 
-/* Estado inválido */
-.register-box input.invalid {
-  border-color: #e74c3c;
-}
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #004512;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 
-/* Espaciado entre inputs */
-.register-box input + input {
-  margin-top: 12px;
-}
+  button.enabled {
+    cursor: pointer;
+    opacity: 1;
+  }
 
-.password-rules {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 15px;
-  font-size: 13px;
-}
+  button.enabled:hover {
+    background-color: #00aa00;
+  }
 
-.password-rules li {
-  color: #999;
-  margin-bottom: 4px;
-}
+  #errorMsg {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    text-align: center;
+    min-height: 20px;
+  }
 
-.password-rules li.valid {
-  color: #2ecc71;
-}
+  .rules {
+    font-size: 0.8rem;
+    margin: 10px 0;
+  }
 
-.password-rules li.invalid {
-  color: #e74c3c;
-}
+  .rule {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #555;
+  }
 
-.consent {
-  display: flex;
-  gap: 8px;
-  font-size: 13px;
-  margin-bottom: 15px;
-  line-height: 1.4;
-}
+  .rule.ok {
+    color: #008000;
+  }
 
-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
+  .privacy {
+    font-size: 0.8rem;
+    color: #333;
+    margin: 12px 0;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
 
+  .privacy input {
+    margin-top: 3px;
+  }
 
-  </style>
+  .legal-text {
+    font-size: 0.7rem;
+    color: #555;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  /* ===== MODAL ===== */
+
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+
+  .modal-content {
+    background: #fff;
+    padding: 25px 22px;
+    border-radius: 14px;
+    width: 90%;
+    max-width: 360px;
+    text-align: center;
+    position: relative;
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #999;
+  }
+
+  .close-modal:hover {
+    color: #000;
+  }
+</style>
 </head>
+
 <body>
-<div class="page">
-<div class="register-box">
-  <h1>Regístrate gratis</h1>
 
-  <form id="registerForm">
-    <input
-      type="email"
-      id="email"
-      placeholder="Email"
-      required
-    />
+<div class="login-box">
+  <h1>OlibaLife</h1>
+  <h2>Acceso a tu guía gratuita</h2>
 
-    <input
-      type="password"
-      id="password"
-      placeholder="Contraseña"
-      required
-    />
+  <input type="email" id="email" placeholder="Correo electrónico">
+  <input type="password" id="password" placeholder="Contraseña segura">
 
-    <ul class="password-rules" id="passwordRules">
-      <li data-rule="length">Mínimo 12 caracteres</li>
-      <li data-rule="uppercase">Al menos una mayúscula</li>
-      <li data-rule="number">Al menos un número</li>
-      <li data-rule="special">Al menos un carácter especial</li>
-    </ul>
+  <div class="rules">
+    <div id="ruleEmail" class="rule">❌ Correo electrónico válido</div>
+    <div id="rulePassword" class="rule">❌ Contraseña segura</div>
+    <div id="ruleConsent" class="rule">❌ Consentimiento aceptado</div>
+  </div>
 
-    <label class="consent">
-      <input type="checkbox" id="consentCheckbox" />
-      <span>
-        Acepto el acceso en <strong>modo básico</strong> a la herramienta
-        <strong>3DTwins</strong> y el uso de mis datos para el funcionamiento del
-        servicio. No compartimos datos con terceros.
-      </span>
-    </label>
+  <label class="privacy">
+    <input type="checkbox" id="consent">
+    Acepto recibir comunicaciones relacionadas con OlibaLife.
+  </label>
 
-    <button type="submit" class="platform-cta" id="submitBtn" disabled>
-      Crear cuenta
-    </button>
-  </form>
+  <div class="legal-text">
+    Tus datos se usarán únicamente para ofrecerte contenidos y comunicaciones de OlibaLife.
+    No compartimos ni vendemos tus datos a terceros.
+  </div>
 
-  <div class="error" id="error"></div>
-</div>
+  <button id="login" disabled>Crear cuenta</button>
+  <p id="errorMsg"></p>
 </div>
 
-  <script>
-const _0x3f07e9=_0x3b71,_0x3aae49=(function(){let _0x5a609c=!![];return function(_0x4a3fae,_0x23f457){const _0x39c4ea=_0x5a609c?function(){const _0x230c2e=_0x3b71;if(_0x23f457){const _0x3ff874=_0x23f457[_0x230c2e(0x201)](_0x4a3fae,arguments);return _0x23f457=null,_0x3ff874;}}:function(){};return _0x5a609c=![],_0x39c4ea;};}());(function(){_0x3aae49(this,function(){const _0x42c205=_0x3b71,_0x108d18=new RegExp(_0x42c205(0x1fb)),_0x13250f=new RegExp('\x5c+\x5c+\x20*(?:[a-zA-Z_$][0-9a-zA-Z_$]*)','i'),_0xde441=_0x4a9a9b(_0x42c205(0x1fd));!_0x108d18[_0x42c205(0x1f1)](_0xde441+_0x42c205(0x1f7))||!_0x13250f['test'](_0xde441+_0x42c205(0x200))?_0xde441('0'):_0x4a9a9b();})();}());const _0x49f35e={};_0x49f35e[_0x3f07e9(0x207)]='AIzaSyDhDH1UYqtI5pw_WMcPqGmdAHR_0tfp87o',_0x49f35e[_0x3f07e9(0x1f3)]=_0x3f07e9(0x1ec),_0x49f35e[_0x3f07e9(0x1f5)]=_0x3f07e9(0x1e7);const firebaseConfig=_0x49f35e;firebase[_0x3f07e9(0x20d)](firebaseConfig);const auth=firebase[_0x3f07e9(0x202)](),db=firebase['firestore'](),form=document['getElementById']('registerForm'),errorBox=document[_0x3f07e9(0x1fa)]('error');form[_0x3f07e9(0x205)](_0x3f07e9(0x208),async _0x29ab6c=>{const _0x46bc25=_0x3f07e9;_0x29ab6c[_0x46bc25(0x20e)](),errorBox[_0x46bc25(0x1f6)]='';const _0x5e3976=document[_0x46bc25(0x1fa)](_0x46bc25(0x1ed))[_0x46bc25(0x1ee)][_0x46bc25(0x20a)](),_0x51c314=document[_0x46bc25(0x1fa)]('password')['value'];if(!_0x5e3976||!_0x51c314){errorBox[_0x46bc25(0x1f6)]=_0x46bc25(0x1fe);return;}if(_0x51c314[_0x46bc25(0x1eb)]<0xc){errorBox[_0x46bc25(0x1f6)]=_0x46bc25(0x1ff);return;}try{const _0x3f3ca1=await auth[_0x46bc25(0x215)](_0x5e3976,_0x51c314),_0x45b32e=_0x3f3ca1[_0x46bc25(0x1e8)];await db['collection']('users')[_0x46bc25(0x1f4)](_0x45b32e[_0x46bc25(0x1e9)])['set']({}),alert('Cuenta\x20creada\x20correctamente'),window[_0x46bc25(0x213)]['href']=_0x46bc25(0x203);}catch(_0x262832){console['error'](_0x262832),errorBox[_0x46bc25(0x1f6)]=_0x262832[_0x46bc25(0x219)];}});const passwordInput=document[_0x3f07e9(0x1fa)](_0x3f07e9(0x20c)),submitBtn=document[_0x3f07e9(0x1fa)](_0x3f07e9(0x1f0)),consentCheckbox=document['getElementById'](_0x3f07e9(0x20f)),rulesList=document[_0x3f07e9(0x209)](_0x3f07e9(0x1ef));function validatePassword(_0x426eeb){const _0x381c6f=_0x3f07e9;return{'length':_0x426eeb[_0x381c6f(0x1eb)]>=0xc,'uppercase':/[A-Z]/['test'](_0x426eeb),'number':/[0-9]/[_0x381c6f(0x1f1)](_0x426eeb),'special':/[^A-Za-z0-9]/['test'](_0x426eeb)};}function updateUI(){const _0x54db09=_0x3f07e9,_0x20e6b6=passwordInput['value'],_0x5ea92d=validatePassword(_0x20e6b6);let _0x31c0fd=!![];rulesList[_0x54db09(0x218)](_0x4c9df1=>{const _0x21354d=_0x54db09,_0x5138d1=_0x4c9df1[_0x21354d(0x212)]['rule'];_0x5ea92d[_0x5138d1]?(_0x4c9df1[_0x21354d(0x1f8)]['add'](_0x21354d(0x206)),_0x4c9df1['classList'][_0x21354d(0x21a)](_0x21354d(0x211))):(_0x4c9df1['classList']['add'](_0x21354d(0x211)),_0x4c9df1[_0x21354d(0x1f8)][_0x21354d(0x21a)](_0x21354d(0x206)),_0x31c0fd=![]);}),submitBtn[_0x54db09(0x217)]=!(_0x31c0fd&&consentCheckbox[_0x54db09(0x210)]);}function _0x3b71(_0x1cc6fa,_0x36e25f){_0x1cc6fa=_0x1cc6fa-0x1e7;const _0x4a9a9b=_0x55a0();let _0x3aae49=_0x4a9a9b[_0x1cc6fa];return _0x3aae49;}passwordInput[_0x3f07e9(0x205)](_0x3f07e9(0x200),updateUI),consentCheckbox['addEventListener'](_0x3f07e9(0x1ea),updateUI),document[_0x3f07e9(0x1fa)](_0x3f07e9(0x1f2))[_0x3f07e9(0x205)](_0x3f07e9(0x208),_0x446a97=>{const _0x423744=_0x3f07e9;submitBtn['disabled']&&_0x446a97[_0x423744(0x20e)]();});function _0x55a0(){const _0x1eee52=['dstock-485d2','user','uid','change','length','dstock-485d2.firebaseapp.com','email','value','#passwordRules\x20li','submitBtn','test','registerForm','authDomain','doc','projectId','textContent','chain','classList','while\x20(true)\x20{}','getElementById','function\x20*\x5c(\x20*\x5c)','action','init','Completa\x20todos\x20los\x20campos','La\x20contraseña\x20debe\x20tener\x20al\x20menos\x2012\x20caracteres','input','apply','auth','/user.html','counter','addEventListener','valid','apiKey','submit','querySelectorAll','trim','debu','password','initializeApp','preventDefault','consentCheckbox','checked','invalid','dataset','location','stateObject','createUserWithEmailAndPassword','constructor','disabled','forEach','message','remove','string'];_0x55a0=function(){return _0x1eee52;};return _0x55a0();}function _0x4a9a9b(_0x3bf208){function _0x3a8e4f(_0x4bffe8){const _0x14112c=_0x3b71;if(typeof _0x4bffe8===_0x14112c(0x21b))return function(_0x83d142){}[_0x14112c(0x216)](_0x14112c(0x1f9))[_0x14112c(0x201)](_0x14112c(0x204));else(''+_0x4bffe8/_0x4bffe8)[_0x14112c(0x1eb)]!==0x1||_0x4bffe8%0x14===0x0?function(){return!![];}[_0x14112c(0x216)](_0x14112c(0x20b)+'gger')['call'](_0x14112c(0x1fc)):function(){return![];}[_0x14112c(0x216)](_0x14112c(0x20b)+'gger')[_0x14112c(0x201)](_0x14112c(0x214));_0x3a8e4f(++_0x4bffe8);}try{if(_0x3bf208)return _0x3a8e4f;else _0x3a8e4f(0x0);}catch(_0xb45332){}}
+
+<div id="guideModal" class="modal">
+  <div class="modal-content">
+    <div class="close-modal" id="closeModal">✕</div>
+    <h2>Tu guía de alimentación está lista</h2>
+    <p>Ya puedes descargar tu menú drenante gratis.</p>
+    <button id="downloadGuideBtn" class="enabled">Descargar guía</button>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script>
+  const PRODUCTS_URL = "https://test.olibalife.site"; 
+  
+  const firebaseConfig = {
+     apiKey: "AIzaSyDhDH1UYqtI5pw_WMcPqGmdAHR_0tfp87o",
+  authDomain: "dstock-485d2.firebaseapp.com",
+  projectId: "dstock-485d2"
+    };
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+
+  const auth = firebase.auth();
+
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+  const consentCheckbox = document.getElementById("consent");
+  const loginBtn = document.getElementById("login");
+  const errorMsg = document.getElementById("errorMsg");
+
+  const ruleEmail = document.getElementById("ruleEmail");
+  const rulePassword = document.getElementById("rulePassword");
+  const ruleConsent = document.getElementById("ruleConsent");
+
+  // Validación de contraseña según reglas de Firebase
+  function isPasswordValid(pwd) {
+    return (
+      pwd.length >= 12 &&
+      /[A-Z]/.test(pwd) && // al menos una mayúscula
+      /[a-z]/.test(pwd) && // al menos una minúscula
+      /[0-9]/.test(pwd) && // al menos un número
+      /[^A-Za-z0-9]/.test(pwd) // al menos un símbolo
+    );
+  }
+
+  function validate() {
+    const email = emailInput.value.trim();
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const passwordValid = isPasswordValid(passwordInput.value);
+    const consentValid = consentCheckbox.checked;
+
+    ruleEmail.className = emailValid ? "rule ok" : "rule";
+    ruleEmail.textContent = emailValid ? "✅ Correo electrónico válido" : "❌ Correo electrónico válido";
+
+    rulePassword.className = passwordValid ? "rule ok" : "rule";
+    rulePassword.textContent = passwordValid
+      ? "✅ Contraseña segura"
+      : "❌ Mín. 12 caracteres, mayúscula, minúscula, número y símbolo";
+
+    ruleConsent.className = consentValid ? "rule ok" : "rule";
+    ruleConsent.textContent = consentValid ? "✅ Consentimiento aceptado" : "❌ Consentimiento aceptado";
+
+    loginBtn.disabled = !(emailValid && passwordValid && consentValid);
+    loginBtn.classList.toggle("enabled", !loginBtn.disabled);
+  }
+
+  emailInput.addEventListener("input", validate);
+  passwordInput.addEventListener("input", validate);
+  consentCheckbox.addEventListener("change", validate);
+
+  loginBtn.addEventListener("click", async () => {
+    errorMsg.textContent = "";
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+
+    try {
+      await auth.createUserWithEmailAndPassword(email, password);
+      document.getElementById("guideModal").style.display = "flex";
+    } catch (error) {
+      console.error("Firebase Auth error:", error.code, error.message);
+
+      switch (error.code) {
+        case "auth/email-already-in-use":
+          errorMsg.textContent = "Este correo ya está registrado. Prueba a iniciar sesión.";
+          break;
+
+        case "auth/invalid-email":
+          errorMsg.textContent = "El correo electrónico no es válido.";
+          break;
+
+        case "auth/weak-password":
+          errorMsg.textContent = "La contraseña no cumple las reglas mínimas.";
+          break;
+
+        case "auth/operation-not-allowed":
+          errorMsg.textContent = "El registro por email no está habilitado.";
+          break;
+
+        case "auth/network-request-failed":
+          errorMsg.textContent = "Error de conexión. Revisa tu red.";
+          break;
+
+        case "auth/too-many-requests":
+          errorMsg.textContent = "Demasiados intentos. Inténtalo más tarde.";
+          break;
+
+        default:
+          errorMsg.textContent = "Error al crear la cuenta. Inténtalo de nuevo.";
+      }
+    }
+  });
+
+  function redirectToProducts() {
+    window.location.href = PRODUCTS_URL;
+  }
+
+  document.getElementById("downloadGuideBtn").addEventListener("click", () => {
+    const link = document.createElement("a");
+    link.href = "https://test.olibalife.site/olibalifemenudrenante.pdf";
+    link.download = "olibalifemenudrenante.pdf";
+    link.click();
+
+    setTimeout(redirectToProducts, 1500);
+  });
+
+  document.getElementById("closeModal").addEventListener("click", redirectToProducts);
 </script>
+
+
 </body>
 </html>
