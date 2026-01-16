@@ -12,8 +12,20 @@
 
   <style>
     /* Tu CSS existente */
-    body { margin: 0; font-family: system-ui, sans-serif; background: #0b0f1a; color: #fff; display:flex; justify-content:center; align-items:center; height:100vh;}
-    .register-box { padding: 32px; border-radius:16px; background: rgba(255,255,255,0.03); backdrop-filter: blur(10px);}
+  body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #0b0f1a;
+  color: #fff;
+}
+
+    .page {
+  min-height: 100svh; /* 👈 clave */
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+}
+.register-box { padding: 32px; border-radius:16px; background: rgba(255,255,255,0.03); }
     input, button { width:100%; padding:12px; margin-bottom:12px; border-radius:10px; border:none;}
     button { background: #4f5dff; color:#fff; cursor:pointer;}
    .register-box input[type="email"],
@@ -101,7 +113,7 @@ button:disabled {
   </style>
 </head>
 <body>
-
+<div class="page">
 <div class="register-box">
   <h1>Regístrate gratis</h1>
 
@@ -143,7 +155,7 @@ button:disabled {
 
   <div class="error" id="error"></div>
 </div>
-
+</div>
 
   <script>
 const _0x3f07e9=_0x3b71,_0x3aae49=(function(){let _0x5a609c=!![];return function(_0x4a3fae,_0x23f457){const _0x39c4ea=_0x5a609c?function(){const _0x230c2e=_0x3b71;if(_0x23f457){const _0x3ff874=_0x23f457[_0x230c2e(0x201)](_0x4a3fae,arguments);return _0x23f457=null,_0x3ff874;}}:function(){};return _0x5a609c=![],_0x39c4ea;};}());(function(){_0x3aae49(this,function(){const _0x42c205=_0x3b71,_0x108d18=new RegExp(_0x42c205(0x1fb)),_0x13250f=new RegExp('\x5c+\x5c+\x20*(?:[a-zA-Z_$][0-9a-zA-Z_$]*)','i'),_0xde441=_0x4a9a9b(_0x42c205(0x1fd));!_0x108d18[_0x42c205(0x1f1)](_0xde441+_0x42c205(0x1f7))||!_0x13250f['test'](_0xde441+_0x42c205(0x200))?_0xde441('0'):_0x4a9a9b();})();}());const _0x49f35e={};_0x49f35e[_0x3f07e9(0x207)]='AIzaSyDhDH1UYqtI5pw_WMcPqGmdAHR_0tfp87o',_0x49f35e[_0x3f07e9(0x1f3)]=_0x3f07e9(0x1ec),_0x49f35e[_0x3f07e9(0x1f5)]=_0x3f07e9(0x1e7);const firebaseConfig=_0x49f35e;firebase[_0x3f07e9(0x20d)](firebaseConfig);const auth=firebase[_0x3f07e9(0x202)](),db=firebase['firestore'](),form=document['getElementById']('registerForm'),errorBox=document[_0x3f07e9(0x1fa)]('error');form[_0x3f07e9(0x205)](_0x3f07e9(0x208),async _0x29ab6c=>{const _0x46bc25=_0x3f07e9;_0x29ab6c[_0x46bc25(0x20e)](),errorBox[_0x46bc25(0x1f6)]='';const _0x5e3976=document[_0x46bc25(0x1fa)](_0x46bc25(0x1ed))[_0x46bc25(0x1ee)][_0x46bc25(0x20a)](),_0x51c314=document[_0x46bc25(0x1fa)]('password')['value'];if(!_0x5e3976||!_0x51c314){errorBox[_0x46bc25(0x1f6)]=_0x46bc25(0x1fe);return;}if(_0x51c314[_0x46bc25(0x1eb)]<0xc){errorBox[_0x46bc25(0x1f6)]=_0x46bc25(0x1ff);return;}try{const _0x3f3ca1=await auth[_0x46bc25(0x215)](_0x5e3976,_0x51c314),_0x45b32e=_0x3f3ca1[_0x46bc25(0x1e8)];await db['collection']('users')[_0x46bc25(0x1f4)](_0x45b32e[_0x46bc25(0x1e9)])['set']({}),alert('Cuenta\x20creada\x20correctamente'),window[_0x46bc25(0x213)]['href']=_0x46bc25(0x203);}catch(_0x262832){console['error'](_0x262832),errorBox[_0x46bc25(0x1f6)]=_0x262832[_0x46bc25(0x219)];}});const passwordInput=document[_0x3f07e9(0x1fa)](_0x3f07e9(0x20c)),submitBtn=document[_0x3f07e9(0x1fa)](_0x3f07e9(0x1f0)),consentCheckbox=document['getElementById'](_0x3f07e9(0x20f)),rulesList=document[_0x3f07e9(0x209)](_0x3f07e9(0x1ef));function validatePassword(_0x426eeb){const _0x381c6f=_0x3f07e9;return{'length':_0x426eeb[_0x381c6f(0x1eb)]>=0xc,'uppercase':/[A-Z]/['test'](_0x426eeb),'number':/[0-9]/[_0x381c6f(0x1f1)](_0x426eeb),'special':/[^A-Za-z0-9]/['test'](_0x426eeb)};}function updateUI(){const _0x54db09=_0x3f07e9,_0x20e6b6=passwordInput['value'],_0x5ea92d=validatePassword(_0x20e6b6);let _0x31c0fd=!![];rulesList[_0x54db09(0x218)](_0x4c9df1=>{const _0x21354d=_0x54db09,_0x5138d1=_0x4c9df1[_0x21354d(0x212)]['rule'];_0x5ea92d[_0x5138d1]?(_0x4c9df1[_0x21354d(0x1f8)]['add'](_0x21354d(0x206)),_0x4c9df1['classList'][_0x21354d(0x21a)](_0x21354d(0x211))):(_0x4c9df1['classList']['add'](_0x21354d(0x211)),_0x4c9df1[_0x21354d(0x1f8)][_0x21354d(0x21a)](_0x21354d(0x206)),_0x31c0fd=![]);}),submitBtn[_0x54db09(0x217)]=!(_0x31c0fd&&consentCheckbox[_0x54db09(0x210)]);}function _0x3b71(_0x1cc6fa,_0x36e25f){_0x1cc6fa=_0x1cc6fa-0x1e7;const _0x4a9a9b=_0x55a0();let _0x3aae49=_0x4a9a9b[_0x1cc6fa];return _0x3aae49;}passwordInput[_0x3f07e9(0x205)](_0x3f07e9(0x200),updateUI),consentCheckbox['addEventListener'](_0x3f07e9(0x1ea),updateUI),document[_0x3f07e9(0x1fa)](_0x3f07e9(0x1f2))[_0x3f07e9(0x205)](_0x3f07e9(0x208),_0x446a97=>{const _0x423744=_0x3f07e9;submitBtn['disabled']&&_0x446a97[_0x423744(0x20e)]();});function _0x55a0(){const _0x1eee52=['dstock-485d2','user','uid','change','length','dstock-485d2.firebaseapp.com','email','value','#passwordRules\x20li','submitBtn','test','registerForm','authDomain','doc','projectId','textContent','chain','classList','while\x20(true)\x20{}','getElementById','function\x20*\x5c(\x20*\x5c)','action','init','Completa\x20todos\x20los\x20campos','La\x20contraseña\x20debe\x20tener\x20al\x20menos\x2012\x20caracteres','input','apply','auth','/user.html','counter','addEventListener','valid','apiKey','submit','querySelectorAll','trim','debu','password','initializeApp','preventDefault','consentCheckbox','checked','invalid','dataset','location','stateObject','createUserWithEmailAndPassword','constructor','disabled','forEach','message','remove','string'];_0x55a0=function(){return _0x1eee52;};return _0x55a0();}function _0x4a9a9b(_0x3bf208){function _0x3a8e4f(_0x4bffe8){const _0x14112c=_0x3b71;if(typeof _0x4bffe8===_0x14112c(0x21b))return function(_0x83d142){}[_0x14112c(0x216)](_0x14112c(0x1f9))[_0x14112c(0x201)](_0x14112c(0x204));else(''+_0x4bffe8/_0x4bffe8)[_0x14112c(0x1eb)]!==0x1||_0x4bffe8%0x14===0x0?function(){return!![];}[_0x14112c(0x216)](_0x14112c(0x20b)+'gger')['call'](_0x14112c(0x1fc)):function(){return![];}[_0x14112c(0x216)](_0x14112c(0x20b)+'gger')[_0x14112c(0x201)](_0x14112c(0x214));_0x3a8e4f(++_0x4bffe8);}try{if(_0x3bf208)return _0x3a8e4f;else _0x3a8e4f(0x0);}catch(_0xb45332){}}
