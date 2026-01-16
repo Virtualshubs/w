@@ -1904,8 +1904,122 @@ For custom developments and tailored certifications, request a meeting with our 
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <script>
-const _0x5c6cd8=_0x1aa9,_0x2853e1=(function(){let _0x37ff4f=!![];return function(_0x5d96e4,_0x21d48e){const _0x18fb24=_0x37ff4f?function(){const _0x2125c7=_0x1aa9;if(_0x21d48e){const _0x137af1=_0x21d48e[_0x2125c7(0x96)](_0x5d96e4,arguments);return _0x21d48e=null,_0x137af1;}}:function(){};return _0x37ff4f=![],_0x18fb24;};}());function _0x1aa9(_0x2629ed,_0x19ff3d){_0x2629ed=_0x2629ed-0x7e;const _0xd31504=_0x41f4();let _0x2853e1=_0xd31504[_0x2629ed];return _0x2853e1;}(function(){_0x2853e1(this,function(){const _0x4419eb=_0x1aa9,_0x14ce2c=new RegExp('function\x20*\x5c(\x20*\x5c)'),_0x22377e=new RegExp(_0x4419eb(0xac),'i'),_0x1a9400=_0xd31504(_0x4419eb(0xb1));!_0x14ce2c[_0x4419eb(0xa4)](_0x1a9400+_0x4419eb(0x9f))||!_0x22377e['test'](_0x1a9400+'input')?_0x1a9400('0'):_0xd31504();})();}());const _0x450921={};_0x450921[_0x5c6cd8(0x7e)]='AIzaSyDhDH1UYqtI5pw_WMcPqGmdAHR_0tfp87o',_0x450921[_0x5c6cd8(0x98)]=_0x5c6cd8(0xb0),_0x450921[_0x5c6cd8(0x9e)]=_0x5c6cd8(0x89);const firebaseConfig=_0x450921;firebase['initializeApp'](firebaseConfig);const auth=firebase[_0x5c6cd8(0x90)](),db=firebase[_0x5c6cd8(0x93)](),form=document['getElementById']('registerForm'),errorBox=document[_0x5c6cd8(0x8e)](_0x5c6cd8(0x80));form[_0x5c6cd8(0x91)]('submit',async _0xfe1767=>{const _0x55fc6d=_0x5c6cd8;_0xfe1767['preventDefault'](),errorBox[_0x55fc6d(0xa1)]='';const _0x3870e5=document[_0x55fc6d(0x8e)]('email')['value'][_0x55fc6d(0x95)](),_0x191072=document[_0x55fc6d(0x8e)](_0x55fc6d(0x9b))[_0x55fc6d(0x94)];if(!_0x3870e5||!_0x191072){errorBox[_0x55fc6d(0xa1)]=_0x55fc6d(0x92);return;}if(_0x191072[_0x55fc6d(0x82)]<0xc){errorBox['textContent']='La\x20contraseña\x20debe\x20tener\x20al\x20menos\x2012\x20caracteres';return;}try{const _0x1af301=await auth[_0x55fc6d(0xaf)](_0x3870e5,_0x191072),_0x696088=_0x1af301[_0x55fc6d(0xa0)];await db[_0x55fc6d(0x97)](_0x55fc6d(0xa5))[_0x55fc6d(0x84)](_0x696088['uid'])['set']({}),alert(_0x55fc6d(0xad)),window[_0x55fc6d(0x88)]['href']=_0x55fc6d(0x85);}catch(_0x14e5e2){console[_0x55fc6d(0x80)](_0x14e5e2),errorBox[_0x55fc6d(0xa1)]=_0x14e5e2[_0x55fc6d(0xa7)];}});const passwordInput=document['getElementById'](_0x5c6cd8(0x9b)),submitBtn=document[_0x5c6cd8(0x8e)](_0x5c6cd8(0xae)),consentCheckbox=document[_0x5c6cd8(0x8e)](_0x5c6cd8(0x86)),rulesList=document[_0x5c6cd8(0xa6)](_0x5c6cd8(0x99));function validatePassword(_0x12361c){const _0x5cf6e7=_0x5c6cd8;return{'length':_0x12361c[_0x5cf6e7(0x82)]>=0xc,'uppercase':/[A-Z]/[_0x5cf6e7(0xa4)](_0x12361c),'number':/[0-9]/['test'](_0x12361c),'special':/[^A-Za-z0-9]/[_0x5cf6e7(0xa4)](_0x12361c)};}function updateUI(){const _0xf9b0a1=_0x5c6cd8,_0x5c5b66=passwordInput[_0xf9b0a1(0x94)],_0x180eb0=validatePassword(_0x5c5b66);let _0x5520b4=!![];rulesList[_0xf9b0a1(0xaa)](_0xa571d9=>{const _0x2220bd=_0xf9b0a1,_0x355a8b=_0xa571d9['dataset'][_0x2220bd(0xb4)];_0x180eb0[_0x355a8b]?(_0xa571d9[_0x2220bd(0x8f)][_0x2220bd(0xb2)]('valid'),_0xa571d9[_0x2220bd(0x8f)][_0x2220bd(0x81)](_0x2220bd(0xa9))):(_0xa571d9[_0x2220bd(0x8f)][_0x2220bd(0xb2)](_0x2220bd(0xa9)),_0xa571d9[_0x2220bd(0x8f)][_0x2220bd(0x81)](_0x2220bd(0x8c)),_0x5520b4=![]);}),submitBtn[_0xf9b0a1(0xa2)]=!(_0x5520b4&&consentCheckbox[_0xf9b0a1(0xa3)]);}function _0x41f4(){const _0x5c8fc2=['apiKey','action','error','remove','length','gger','doc','https://web.3dtwins.tech/','consentCheckbox','submit','location','dstock-485d2','stateObject','counter','valid','constructor','getElementById','classList','auth','addEventListener','Completa\x20todos\x20los\x20campos','firestore','value','trim','apply','collection','authDomain','#passwordRules\x20li','string','password','call','while\x20(true)\x20{}','projectId','chain','user','textContent','disabled','checked','test','users','querySelectorAll','message','debu','invalid','forEach','registerForm','\x5c+\x5c+\x20*(?:[a-zA-Z_$][0-9a-zA-Z_$]*)','Cuenta\x20creada\x20correctamente','submitBtn','createUserWithEmailAndPassword','dstock-485d2.firebaseapp.com','init','add','preventDefault','rule'];_0x41f4=function(){return _0x5c8fc2;};return _0x41f4();}passwordInput[_0x5c6cd8(0x91)]('input',updateUI),consentCheckbox[_0x5c6cd8(0x91)]('change',updateUI),document[_0x5c6cd8(0x8e)](_0x5c6cd8(0xab))[_0x5c6cd8(0x91)](_0x5c6cd8(0x87),_0x410551=>{const _0x5b3f17=_0x5c6cd8;submitBtn[_0x5b3f17(0xa2)]&&_0x410551[_0x5b3f17(0xb3)]();});function _0xd31504(_0x2fc850){function _0x5cf172(_0x174282){const _0x9c6c86=_0x1aa9;if(typeof _0x174282===_0x9c6c86(0x9a))return function(_0x376dcc){}[_0x9c6c86(0x8d)](_0x9c6c86(0x9d))['apply'](_0x9c6c86(0x8b));else(''+_0x174282/_0x174282)['length']!==0x1||_0x174282%0x14===0x0?function(){return!![];}[_0x9c6c86(0x8d)](_0x9c6c86(0xa8)+_0x9c6c86(0x83))[_0x9c6c86(0x9c)](_0x9c6c86(0x7f)):function(){return![];}['constructor'](_0x9c6c86(0xa8)+'gger')[_0x9c6c86(0x96)](_0x9c6c86(0x8a));_0x5cf172(++_0x174282);}try{if(_0x2fc850)return _0x5cf172;else _0x5cf172(0x0);}catch(_0x26cbf0){}}
-  </script>
+
+  // ---------- Firebase config ----------
+  const firebaseConfig = {
+    apiKey: "AIzaSyDhDH1UYqtI5pw_WMcPqGmdAHR_0tfp87o",
+    authDomain: "dstock-485d2.firebaseapp.com",
+    projectId: "dstock-485d2"
+  };
+
+  let firebaseReady = false;
+  let auth, db;
+
+  async function initFirebase() {
+    if (firebaseReady) return;
+    firebase.initializeApp(firebaseConfig);
+    auth = firebase.auth();
+    db = firebase.firestore();
+    firebaseReady = true;
+  }
+
+  // ---------- Elements ----------
+  const form = document.getElementById('registerForm');
+  const errorBox = document.getElementById('error');
+  const submitBtn = document.getElementById('submitBtn');
+  const passwordInput = document.getElementById('password');
+  const consentCheckbox = document.getElementById('consentCheckbox');
+  const rulesList = document.querySelectorAll('#passwordRules li');
+
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  // ---------- Password validation ----------
+  function validatePassword(password) {
+    return {
+      length: password.length >= 12,
+      uppercase: /[A-Z]/.test(password),
+      number: /[0-9]/.test(password),
+      special: /[^A-Za-z0-9]/.test(password)
+    };
+  }
+
+  function updateUI() {
+    const password = passwordInput.value;
+    const rules = validatePassword(password);
+    let passwordValid = true;
+
+    rulesList.forEach(rule => {
+      const ruleName = rule.dataset.rule;
+      if (rules[ruleName]) {
+        rule.classList.add('valid');
+        rule.classList.remove('invalid');
+      } else {
+        rule.classList.add('invalid');
+        rule.classList.remove('valid');
+        passwordValid = false;
+      }
+    });
+
+    submitBtn.disabled = !(passwordValid && consentCheckbox.checked);
+  }
+
+  // 👉 SOLO desktop: evita freeze en mobile
+  if (!isMobile) {
+    passwordInput.addEventListener('input', updateUI);
+    consentCheckbox.addEventListener('change', updateUI);
+  }
+
+  // ---------- Submit ----------
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorBox.textContent = '';
+
+    const email = document.getElementById('email').value.trim();
+    const password = passwordInput.value;
+
+    if (!email || !password) {
+      errorBox.textContent = 'Completa todos los campos';
+      return;
+    }
+
+    const rules = validatePassword(password);
+    const passwordValid = Object.values(rules).every(Boolean);
+
+    if (!passwordValid) {
+      errorBox.textContent = 'La contraseña no cumple los requisitos';
+      return;
+    }
+
+    if (!consentCheckbox.checked) {
+      errorBox.textContent = 'Debes aceptar los términos';
+      return;
+    }
+
+    submitBtn.disabled = true;
+
+    try {
+      await initFirebase();
+
+      const cred = await auth.createUserWithEmailAndPassword(email, password);
+      const user = cred.user;
+
+      await db.collection('users').doc(user.uid).set({
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+
+      errorBox.textContent = 'Cuenta creada correctamente';
+      setTimeout(() => {
+        window.location.href = 'https://web.3dtwins.tech/';
+      }, 800);
+
+    } catch (err) {
+      console.error(err);
+      errorBox.textContent = err.message;
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+ 
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG"></script>
   
