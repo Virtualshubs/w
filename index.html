@@ -1916,7 +1916,8 @@ const _0x5c6cd8=_0x1aa9,_0x2853e1=(function(){let _0x37ff4f=!![];return function
   
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){ dataLayer.push(arguments); }
+
   gtag('js', new Date());
   gtag('config', 'G-N54X2MZQZG');
 
@@ -1926,13 +1927,17 @@ const _0x5c6cd8=_0x1aa9,_0x2853e1=(function(){let _0x37ff4f=!![];return function
     }
   }
 
+  /* HERO VIEW */
   window.addEventListener("load", () => {
     const hero = document.querySelector(".hero");
     if (hero) {
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            trackEvent("hero_view", { section: "hero", page: "landing" });
+            trackEvent("hero_view", {
+              section: "hero",
+              page: "landing"
+            });
             observer.disconnect();
           }
         });
@@ -1941,12 +1946,16 @@ const _0x5c6cd8=_0x1aa9,_0x2853e1=(function(){let _0x37ff4f=!![];return function
     }
   });
 
+  /* NAV CLICKS */
   document.querySelectorAll("nav span[data-lang]").forEach(item => {
     item.addEventListener("click", () => {
-      trackEvent("nav_click", { label: item.textContent.trim() });
+      trackEvent("nav_click", {
+        label: item.textContent.trim()
+      });
     });
   });
 
+  /* USE CASE CLICKS */
   document.querySelectorAll(".card").forEach((card, index) => {
     card.addEventListener("click", () => {
       trackEvent("usecase_click", {
@@ -1956,33 +1965,39 @@ const _0x5c6cd8=_0x1aa9,_0x2853e1=(function(){let _0x37ff4f=!![];return function
     });
   });
 
-  const submitBtn = document.getElementById("submitBtn");
-  if (submitBtn) {
-    submitBtn.addEventListener("click", () => {
-      trackEvent("register_click", { location: "platform_section" });
-    });
-  }
+  /* REGISTRO → SOLO CLICK (sin submit, sin form) */
+  document.addEventListener("DOMContentLoaded", () => {
+    const submitBtn = document.getElementById("submitBtn");
+    if (submitBtn) {
+      submitBtn.addEventListener("click", () => {
+        requestAnimationFrame(() => {
+          trackEvent("register_click", {
+            location: "landing"
+          });
+        });
+      });
+    }
+  });
 
-  const registerForm = document.getElementById("registerForm");
-  if (registerForm) {
-    registerForm.addEventListener("submit", () => {
-      trackEvent("register_submit", { method: "email_password" });
-    });
-  }
-
+  /* WIDGET */
   const widgetBtn = document.getElementById("promoWidgetMinimized");
   if (widgetBtn) {
     widgetBtn.addEventListener("click", () => {
-      trackEvent("widget_open", { source: "floating_button" });
+      trackEvent("widget_open", {
+        source: "floating_button"
+      });
     });
   }
 
   document.querySelectorAll(".promoWidgetButton").forEach(btn => {
     btn.addEventListener("click", () => {
-      trackEvent("widget_cta_click", { destination: "3dtwins_website" });
+      trackEvent("widget_cta_click", {
+        destination: "3dtwins_website"
+      });
     });
   });
 </script>
+
 
 </body>
 </html>
