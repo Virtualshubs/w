@@ -184,95 +184,107 @@
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
 <script>
-  // Configuración Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyDhDH1UYqtI5pw_WMcPqGmdAHR_0tfp87o",
-    authDomain: "dstock-485d2.firebaseapp.com",
-    projectId: "dstock-485d2"
+// Configuración Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyDhDH1UYqtI5pw_WMcPqGmdAHR_0tfp87o",
+  authDomain: "dstock-485d2.firebaseapp.com",
+  projectId: "dstock-485d2"
+};
+firebase.initializeApp(firebaseConfig);
+
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+const form = document.getElementById('registerForm');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const submitBtn = document.getElementById('submitBtn');
+const consentCheckbox = document.getElementById('consentCheckbox');
+const rulesList = document.querySelectorAll('#passwordRules li');
+const errorBox = document.getElementById('error');
+const successModal = document.getElementById('successModal');
+const closeModalBtn = document.getElementById('closeModal');
+
+// Debounce para la contraseña
+function debounce(func, delay = 200) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => func(...args), delay);
   };
-  firebase.initializeApp(firebaseConfig);
+}
 
-  const auth = firebase.auth();
-  const db = firebase.firestore();
+// Validación de contraseña
+function validatePassword(password) {
+  return {
+    length: password.length >= 12,
+    uppercase: /[A-Z]/.test(password),
+    number: /[0-9]/.test(password),
+    special: /[^A-Za-z0-9]/.test(password)
+  };
+}
 
-  const form = document.getElementById('registerForm');
-  const emailInput = document.getElementById('email');
-  const passwordInput = document.getElementById('password');
-  const submitBtn = document.getElementById('submitBtn');
-  const consentCheckbox = document.getElementById('consentCheckbox');
-  const rulesList = document.querySelectorAll('#passwordRules li');
-  const errorBox = document.getElementById('error');
-  const successModal = document.getElementById('successModal');
-  const closeModalBtn = document.getElementById('closeModal');
+// Actualiza UI y habilita botón según contraseña y checkbox
+function updateUI() {
+  const password = passwordInput.value;
+  const rules = validatePassword(password);
+  let passwordValid = true;
 
-  // Debounce para evitar freeze
-  function debounce(func, delay=200) {
-    let timer;
-    return (...args) => {
-      clearTimeout(timer);
-      timer = setTimeout(() => func(...args), delay);
-    };
-  }
-
-  function validatePassword(password) {
-    return {
-      length: password.length >= 12,
-      uppercase: /[A-Z]/.test(password),
-      number: /[0-9]/.test(password),
-      special: /[^A-Za-z0-9]/.test(password)
-    };
-  }
-
-  function updateUI() {
-    const password = passwordInput.value;
-    const rules = validatePassword(password);
-    let passwordValid = true;
-
-    rulesList.forEach(rule => {
-      const ruleName = rule.dataset.rule;
-      if (rules[ruleName]) {
-        rule.classList.add('valid');
-        rule.classList.remove('invalid');
-      } else {
-        rule.classList.add('invalid');
-        rule.classList.remove('valid');
-        passwordValid = false;
-      }
-    });
-
-    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value);
-    submitBtn.disabled = !(passwordValid && emailValid && consentCheckbox.checked);
-    submitBtn.classList.toggle('enabled', !submitBtn.disabled);
-  }
-
-  emailInput.addEventListener('input', debounce(updateUI, 200));
-  passwordInput.addEventListener('input', debounce(updateUI, 200));
-  consentCheckbox.addEventListener('change', updateUI);
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    errorBox.textContent = '';
-
-    try {
-      const cred = await auth.createUserWithEmailAndPassword(emailInput.value.trim(), passwordInput.value);
-      const user = cred.user;
-
-      // Escritura Firestore no bloqueante
-      db.collection('users').doc(user.uid).set({})
-        .catch(err => console.error("Error Firestore:", err));
-
-      // Mostrar modal de éxito
-      successModal.style.display = "flex";
-    } catch (err) {
-      console.error(err);
-      errorBox.textContent = err.message;
+  rulesList.forEach(rule => {
+    const ruleName = rule.dataset.rule;
+    if (rules[ruleName]) {
+      rule.classList.add('valid');
+      rule.classList.remove('invalid');
+    } else {
+      rule.classList.add('invalid');
+      rule.classList.remove('valid');
+      passwordValid = false;
     }
   });
 
-  closeModalBtn.addEventListener('click', () => {
-    successModal.style.display = "none";
-    window.location.href = 'https://www.3dtwins.es';
-  });
+  // Ahora no tocamos email aquí
+  submitBtn.disabled = !(passwordValid && consentCheckbox.checked);
+  submitBtn.classList.toggle('enabled', !submitBtn.disabled);
+}
+
+passwordInput.addEventListener('input', debounce(updateUI, 200));
+consentCheckbox.addEventListener('change', updateUI);
+
+// Registro y validación de email solo al submit
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  errorBox.textContent = '';
+
+  const email = emailInput.value.trim();
+  const password = passwordInput.value;
+
+  // Validar email al enviar
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!emailValid) {
+    errorBox.textContent = 'Introduce un correo válido';
+    return;
+  }
+
+  try {
+    const cred = await auth.createUserWithEmailAndPassword(email, password);
+    const user = cred.user;
+
+    // Escritura Firestore no bloqueante
+    db.collection('users').doc(user.uid).set({})
+      .catch(err => console.error("Error Firestore:", err));
+
+    // Mostrar modal de éxito
+    successModal.style.display = "flex";
+  } catch (err) {
+    console.error(err);
+    errorBox.textContent = err.message;
+  }
+});
+
+closeModalBtn.addEventListener('click', () => {
+  successModal.style.display = "none";
+  window.location.href = 'https://www.3dtwins.es';
+});
 
 </script>
 
