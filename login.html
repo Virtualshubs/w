@@ -3,39 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Registro 3DTwins</title>
+<title>Registro 3DTwins - Ultra Light</title>
 
 <style>
-  /* Reset y base */
-  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: "Inter", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #101002, #1a1a1a);
+    background: #111;
+    color: #fff;
   }
 
-  /* Contenedor del formulario */
   .register-box {
-    background: rgba(13,13,13,0.85);
-    padding: 25px 20px;
-    border-radius: 12px;
+    padding: 20px;
+    background: #222;
+    border-radius: 10px;
     width: 100%;
     max-width: 360px;
-    color: #fff;
     display: flex;
     flex-direction: column;
     gap: 15px;
   }
 
-  h1 {
-    text-align: center;
-    color: #00a2ff;
-    font-size: 2.3rem;
-    margin-bottom: 10px;
-  }
+  h1 { text-align: center; color: #00a2ff; }
 
   input[type="email"],
   input[type="password"] {
@@ -48,8 +40,8 @@
 
   button {
     padding: 12px;
-    border: none;
     border-radius: 6px;
+    border: none;
     font-weight: bold;
     cursor: not-allowed;
     opacity: 0.5;
@@ -63,85 +55,28 @@
     background-color: #00a2ff;
   }
 
-  button.enabled:hover {
-    background-color: #00ff7f;
-  }
+  #error { text-align: center; color: #ff6666; min-height: 20px; }
 
-  #error {
-    text-align: center;
-    font-size: 0.85rem;
-    min-height: 20px;
-    color: #ff6666;
-  }
+  .consent { font-size: 0.8rem; display: flex; align-items: center; gap: 8px; }
 
-  /* Reglas de contraseña */
-  #passwordRules {
-    font-size: 0.8rem;
-    list-style: none;
-    margin-bottom: 10px;
-  }
-
-  #passwordRules li {
-    margin: 4px 0;
-  }
-
-  #passwordRules li.valid {
-    color: #00ff7f;
-  }
-
-  #passwordRules li.invalid {
-    color: #ff6666;
-  }
-
-  /* Consentimiento */
-  .consent {
-    display: flex;
-    align-items: center;
-    font-size: 0.8rem;
-    gap: 8px;
-  }
-
-  /* Modal */
   .modal {
-    position: fixed;
-    inset: 0;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0,0,0,0.6);
-    z-index: 999;
+    position: fixed; inset: 0; display: none;
+    justify-content: center; align-items: center;
+    background: rgba(0,0,0,0.6); z-index: 999;
   }
 
   .modal-content {
-    background: #fff;
-    color: #000;
-    padding: 25px 20px;
-    border-radius: 12px;
-    max-width: 320px;
-    text-align: center;
+    background: #fff; color: #000; padding: 20px;
+    border-radius: 10px; text-align: center;
   }
 
   .modal-content button {
-    margin-top: 15px;
-    width: 100%;
-    cursor: pointer;
-    opacity: 1;
-    background-color: #00a2ff;
-    color: #fff;
-    font-weight: bold;
-    border-radius: 6px;
-    border: none;
-    padding: 10px;
+    margin-top: 15px; width: 100%; cursor: pointer;
+    background: #00a2ff; color: #fff; border: none; padding: 10px; border-radius: 6px;
   }
 
   @media (max-width: 400px) {
-    .register-box {
-      padding: 20px;
-      width: 95%;
-    }
-    h1 {
-      font-size: 2rem;
-    }
+    .register-box { padding: 15px; width: 95%; }
   }
 </style>
 </head>
@@ -155,10 +90,10 @@
     <input type="password" id="password" placeholder="Contraseña segura" required>
 
     <ul id="passwordRules">
-      <li data-rule="length" class="invalid">Mínimo 12 caracteres</li>
-      <li data-rule="uppercase" class="invalid">Al menos una mayúscula</li>
-      <li data-rule="number" class="invalid">Al menos un número</li>
-      <li data-rule="special" class="invalid">Al menos un símbolo</li>
+      <li data-rule="length">Mínimo 12 caracteres</li>
+      <li data-rule="uppercase">Al menos una mayúscula</li>
+      <li data-rule="number">Al menos un número</li>
+      <li data-rule="special">Al menos un símbolo</li>
     </ul>
 
     <label class="consent">
@@ -170,7 +105,6 @@
   </form>
 </div>
 
-<!-- Modal de éxito -->
 <div id="successModal" class="modal">
   <div class="modal-content">
     <p>¡Cuenta creada correctamente! Nuestro equipo te contactará por email.</p>
@@ -178,114 +112,99 @@
   </div>
 </div>
 
-<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
 <script>
-// Configuración Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyDhDH1UYqtI5pw_WMcPqGmdAHR_0tfp87o",
-  authDomain: "dstock-485d2.firebaseapp.com",
-  projectId: "dstock-485d2"
-};
-firebase.initializeApp(firebaseConfig);
-
-const auth = firebase.auth();
-const db = firebase.firestore();
-
-const form = document.getElementById('registerForm');
-const emailInput = document.getElementById('email');
-const passwordInput = document.getElementById('password');
-const submitBtn = document.getElementById('submitBtn');
-const consentCheckbox = document.getElementById('consentCheckbox');
-const rulesList = document.querySelectorAll('#passwordRules li');
-const errorBox = document.getElementById('error');
-const successModal = document.getElementById('successModal');
-const closeModalBtn = document.getElementById('closeModal');
-
-// Debounce para la contraseña
-function debounce(func, delay = 200) {
-  let timer;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => func(...args), delay);
+  // Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyDhDH1UYqtI5pw_WMcPqGmdAHR_0tfp87o",
+    authDomain: "dstock-485d2.firebaseapp.com",
+    projectId: "dstock-485d2"
   };
-}
+  firebase.initializeApp(firebaseConfig);
 
-// Validación de contraseña
-function validatePassword(password) {
-  return {
-    length: password.length >= 12,
-    uppercase: /[A-Z]/.test(password),
-    number: /[0-9]/.test(password),
-    special: /[^A-Za-z0-9]/.test(password)
-  };
-}
+  const auth = firebase.auth();
+  const db = firebase.firestore();
 
-// Actualiza UI y habilita botón según contraseña y checkbox
-function updateUI() {
-  const password = passwordInput.value;
-  const rules = validatePassword(password);
-  let passwordValid = true;
+  const form = document.getElementById('registerForm');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const submitBtn = document.getElementById('submitBtn');
+  const consentCheckbox = document.getElementById('consentCheckbox');
+  const rulesList = document.querySelectorAll('#passwordRules li');
+  const errorBox = document.getElementById('error');
+  const successModal = document.getElementById('successModal');
+  const closeModalBtn = document.getElementById('closeModal');
 
-  rulesList.forEach(rule => {
-    const ruleName = rule.dataset.rule;
-    if (rules[ruleName]) {
-      rule.classList.add('valid');
-      rule.classList.remove('invalid');
-    } else {
-      rule.classList.add('invalid');
-      rule.classList.remove('valid');
-      passwordValid = false;
+  // Validación mínima de contraseña
+  function validatePassword(password) {
+    return {
+      length: password.length >= 12,
+      uppercase: /[A-Z]/.test(password),
+      number: /[0-9]/.test(password),
+      special: /[^A-Za-z0-9]/.test(password)
+    };
+  }
+
+  function checkPasswordUI() {
+    const password = passwordInput.value;
+    const rules = validatePassword(password);
+    let valid = true;
+
+    rulesList.forEach(rule => {
+      const name = rule.dataset.rule;
+      if (rules[name]) {
+        rule.style.color = "green";
+      } else {
+        rule.style.color = "red";
+        valid = false;
+      }
+    });
+
+    // Solo habilitar botón por password + checkbox, no email
+    submitBtn.disabled = !(valid && consentCheckbox.checked);
+    submitBtn.classList.toggle('enabled', !submitBtn.disabled);
+  }
+
+  passwordInput.addEventListener('input', checkPasswordUI);
+  consentCheckbox.addEventListener('change', checkPasswordUI);
+
+  // Registro y validación de email solo al submit
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorBox.textContent = '';
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+
+    // Validación simple de email al enviar
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!emailValid) {
+      errorBox.textContent = "Introduce un correo válido";
+      return;
+    }
+
+    try {
+      const cred = await auth.createUserWithEmailAndPassword(email, password);
+      const user = cred.user;
+
+      // Escritura Firestore no bloqueante
+      db.collection('users').doc(user.uid).set({})
+        .catch(err => console.error("Error Firestore:", err));
+
+      successModal.style.display = "flex";
+    } catch (err) {
+      console.error(err);
+      errorBox.textContent = err.message;
     }
   });
 
-  // Ahora no tocamos email aquí
-  submitBtn.disabled = !(passwordValid && consentCheckbox.checked);
-  submitBtn.classList.toggle('enabled', !submitBtn.disabled);
-}
-
-passwordInput.addEventListener('input', debounce(updateUI, 200));
-consentCheckbox.addEventListener('change', updateUI);
-
-// Registro y validación de email solo al submit
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  errorBox.textContent = '';
-
-  const email = emailInput.value.trim();
-  const password = passwordInput.value;
-
-  // Validar email al enviar
-  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  if (!emailValid) {
-    errorBox.textContent = 'Introduce un correo válido';
-    return;
-  }
-
-  try {
-    const cred = await auth.createUserWithEmailAndPassword(email, password);
-    const user = cred.user;
-
-    // Escritura Firestore no bloqueante
-    db.collection('users').doc(user.uid).set({})
-      .catch(err => console.error("Error Firestore:", err));
-
-    // Mostrar modal de éxito
-    successModal.style.display = "flex";
-  } catch (err) {
-    console.error(err);
-    errorBox.textContent = err.message;
-  }
-});
-
-closeModalBtn.addEventListener('click', () => {
-  successModal.style.display = "none";
-  window.location.href = 'https://www.3dtwins.es';
-});
-
+  closeModalBtn.addEventListener('click', () => {
+    successModal.style.display = "none";
+    window.location.href = "https://www.3dtwins.es";
+  });
 </script>
 
 </body>
