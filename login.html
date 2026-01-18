@@ -206,20 +206,21 @@
     const email = document.getElementById('email').value.trim();
     const password = passwordInput.value;
 
-    try {
-      const cred = await auth.createUserWithEmailAndPassword(email, password);
-      const user = cred.user;
+  try {
+  const cred = await auth.createUserWithEmailAndPassword(email, password);
+  const user = cred.user;
+  
+  // Firestore separado para evitar freeze
+  db.collection('users').doc(user.uid).set({})
+    .catch(err => console.error("Error Firestore:", err));
 
-      // Guardar en Firestore
-      await db.collection('users').doc(user.uid).set({});
+  alert('Cuenta creada correctamente');
+  window.location.href = 'https://web.3dtwins.tech/';
+} catch (err) {
+  console.error(err);
+  errorBox.textContent = err.message;
+}
 
-      alert('Cuenta creada correctamente');
-      window.location.href = 'https://web.3dtwins.tech/';
-    } catch (err) {
-      console.error(err);
-      errorBox.textContent = err.message;
-    }
-  });
 </script>
 
 </body>
