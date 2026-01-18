@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3DTwins registro</title>
+<title>3D Twins registro</title>
 
 <style>
   body {
@@ -60,7 +60,7 @@
   }
 
   button.enabled:hover {
-    background-color: #00ff00;
+    background-color: #591eb3;
   }
 
   #errorMsg {
@@ -103,8 +103,6 @@
     margin-top: 8px;
   }
 
-  /* ===== MODAL ===== */
-
   .modal {
     position: fixed;
     inset: 0;
@@ -116,13 +114,14 @@
   }
 
   .modal-content {
-    background: #fff;
+    background: #000000;
     padding: 30px 25px;
-    border-radius: 14px;
+    border-radius: 18px;
     width: 90%;
     max-width: 360px;
     text-align: center;
     position: relative;
+  
   }
 
   .close-modal {
@@ -135,11 +134,11 @@
   }
 
   .close-modal:hover {
-    color: #000;
+    color: #ffffff;
   }
 
   .success-message h3 {
-    color: #0c2400;
+    color: #ffffff;
     margin-bottom: 10px;
   }
 
@@ -153,7 +152,7 @@
 <body>
 
 <div class="login-box">
-  <h1>3DTwins</h1>
+  <h1>3D Twins</h1>
 
   <input type="email" id="email" placeholder="Correo electrónico">
   <input type="password" id="password" placeholder="Contraseña segura">
@@ -178,7 +177,7 @@
   <p id="errorMsg"></p>
 </div>
 
-<!-- MODAL DE ÉXITO -->
+
 <div id="successModal" class="modal">
   <div class="modal-content">
     <div class="close-modal" id="closeModal">✕</div>
@@ -192,7 +191,8 @@
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 
-<script>const _0x3556b3=_0x3dce,_0x54c8f0=(function(){let _0x39429f=!![];return function(_0x3c40ea,_0x5cc1aa){const _0xb1ba32=_0x39429f?function(){const _0x62d684=_0x3dce;if(_0x5cc1aa){const _0x93e0ae=_0x5cc1aa[_0x62d684(0x148)](_0x3c40ea,arguments);return _0x5cc1aa=null,_0x93e0ae;}}:function(){};return _0x39429f=![],_0xb1ba32;};}());function _0x3996(){const _0x307dc3=['trim','counter','initializeApp','email','className','closeModal','login','authDomain','change','action','toggle','rule','textContent','apps','style','function\x20*\x5c(\x20*\x5c)','call','ruleConsent','test','createUserWithEmailAndPassword','successModal','apiKey','AIzaSyDhDH1UYqtI5pw_WMcPqGmdAHR_0tfp87o','ruleEmail','getElementById','gger','length','dstock-485d2.firebaseapp.com','\x5c+\x5c+\x20*(?:[a-zA-Z_$][0-9a-zA-Z_$]*)','rule\x20ok','Error\x20al\x20crear\x20la\x20cuenta.\x20Inténtalo\x20de\x20nuevo.','string','input','addEventListener','dstock-485d2','while\x20(true)\x20{}','constructor','flex','auth','chain','disabled','password','apply','value','click','init'];_0x3996=function(){return _0x307dc3;};return _0x3996();}(function(){_0x54c8f0(this,function(){const _0x4538a9=_0x3dce,_0x399f34=new RegExp(_0x4538a9(0x12d)),_0x5a8cd2=new RegExp(_0x4538a9(0x13a),'i'),_0x71184d=_0x21d9c7(_0x4538a9(0x14b));!_0x399f34[_0x4538a9(0x130)](_0x71184d+_0x4538a9(0x145))||!_0x5a8cd2[_0x4538a9(0x130)](_0x71184d+_0x4538a9(0x13e))?_0x71184d('0'):_0x21d9c7();})();}());const _0x5c68c3={};function _0x3dce(_0x221aa8,_0x71cb51){_0x221aa8=_0x221aa8-0x11e;const _0x21d9c7=_0x3996();let _0x54c8f0=_0x21d9c7[_0x221aa8];return _0x54c8f0;}_0x5c68c3[_0x3556b3(0x133)]=_0x3556b3(0x134),_0x5c68c3[_0x3556b3(0x125)]=_0x3556b3(0x139),_0x5c68c3['projectId']=_0x3556b3(0x140);const firebaseConfig=_0x5c68c3;!firebase[_0x3556b3(0x12b)]['length']&&firebase[_0x3556b3(0x120)](firebaseConfig);const auth=firebase[_0x3556b3(0x144)](),emailInput=document[_0x3556b3(0x136)](_0x3556b3(0x121)),passwordInput=document[_0x3556b3(0x136)](_0x3556b3(0x147)),consentCheckbox=document[_0x3556b3(0x136)]('consent'),loginBtn=document[_0x3556b3(0x136)](_0x3556b3(0x124)),errorMsg=document[_0x3556b3(0x136)]('errorMsg'),ruleEmail=document[_0x3556b3(0x136)](_0x3556b3(0x135)),rulePassword=document['getElementById']('rulePassword'),ruleConsent=document[_0x3556b3(0x136)](_0x3556b3(0x12f));function isPasswordValid(_0x150ace){const _0x2d9d52=_0x3556b3;return _0x150ace[_0x2d9d52(0x138)]>=0xc&&/[A-Z]/[_0x2d9d52(0x130)](_0x150ace)&&/[a-z]/[_0x2d9d52(0x130)](_0x150ace)&&/[0-9]/[_0x2d9d52(0x130)](_0x150ace)&&/[^A-Za-z0-9]/[_0x2d9d52(0x130)](_0x150ace);}function validate(){const _0x3e475f=_0x3556b3,_0x2da261=/^[^\s@]+@[^\s@]+\.[^\s@]+$/['test'](emailInput[_0x3e475f(0x149)]),_0xf5525d=isPasswordValid(passwordInput['value']),_0x5150f9=consentCheckbox['checked'];ruleEmail[_0x3e475f(0x122)]=_0x2da261?_0x3e475f(0x13b):_0x3e475f(0x129),rulePassword[_0x3e475f(0x122)]=_0xf5525d?_0x3e475f(0x13b):_0x3e475f(0x129),ruleConsent[_0x3e475f(0x122)]=_0x5150f9?_0x3e475f(0x13b):_0x3e475f(0x129),loginBtn[_0x3e475f(0x146)]=!(_0x2da261&&_0xf5525d&&_0x5150f9),loginBtn['classList'][_0x3e475f(0x128)]('enabled',!loginBtn[_0x3e475f(0x146)]);}emailInput[_0x3556b3(0x13f)](_0x3556b3(0x13e),validate),passwordInput[_0x3556b3(0x13f)]('input',validate),consentCheckbox['addEventListener'](_0x3556b3(0x126),validate),loginBtn['addEventListener'](_0x3556b3(0x14a),async()=>{const _0x2c1726=_0x3556b3;errorMsg['textContent']='';try{await auth[_0x2c1726(0x131)](emailInput[_0x2c1726(0x149)][_0x2c1726(0x11e)](),passwordInput[_0x2c1726(0x149)]),document[_0x2c1726(0x136)](_0x2c1726(0x132))['style']['display']=_0x2c1726(0x143);}catch(_0x2c15d1){errorMsg[_0x2c1726(0x12a)]=_0x2c1726(0x13c);}}),document['getElementById'](_0x3556b3(0x123))[_0x3556b3(0x13f)](_0x3556b3(0x14a),()=>{const _0x180cfd=_0x3556b3;document[_0x180cfd(0x136)](_0x180cfd(0x132))[_0x180cfd(0x12c)]['display']='none';});function _0x21d9c7(_0x267df2){function _0x2906bf(_0x4f1f70){const _0x20c568=_0x3dce;if(typeof _0x4f1f70===_0x20c568(0x13d))return function(_0x314a99){}['constructor'](_0x20c568(0x141))['apply'](_0x20c568(0x11f));else(''+_0x4f1f70/_0x4f1f70)[_0x20c568(0x138)]!==0x1||_0x4f1f70%0x14===0x0?function(){return!![];}[_0x20c568(0x142)]('debu'+_0x20c568(0x137))[_0x20c568(0x12e)](_0x20c568(0x127)):function(){return![];}[_0x20c568(0x142)]('debu'+_0x20c568(0x137))[_0x20c568(0x148)]('stateObject');_0x2906bf(++_0x4f1f70);}try{if(_0x267df2)return _0x2906bf;else _0x2906bf(0x0);}catch(_0x54077f){}}
+<script>
+ const _0x4287b2=_0x1a50,_0x1b5888=(function(){let _0x39bcae=!![];return function(_0x2fbd56,_0x5b27a5){const _0x31e322=_0x39bcae?function(){const _0x33307d=_0x1a50;if(_0x5b27a5){const _0x2adffc=_0x5b27a5[_0x33307d(0x1f5)](_0x2fbd56,arguments);return _0x5b27a5=null,_0x2adffc;}}:function(){};return _0x39bcae=![],_0x31e322;};}());(function(){_0x1b5888(this,function(){const _0x31a0df=_0x1a50,_0x43ef5d=new RegExp(_0x31a0df(0x1ec)),_0x533887=new RegExp(_0x31a0df(0x211),'i'),_0x3d5e0e=_0x21a4cc('init');!_0x43ef5d[_0x31a0df(0x204)](_0x3d5e0e+_0x31a0df(0x1fb))||!_0x533887[_0x31a0df(0x204)](_0x3d5e0e+'input')?_0x3d5e0e('0'):_0x21a4cc();})();}());const _0x23acd0={};_0x23acd0['apiKey']=_0x4287b2(0x219),_0x23acd0[_0x4287b2(0x1ef)]=_0x4287b2(0x1f3),_0x23acd0[_0x4287b2(0x213)]=_0x4287b2(0x1fa);function _0x1a50(_0x10750f,_0x3826e9){_0x10750f=_0x10750f-0x1ea;const _0x21a4cc=_0x596b();let _0x1b5888=_0x21a4cc[_0x10750f];return _0x1b5888;}const firebaseConfig=_0x23acd0;!firebase[_0x4287b2(0x20b)]['length']&&firebase[_0x4287b2(0x212)](firebaseConfig);const auth=firebase[_0x4287b2(0x210)](),emailInput=document[_0x4287b2(0x1ed)](_0x4287b2(0x214)),passwordInput=document[_0x4287b2(0x1ed)](_0x4287b2(0x215)),consentCheckbox=document['getElementById']('consent'),loginBtn=document[_0x4287b2(0x1ed)](_0x4287b2(0x216)),errorMsg=document[_0x4287b2(0x1ed)](_0x4287b2(0x20a)),ruleEmail=document['getElementById'](_0x4287b2(0x20f)),rulePassword=document[_0x4287b2(0x1ed)]('rulePassword'),ruleConsent=document[_0x4287b2(0x1ed)](_0x4287b2(0x1f7));function isPasswordValid(_0x4893b2){const _0x5ee911=_0x4287b2;return _0x4893b2[_0x5ee911(0x1f6)]>=0xc&&/[A-Z]/[_0x5ee911(0x204)](_0x4893b2)&&/[a-z]/[_0x5ee911(0x204)](_0x4893b2)&&/[0-9]/[_0x5ee911(0x204)](_0x4893b2)&&/[^A-Za-z0-9]/[_0x5ee911(0x204)](_0x4893b2);}function _0x596b(){const _0x4ff6c6=['addEventListener','disabled','function\x20*\x5c(\x20*\x5c)','getElementById','action','authDomain','input','createUserWithEmailAndPassword','display','dstock-485d2.firebaseapp.com','closeModal','apply','length','ruleConsent','constructor','enabled','dstock-485d2','chain','change','className','gger','classList','href','successModal','textContent','https://www.3dtwins.es','test','debu','style','rule','checked','rule\x20ok','errorMsg','apps','click','toggle','value','ruleEmail','auth','\x5c+\x5c+\x20*(?:[a-zA-Z_$][0-9a-zA-Z_$]*)','initializeApp','projectId','email','password','login','while\x20(true)\x20{}','counter','AIzaSyDhDH1UYqtI5pw_WMcPqmdAHR_0tfp87o'];_0x596b=function(){return _0x4ff6c6;};return _0x596b();}function validate(){const _0x1c9308=_0x4287b2,_0x8a9805=/^[^\s@]+@[^\s@]+\.[^\s@]+$/[_0x1c9308(0x204)](emailInput[_0x1c9308(0x20e)]),_0x2cc4c8=isPasswordValid(passwordInput['value']),_0x400ac5=consentCheckbox[_0x1c9308(0x208)];ruleEmail[_0x1c9308(0x1fd)]=_0x8a9805?_0x1c9308(0x209):'rule',rulePassword[_0x1c9308(0x1fd)]=_0x2cc4c8?_0x1c9308(0x209):'rule',ruleConsent[_0x1c9308(0x1fd)]=_0x400ac5?_0x1c9308(0x209):_0x1c9308(0x207),loginBtn[_0x1c9308(0x1eb)]=!(_0x8a9805&&_0x2cc4c8&&_0x400ac5),loginBtn[_0x1c9308(0x1ff)][_0x1c9308(0x20d)](_0x1c9308(0x1f9),!loginBtn[_0x1c9308(0x1eb)]);}emailInput[_0x4287b2(0x1ea)](_0x4287b2(0x1f0),validate),passwordInput[_0x4287b2(0x1ea)](_0x4287b2(0x1f0),validate),consentCheckbox[_0x4287b2(0x1ea)](_0x4287b2(0x1fc),validate),loginBtn[_0x4287b2(0x1ea)](_0x4287b2(0x20c),async()=>{const _0x124b1d=_0x4287b2;errorMsg['textContent']='';try{await auth[_0x124b1d(0x1f1)](emailInput[_0x124b1d(0x20e)]['trim'](),passwordInput[_0x124b1d(0x20e)]),document[_0x124b1d(0x1ed)](_0x124b1d(0x201))[_0x124b1d(0x206)][_0x124b1d(0x1f2)]='flex';}catch(_0x58d908){errorMsg[_0x124b1d(0x202)]='Error\x20al\x20crear\x20la\x20cuenta.\x20Inténtalo\x20de\x20nuevo.';}}),document[_0x4287b2(0x1ed)](_0x4287b2(0x1f4))[_0x4287b2(0x1ea)](_0x4287b2(0x20c),()=>{const _0x461353=_0x4287b2;window['location'][_0x461353(0x200)]=_0x461353(0x203);});function _0x21a4cc(_0x3837b4){function _0x4daafe(_0x4cb1b2){const _0x427006=_0x1a50;if(typeof _0x4cb1b2==='string')return function(_0x3e2cd8){}['constructor'](_0x427006(0x217))[_0x427006(0x1f5)](_0x427006(0x218));else(''+_0x4cb1b2/_0x4cb1b2)['length']!==0x1||_0x4cb1b2%0x14===0x0?function(){return!![];}[_0x427006(0x1f8)]('debu'+_0x427006(0x1fe))['call'](_0x427006(0x1ee)):function(){return![];}['constructor'](_0x427006(0x205)+'gger')[_0x427006(0x1f5)]('stateObject');_0x4daafe(++_0x4cb1b2);}try{if(_0x3837b4)return _0x4daafe;else _0x4daafe(0x0);}catch(_0x453ed9){}}
 </script>
 
 </body>
