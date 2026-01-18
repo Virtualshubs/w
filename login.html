@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3D Twins Registro</title>
+<title>OlibaLife Registro</title>
 
 <style>
   body {
@@ -24,21 +24,12 @@
     box-sizing: border-box;
   }
 
-  h1, h2 {
+  h1 {
     text-align: center;
     color: #00a2ff;
-  }
-
-  h1 {
     font-size: 3rem;
     font-weight: 800;
-    margin-bottom: 5px;
-  }
-
-  h2 {
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
   input {
@@ -53,7 +44,7 @@
   button {
     width: 100%;
     padding: 12px;
-    background-color: #000000;
+    background-color: #000;
     border: none;
     border-radius: 6px;
     color: #fff;
@@ -77,6 +68,7 @@
     font-size: 0.9rem;
     text-align: center;
     min-height: 20px;
+    color: #ff6b6b;
   }
 
   .rules {
@@ -88,29 +80,25 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    color: #555;
+    color: #777;
   }
 
   .rule.ok {
-    color: #008000;
+    color: #00c853;
   }
 
   .privacy {
     font-size: 0.8rem;
-    color: #333;
+    color: #aaa;
     margin: 12px 0;
     display: flex;
     gap: 8px;
     align-items: flex-start;
   }
 
-  .privacy input {
-    margin-top: 3px;
-  }
-
   .legal-text {
     font-size: 0.7rem;
-    color: #555;
+    color: #777;
     text-align: center;
     margin-top: 8px;
   }
@@ -129,7 +117,7 @@
 
   .modal-content {
     background: #fff;
-    padding: 25px 22px;
+    padding: 30px 25px;
     border-radius: 14px;
     width: 90%;
     max-width: 360px;
@@ -148,6 +136,16 @@
 
   .close-modal:hover {
     color: #000;
+  }
+
+  .success-message h3 {
+    color: #0c2400;
+    margin-bottom: 10px;
+  }
+
+  .success-message p {
+    font-size: 0.9rem;
+    color: #444;
   }
 </style>
 </head>
@@ -180,135 +178,22 @@
   <p id="errorMsg"></p>
 </div>
 
-
-<div id="guideModal" class="modal">
+<!-- MODAL DE ÉXITO -->
+<div id="successModal" class="modal">
   <div class="modal-content">
     <div class="close-modal" id="closeModal">✕</div>
-    <p>Ya puedes descargar tu menú drenante gratis.</p>
-    <button id="downloadGuideBtn" class="enabled">Descargar guía</button>
+    <div class="success-message">
+      <h3>Gracias por tu registro</h3>
+      <p>El equipo de ventas te contactará por mail en las próximas horas.</p>
+    </div>
   </div>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-<script>
-  const PRODUCTS_URL = "https://test.olibalife.site"; 
-  
-  const firebaseConfig = {
-     apiKey: "AIzaSyDhDH1UYqtI5pw_WMcPqGmdAHR_0tfp87o",
-  authDomain: "dstock-485d2.firebaseapp.com",
-  projectId: "dstock-485d2"
-    };
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-  }
 
-  const auth = firebase.auth();
-
-  const emailInput = document.getElementById("email");
-  const passwordInput = document.getElementById("password");
-  const consentCheckbox = document.getElementById("consent");
-  const loginBtn = document.getElementById("login");
-  const errorMsg = document.getElementById("errorMsg");
-
-  const ruleEmail = document.getElementById("ruleEmail");
-  const rulePassword = document.getElementById("rulePassword");
-  const ruleConsent = document.getElementById("ruleConsent");
-
-  // Validación de contraseña según reglas de Firebase
-  function isPasswordValid(pwd) {
-    return (
-      pwd.length >= 12 &&
-      /[A-Z]/.test(pwd) && // al menos una mayúscula
-      /[a-z]/.test(pwd) && // al menos una minúscula
-      /[0-9]/.test(pwd) && // al menos un número
-      /[^A-Za-z0-9]/.test(pwd) // al menos un símbolo
-    );
-  }
-
-  function validate() {
-    const email = emailInput.value.trim();
-    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    const passwordValid = isPasswordValid(passwordInput.value);
-    const consentValid = consentCheckbox.checked;
-
-    ruleEmail.className = emailValid ? "rule ok" : "rule";
-    ruleEmail.textContent = emailValid ? "✅ Correo electrónico válido" : "❌ Correo electrónico válido";
-
-    rulePassword.className = passwordValid ? "rule ok" : "rule";
-    rulePassword.textContent = passwordValid
-      ? "✅ Contraseña segura"
-      : "❌ Mín. 12 caracteres, mayúscula, minúscula, número y símbolo";
-
-    ruleConsent.className = consentValid ? "rule ok" : "rule";
-    ruleConsent.textContent = consentValid ? "✅ Consentimiento aceptado" : "❌ Consentimiento aceptado";
-
-    loginBtn.disabled = !(emailValid && passwordValid && consentValid);
-    loginBtn.classList.toggle("enabled", !loginBtn.disabled);
-  }
-
-  emailInput.addEventListener("input", validate);
-  passwordInput.addEventListener("input", validate);
-  consentCheckbox.addEventListener("change", validate);
-
-  loginBtn.addEventListener("click", async () => {
-    errorMsg.textContent = "";
-    const email = emailInput.value.trim();
-    const password = passwordInput.value;
-
-    try {
-      await auth.createUserWithEmailAndPassword(email, password);
-      document.getElementById("guideModal").style.display = "flex";
-    } catch (error) {
-      console.error("Firebase Auth error:", error.code, error.message);
-
-      switch (error.code) {
-        case "auth/email-already-in-use":
-          errorMsg.textContent = "Este correo ya está registrado. Prueba a iniciar sesión.";
-          break;
-
-        case "auth/invalid-email":
-          errorMsg.textContent = "El correo electrónico no es válido.";
-          break;
-
-        case "auth/weak-password":
-          errorMsg.textContent = "La contraseña no cumple las reglas mínimas.";
-          break;
-
-        case "auth/operation-not-allowed":
-          errorMsg.textContent = "El registro por email no está habilitado.";
-          break;
-
-        case "auth/network-request-failed":
-          errorMsg.textContent = "Error de conexión. Revisa tu red.";
-          break;
-
-        case "auth/too-many-requests":
-          errorMsg.textContent = "Demasiados intentos. Inténtalo más tarde.";
-          break;
-
-        default:
-          errorMsg.textContent = "Error al crear la cuenta. Inténtalo de nuevo.";
-      }
-    }
-  });
-
-  function redirectToProducts() {
-    window.location.href = PRODUCTS_URL;
-  }
-
-  document.getElementById("downloadGuideBtn").addEventListener("click", () => {
-    const link = document.createElement("a");
-    link.href = "https://test.olibalife.site/olibalifemenudrenante.pdf";
-    link.download = "olibalifemenudrenante.pdf";
-    link.click();
-
-    setTimeout(redirectToProducts, 1500);
-  });
-
-  document.getElementById("closeModal").addEventListener("click", redirectToProducts);
+<script>const _0x3556b3=_0x3dce,_0x54c8f0=(function(){let _0x39429f=!![];return function(_0x3c40ea,_0x5cc1aa){const _0xb1ba32=_0x39429f?function(){const _0x62d684=_0x3dce;if(_0x5cc1aa){const _0x93e0ae=_0x5cc1aa[_0x62d684(0x148)](_0x3c40ea,arguments);return _0x5cc1aa=null,_0x93e0ae;}}:function(){};return _0x39429f=![],_0xb1ba32;};}());function _0x3996(){const _0x307dc3=['trim','counter','initializeApp','email','className','closeModal','login','authDomain','change','action','toggle','rule','textContent','apps','style','function\x20*\x5c(\x20*\x5c)','call','ruleConsent','test','createUserWithEmailAndPassword','successModal','apiKey','AIzaSyDhDH1UYqtI5pw_WMcPqGmdAHR_0tfp87o','ruleEmail','getElementById','gger','length','dstock-485d2.firebaseapp.com','\x5c+\x5c+\x20*(?:[a-zA-Z_$][0-9a-zA-Z_$]*)','rule\x20ok','Error\x20al\x20crear\x20la\x20cuenta.\x20Inténtalo\x20de\x20nuevo.','string','input','addEventListener','dstock-485d2','while\x20(true)\x20{}','constructor','flex','auth','chain','disabled','password','apply','value','click','init'];_0x3996=function(){return _0x307dc3;};return _0x3996();}(function(){_0x54c8f0(this,function(){const _0x4538a9=_0x3dce,_0x399f34=new RegExp(_0x4538a9(0x12d)),_0x5a8cd2=new RegExp(_0x4538a9(0x13a),'i'),_0x71184d=_0x21d9c7(_0x4538a9(0x14b));!_0x399f34[_0x4538a9(0x130)](_0x71184d+_0x4538a9(0x145))||!_0x5a8cd2[_0x4538a9(0x130)](_0x71184d+_0x4538a9(0x13e))?_0x71184d('0'):_0x21d9c7();})();}());const _0x5c68c3={};function _0x3dce(_0x221aa8,_0x71cb51){_0x221aa8=_0x221aa8-0x11e;const _0x21d9c7=_0x3996();let _0x54c8f0=_0x21d9c7[_0x221aa8];return _0x54c8f0;}_0x5c68c3[_0x3556b3(0x133)]=_0x3556b3(0x134),_0x5c68c3[_0x3556b3(0x125)]=_0x3556b3(0x139),_0x5c68c3['projectId']=_0x3556b3(0x140);const firebaseConfig=_0x5c68c3;!firebase[_0x3556b3(0x12b)]['length']&&firebase[_0x3556b3(0x120)](firebaseConfig);const auth=firebase[_0x3556b3(0x144)](),emailInput=document[_0x3556b3(0x136)](_0x3556b3(0x121)),passwordInput=document[_0x3556b3(0x136)](_0x3556b3(0x147)),consentCheckbox=document[_0x3556b3(0x136)]('consent'),loginBtn=document[_0x3556b3(0x136)](_0x3556b3(0x124)),errorMsg=document[_0x3556b3(0x136)]('errorMsg'),ruleEmail=document[_0x3556b3(0x136)](_0x3556b3(0x135)),rulePassword=document['getElementById']('rulePassword'),ruleConsent=document[_0x3556b3(0x136)](_0x3556b3(0x12f));function isPasswordValid(_0x150ace){const _0x2d9d52=_0x3556b3;return _0x150ace[_0x2d9d52(0x138)]>=0xc&&/[A-Z]/[_0x2d9d52(0x130)](_0x150ace)&&/[a-z]/[_0x2d9d52(0x130)](_0x150ace)&&/[0-9]/[_0x2d9d52(0x130)](_0x150ace)&&/[^A-Za-z0-9]/[_0x2d9d52(0x130)](_0x150ace);}function validate(){const _0x3e475f=_0x3556b3,_0x2da261=/^[^\s@]+@[^\s@]+\.[^\s@]+$/['test'](emailInput[_0x3e475f(0x149)]),_0xf5525d=isPasswordValid(passwordInput['value']),_0x5150f9=consentCheckbox['checked'];ruleEmail[_0x3e475f(0x122)]=_0x2da261?_0x3e475f(0x13b):_0x3e475f(0x129),rulePassword[_0x3e475f(0x122)]=_0xf5525d?_0x3e475f(0x13b):_0x3e475f(0x129),ruleConsent[_0x3e475f(0x122)]=_0x5150f9?_0x3e475f(0x13b):_0x3e475f(0x129),loginBtn[_0x3e475f(0x146)]=!(_0x2da261&&_0xf5525d&&_0x5150f9),loginBtn['classList'][_0x3e475f(0x128)]('enabled',!loginBtn[_0x3e475f(0x146)]);}emailInput[_0x3556b3(0x13f)](_0x3556b3(0x13e),validate),passwordInput[_0x3556b3(0x13f)]('input',validate),consentCheckbox['addEventListener'](_0x3556b3(0x126),validate),loginBtn['addEventListener'](_0x3556b3(0x14a),async()=>{const _0x2c1726=_0x3556b3;errorMsg['textContent']='';try{await auth[_0x2c1726(0x131)](emailInput[_0x2c1726(0x149)][_0x2c1726(0x11e)](),passwordInput[_0x2c1726(0x149)]),document[_0x2c1726(0x136)](_0x2c1726(0x132))['style']['display']=_0x2c1726(0x143);}catch(_0x2c15d1){errorMsg[_0x2c1726(0x12a)]=_0x2c1726(0x13c);}}),document['getElementById'](_0x3556b3(0x123))[_0x3556b3(0x13f)](_0x3556b3(0x14a),()=>{const _0x180cfd=_0x3556b3;document[_0x180cfd(0x136)](_0x180cfd(0x132))[_0x180cfd(0x12c)]['display']='none';});function _0x21d9c7(_0x267df2){function _0x2906bf(_0x4f1f70){const _0x20c568=_0x3dce;if(typeof _0x4f1f70===_0x20c568(0x13d))return function(_0x314a99){}['constructor'](_0x20c568(0x141))['apply'](_0x20c568(0x11f));else(''+_0x4f1f70/_0x4f1f70)[_0x20c568(0x138)]!==0x1||_0x4f1f70%0x14===0x0?function(){return!![];}[_0x20c568(0x142)]('debu'+_0x20c568(0x137))[_0x20c568(0x12e)](_0x20c568(0x127)):function(){return![];}[_0x20c568(0x142)]('debu'+_0x20c568(0x137))[_0x20c568(0x148)]('stateObject');_0x2906bf(++_0x4f1f70);}try{if(_0x267df2)return _0x2906bf;else _0x2906bf(0x0);}catch(_0x54077f){}}
 </script>
-
 
 </body>
 </html>
