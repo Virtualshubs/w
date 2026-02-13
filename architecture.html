@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arquitectura de un gemelo digital | Knowledge Center - 3D Twins</title>
+  <meta name="description" content="Descubre la arquitectura de los gemelos digitales, sus componentes generales y entornos de implementación sin entrar en detalles técnicos sensibles.">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { display: flex; font-family: 'Inter', sans-serif; color: #1a1a1a; height: 100vh; }
+
+    /* Menú lateral */
+    nav {
+      width: 260px;
+      background: #f9f9f9;
+      padding: 25px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+      overflow-y: auto;
+    }
+    nav h2 { font-size: 1.4rem; margin-bottom: 20px; color: #111; }
+    nav ul { list-style: none; }
+    nav ul li { margin: 12px 0; }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav ul li a:hover { color: #0070f3; }
+    nav ul li a.active-link { color: #0070f3; font-weight: 700; }
+
+    /* Área de contenido */
+    main {
+      flex: 1;
+      padding: 40px;
+      overflow-y: auto;
+      background: #fff;
+    }
+    h1 { font-size: 2rem; margin-bottom: 20px; }
+    h2 { font-size: 1.5rem; margin-top: 30px; margin-bottom: 12px; }
+    h3 { font-size: 1.2rem; margin-top: 20px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; line-height: 1.6; }
+    ul { margin: 12px 0 20px 20px; }
+    li { margin-bottom: 8px; }
+
+    a.internal-link { color: #0070f3; text-decoration: none; }
+    a.internal-link:hover { text-decoration: underline; }
+
+    img { max-width: 100%; height: auto; margin: 12px 0; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h2>Knowledge Center</h2>
+    <ul id="menu">
+      <li><a href="what-is-digital-twin.html">Qué es un gemelo digital</a></li>
+      <li><a href="why-use-digital-twin.html">Por qué usar un gemelo digital</a></li>
+      <li><a href="architecture.html" class="active-link">Arquitectura de un gemelo digital</a></li>
+      <li><a href="data-models.html">Modelos de datos</a></li>
+      <li><a href="interoperability.html">Interoperabilidad</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
+  </nav>
+
+  <main id="content">
+    <h1>Arquitectura de un gemelo digital</h1>
+
+    <p>La <strong>arquitectura de un gemelo digital</strong> describe los componentes generales y entornos donde puede implementarse sin entrar en detalles internos del modelo. Comprender su estructura permite identificar cómo se conectan los datos, la simulación y la visualización para distintas industrias.</p>
+
+    <h2>Nivel 1: Componentes generales</h2>
+    <p>Los gemelos digitales suelen estar compuestos por los siguientes bloques:</p>
+    <ul>
+      <li><strong>Plataforma digital:</strong> software que aloja, gestiona y procesa la información.</li>
+      <li><strong>Fuentes de datos:</strong> sensores, sistemas ERP/CRM, bases de datos externas o internas.</li>
+      <li><strong>Interfaz de visualización:</strong> dashboards o aplicaciones para usuarios finales, clientes o analistas.</li>
+      <li><strong>Motor de simulación y analítica:</strong> permite realizar predicciones, simulaciones y análisis estratégicos sin revelar la estructura interna del modelo.</li>
+    </ul>
+
+    <h2>Nivel 2: Entornos de implementación</h2>
+    <p>Los gemelos digitales se pueden aplicar en múltiples sectores:</p>
+    <ul>
+      <li><strong>Manufactura y producción:</strong> optimización de procesos y prototipado virtual.</li>
+      <li><strong>Retail y comercio electrónico:</strong> visualización de productos interactivos y personalización bajo demanda.</li>
+      <li><strong>Logística y supply chain:</strong> simulación de flujos y predicción de cuellos de botella.</li>
+      <li><strong>Construcción e infraestructura:</strong> modelado de edificios, mantenimiento predictivo y planificación de obras.</li>
+      <li><strong>Salud y laboratorios:</strong> simulación de procesos clínicos o de investigación sin afectar entornos reales.</li>
+    </ul>
+
+    <h2>Nivel 3: Buenas prácticas</h2>
+    <ul>
+      <li>Separar capas de datos, simulación y visualización para facilitar escalabilidad y seguridad.</li>
+      <li>Escalar la arquitectura según volumen de datos y complejidad del gemelo.</li>
+      <li>Conectar con sistemas existentes sin exponer información sensible del modelo.</li>
+      <li>Reutilizar datos y gemelos para múltiples casos de uso dentro de la organización.</li>
+    </ul>
+
+    <h3>Enlaces relacionados</h3>
+    <ul>
+      <li><a href="what-is-digital-twin.html" class="internal-link">Qué es un gemelo digital</a></li>
+      <li><a href="why-use-digital-twin.html" class="internal-link">Por qué usar un gemelo digital</a></li>
+      <li><a href="data-models.html" class="internal-link">Modelos de datos</a></li>
+      <li><a href="interoperability.html" class="internal-link">Interoperabilidad</a></li>
+    </ul>
+
+  </main>
+
+</body>
+</html>
