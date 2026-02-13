@@ -5,90 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Knowledge Center - Gemelos Digitales | 3D Twins</title>
   <meta name="description" content="Aprende sobre gemelos digitales 3D, su arquitectura, aplicaciones y casos de uso. Documentación técnica y tutoriales.">
-  <link rel="icon" href="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" type="image/x-icon" />
   <style>
     /* Reset y tipografía */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { display: flex; font-family: 'Inter', sans-serif; color: #1a1a1a; height: 100vh; background:#f5f5f7; }
-
-    /* Header */
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 60px;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      padding: 0 25px;
-      box-shadow: 0 1px 10px rgba(0,0,0,0.08);
-      z-index: 1000;
-    }
-    header a { text-decoration: none; color: #0070f3; font-weight: 600; font-size:1rem; }
-
-    body { padding-top: 60px; } /* espacio para header */
+    body { display: flex; font-family: 'Inter', sans-serif; color: #1a1a1a; height: 100vh; }
 
     /* Menú lateral */
     nav {
       width: 260px;
-      background: #fff;
-      padding: 30px 20px;
-      box-shadow: 2px 0 10px rgba(0,0,0,0.03);
+      background: #f9f9f9;
+      padding: 25px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.05);
       overflow-y: auto;
-      border-right: 1px solid #e6e6e6;
     }
-    nav h2 { font-size: 1.6rem; margin-bottom: 25px; color: #111; }
+    nav h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      color: #111;
+    }
     nav ul { list-style: none; }
-    nav ul li { margin: 14px 0; }
+    nav ul li { margin: 12px 0; }
     nav ul li a {
       text-decoration: none;
       color: #333;
       font-weight: 500;
-      padding: 4px 8px;
-      border-radius: 6px;
-      transition: all 0.2s ease;
-      display: inline-block;
+      transition: color 0.2s;
     }
-    nav ul li a:hover { background: #f0f0f5; color: #0070f3; }
-    .active-link { color: #0070f3; font-weight: 600; }
+    nav ul li a:hover { color: #0070f3; }
 
     /* Área de contenido */
     main {
       flex: 1;
       padding: 40px;
       overflow-y: auto;
-    }
-    h1 { font-size: 2.2rem; margin-bottom: 24px; font-weight: 600; }
-    h2 { font-size: 1.5rem; margin-top: 32px; margin-bottom: 12px; font-weight: 500; }
-    p { margin-bottom: 18px; line-height: 1.7; color:#333; }
-
-    a.internal-link { color: #0070f3; text-decoration: none; transition: 0.2s; }
-    a.internal-link:hover { text-decoration: underline; }
-
-    /* Footer minimalista */
-    footer {
-      padding: 20px;
-      text-align: center;
-      font-size: 0.85rem;
-      color: #666;
-      border-top: 1px solid #e6e6e6;
       background: #fff;
-      position: sticky;
-      bottom: 0;
     }
-    footer a { color: #0070f3; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
+    h1 { font-size: 2rem; margin-bottom: 20px; }
+    h2 { font-size: 1.4rem; margin-top: 30px; margin-bottom: 10px; }
+    p { margin-bottom: 16px; line-height: 1.6; }
+
+    /* Entrada activa en menú (si se implementa JS) */
+    .active-link { color: #0070f3; font-weight: 600; }
   </style>
 </head>
 <body>
 
-  <header>
-    <a href="../index.html">← Volver a 3D Twins</a>
-  </header>
-
   <nav>
     <h2>Knowledge Center</h2>
     <ul id="menu">
-      <li><a href="what-is-digital-twin.html" class="active-link">Qué es un gemelo digital</a></li>
+      <li><a href="what-is-digital-twin.html">Qué es un gemelo digital</a></li>
       <li><a href="why-use-digital-twin.html">Por qué usar un gemelo digital</a></li>
       <li><a href="architecture.html">Arquitectura de un gemelo digital</a></li>
       <li><a href="data-models.html">Modelos de datos</a></li>
@@ -99,15 +64,12 @@
 
   <main id="content">
     <h1>Bienvenido al Knowledge Center de 3D Twins</h1>
-    <p>En esta sección encontrarás toda la documentación sobre gemelos digitales 3D, desde conceptos básicos hasta aspectos técnicos avanzados. Selecciona una entrada en el menú para comenzar.</p>
+    <p>En esta sección encontrarás toda la documentación sobre gemelos digitales 3D, desde conceptos básicos hasta aspectos técnicos avanzados. 
+    Selecciona una entrada en el menú para comenzar.</p>
 
     <h2>Cómo usar este Knowledge Center</h2>
     <p>Cada entrada contiene información detallada sobre un aspecto de los gemelos digitales. Puedes navegar por el menú lateral para acceder a cada tema. Cada página es independiente y está optimizada para SEO, por lo que puedes enlazar directamente a cualquier entrada.</p>
   </main>
-
-  <footer>
-    &copy; 2026 3D Twins. Todos los derechos reservados. | <a href="mailto:info@3dtwins.es">Contactanos</a>
-  </footer>
 
 </body>
 </html>
