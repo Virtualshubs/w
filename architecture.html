@@ -29,27 +29,21 @@
       padding: 0 30px;
     }
 
-    header img {
-      height: 32px;
-    }
+    header img { height: 32px; }
 
-    .home-button {
+    .home-button, .lang-button {
       text-decoration: none;
       font-weight: 500;
       color: #333;
+      margin-left: 15px;
       transition: color 0.2s;
+      cursor: pointer;
     }
 
-    .home-button:hover {
-      color: #0070f3;
-    }
+    .home-button:hover, .lang-button:hover { color: #0070f3; }
 
     /* CONTENEDOR GENERAL */
-    .container {
-      display: flex;
-      flex: 1;
-      overflow: hidden;
-    }
+    .container { display: flex; flex: 1; overflow: hidden; }
 
     /* SIDEBAR */
     nav {
@@ -60,106 +54,50 @@
       overflow-y: auto;
     }
 
-    nav h2 {
-      font-size: 1.4rem;
-      margin-bottom: 20px;
-      color: #111;
-    }
+    nav h2 { font-size: 1.4rem; margin-bottom: 20px; color: #111; }
 
-    nav ul {
-      list-style: none;
-    }
-
-    nav ul li {
-      margin: 12px 0;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    nav ul li a:hover {
-      color: #0070f3;
-    }
-
-    .active-link {
-      color: #0070f3;
-      font-weight: 600;
-    }
+    nav ul { list-style: none; }
+    nav ul li { margin: 12px 0; }
+    nav ul li a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.2s; }
+    nav ul li a:hover { color: #0070f3; }
+    .active-link { color: #0070f3; font-weight: 600; }
 
     /* CONTENIDO */
-    main {
-      flex: 1;
-      padding: 40px;
-      overflow-y: auto;
-      background: #fff;
-    }
+    main { flex: 1; padding: 40px; overflow-y: auto; background: #fff; }
+    h1 { font-size: 2rem; margin-bottom: 20px; }
+    h2 { font-size: 1.4rem; margin-top: 30px; margin-bottom: 10px; }
+    p { margin-bottom: 16px; line-height: 1.6; }
 
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      font-size: 1.4rem;
-      margin-top: 30px;
-      margin-bottom: 10px;
-    }
-
-    h3 {
-      font-size: 1.2rem;
-      margin-top: 20px;
-      margin-bottom: 8px;
-    }
-
-    p {
-      margin-bottom: 16px;
-      line-height: 1.6;
-    }
-
-    ul {
-      margin: 12px 0 20px 20px;
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
-
-    a.internal-link {
-      color: #0070f3;
-      text-decoration: none;
-    }
-
-    a.internal-link:hover {
-      text-decoration: underline;
-    }
+    /* Contenedores por idioma */
+    .lang { display: none; }
+    .lang.active { display: block; }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <a href="https://3dtwins.es">
-      <img src="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" alt="Logo 3D Twins">
-    </a>
+<header>
+  <a href="https://3dtwins.es"><img src="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" alt="Logo 3D Twins"></a>
+  <div>
     <a href="https://web.3dtwins.tech" class="home-button">← Volver al Home</a>
-  </header>
+    <span class="lang-button" data-lang="es">ES</span>
+    <span class="lang-button" data-lang="en">EN</span>
+    <span class="lang-button" data-lang="fr">FR</span>
+  </div>
+</header>
 
-  <div class="container">
+<div class="container">
+  <nav>
+    <h2>Knowledge Center</h2>
+    <ul id="menu"></ul>
+  </nav>
 
-    <nav>
-      <h2>Knowledge Center</h2>
-      <ul id="menu"></ul>
-    </nav>
+  <main id="content">
 
-    <main id="content">
+    <!-- Español -->
+    <div class="lang active" data-lang="es">
       <h1>Arquitectura de un gemelo digital</h1>
-
-      <p>La <strong>arquitectura de un gemelo digital</strong> describe los componentes generales y entornos donde puede implementarse.</p>
-
+      <p>La <strong>arquitectura de un gemelo digital</strong> describe los componentes generales</p>
       <h2>Nivel 1: Componentes generales</h2>
       <p>Los gemelos digitales suelen estar compuestos por los siguientes bloques:</p>
       <ul>
@@ -168,49 +106,64 @@
         <li><strong>Interfaz de visualización:</strong> dashboards o aplicaciones para usuarios finales, clientes o analistas.</li>
         <li><strong>Motor de simulación y analítica:</strong> permite realizar predicciones, simulaciones y análisis estratégicos sin revelar la estructura interna del modelo.</li>
       </ul>
+    </div>
 
-      <h2>Nivel 2: Entornos de implementación</h2>
-      <p>Los gemelos digitales se pueden aplicar en múltiples sectores:</p>
+    <!-- Inglés -->
+    <div class="lang" data-lang="en">
+      <h1>Digital Twin Architecture</h1>
+      <p>The <strong>digital twin architecture</strong> describes the general components and environments.</p>
+      <h2>Level 1: General Components</h2>
+      <p>Digital twins typically consist of the following blocks:</p>
       <ul>
-        <li><strong>Manufactura y producción:</strong> optimización de procesos y prototipado virtual.</li>
-        <li><strong>Retail y comercio electrónico:</strong> visualización de productos interactivos y personalización bajo demanda.</li>
-        <li><strong>Logística y supply chain:</strong> simulación de flujos y predicción de cuellos de botella.</li>
-        <li><strong>Construcción e infraestructura:</strong> modelado de edificios, mantenimiento predictivo y planificación de obras.</li>
-        <li><strong>Salud y laboratorios:</strong> simulación de procesos clínicos o de investigación sin afectar entornos reales.</li>
+        <li><strong>Digital Platform:</strong> software that hosts, manages, and processes information.</li>
+        <li><strong>Data Sources:</strong> sensors, ERP/CRM systems, external or internal databases.</li>
+        <li><strong>Visualization Interface:</strong> dashboards or applications for end users, clients, or analysts.</li>
+        <li><strong>Simulation & Analytics Engine:</strong> enables predictions, simulations, and strategic analysis without revealing the internal model structure.</li>
       </ul>
+    </div>
 
-      <h2>Nivel 3: Buenas prácticas</h2>
+    <!-- Francés -->
+    <div class="lang" data-lang="fr">
+      <h1>Architecture d'un jumeau numérique</h1>
+      <p>L'<strong>architecture d'un jumeau numérique</strong> décrit les composants généraux et les environnements.</p>
+      <h2>Niveau 1 : Composants généraux</h2>
+      <p>Les jumeaux numériques sont généralement composés des blocs suivants :</p>
       <ul>
-        <li>Escalar la arquitectura según volumen de datos y complejidad del gemelo.</li>
-        <li>Reutilizar gemelos para múltiples casos de uso dentro de la organización.</li>
+        <li><strong>Plateforme numérique :</strong> logiciel qui héberge, gère et traite l'information.</li>
+        <li><strong>Sources de données :</strong> capteurs, systèmes ERP/CRM, bases de données externes ou internes.</li>
+        <li><strong>Interface de visualisation :</strong> tableaux de bord ou applications pour utilisateurs finaux, clients ou analystes.</li>
+        <li><strong>Moteur de simulation et d'analyse :</strong> permet de réaliser des prédictions, des simulations et des analyses stratégiques sans révéler la structure interne du modèle.</li>
       </ul>
+    </div>
 
-      <h3>Enlaces relacionados</h3>
-      <ul>
-        <li><a href="what-is-digital-twin.html" class="internal-link">Qué es un gemelo digital</a></li>
-        <li><a href="why-use-digital-twin.html" class="internal-link">Por qué usar un gemelo digital</a></li>
-        <li><a href="data-models.html" class="internal-link">Modelos de datos</a></li>
-        <li><a href="interoperability.html" class="internal-link">Interoperabilidad</a></li>
-      </ul>
-    </main>
+  </main>
+</div>
 
-  </div>
+<script src="menu.js"></script>
 
-  <script src="menu.js"></script>
+<script>
+  // Lógica de cambio de idioma
+  const langButtons = document.querySelectorAll('.lang-button');
+  const langBlocks = document.querySelectorAll('.lang');
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-N54X2MZQZG');
+  langButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selected = btn.getAttribute('data-lang');
+      langBlocks.forEach(block => {
+        block.classList.toggle('active', block.getAttribute('data-lang') === selected);
+      });
+    });
+  });
+</script>
 
-    function trackEvent(name, params = {}) {
-      if (typeof gtag === "function") {
-        gtag("event", name, params);
-      }
-    }
-  </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-N54X2MZQZG');
+  function trackEvent(name, params = {}) { if(typeof gtag === "function") gtag("event", name, params); }
+</script>
 
 </body>
 </html>
