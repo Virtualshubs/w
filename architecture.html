@@ -7,7 +7,7 @@
   <meta name="description" content="Descubre la arquitectura de los gemelos digitales, sus componentes generales y entornos de implementación sin entrar en detalles técnicos sensibles.">
   <link rel="icon" href="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" type="image/x-icon" />
 
-  <style>
+   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -18,7 +18,7 @@
       height: 100vh;
     }
 
-    /* HEADER SUPERIOR */
+    /* HEADER */
     header {
       height: 70px;
       background: #ffffff;
@@ -31,16 +31,19 @@
 
     header img { height: 32px; }
 
-    .home-button, .lang-button {
-      text-decoration: none;
-      font-weight: 500;
-      color: #333;
-      margin-left: 15px;
-      transition: color 0.2s;
-      cursor: pointer;
-    }
+    .home-button { text-decoration: none; font-weight: 500; color: #333; transition: color 0.2s; }
+    .home-button:hover { color: #0070f3; }
 
-    .home-button:hover, .lang-button:hover { color: #0070f3; }
+    .lang-switch { display: flex; gap: 10px; }
+    .lang-button {
+      cursor: pointer;
+      padding: 4px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #f9f9f9;
+      transition: all 0.2s;
+    }
+    .lang-button.active { background: #0070f3; color: #fff; border-color: #0070f3; }
 
     /* CONTENEDOR GENERAL */
     .container { display: flex; flex: 1; overflow: hidden; }
@@ -55,7 +58,6 @@
     }
 
     nav h2 { font-size: 1.4rem; margin-bottom: 20px; color: #111; }
-
     nav ul { list-style: none; }
     nav ul li { margin: 12px 0; }
     nav ul li a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.2s; }
@@ -63,17 +65,17 @@
     .active-link { color: #0070f3; font-weight: 600; }
 
     /* CONTENIDO */
-    main { flex: 1; padding: 40px; overflow-y: auto; background: #fff; }
+    main {
+      flex: 1;
+      padding: 40px;
+      overflow-y: auto;
+      background: #fff;
+    }
+
     h1 { font-size: 2rem; margin-bottom: 20px; }
     h2 { font-size: 1.4rem; margin-top: 30px; margin-bottom: 10px; }
-    h3 { font-size: 1.2rem; margin-top: 20px; margin-bottom: 8px; }
     p { margin-bottom: 16px; line-height: 1.6; }
-    ul { margin: 12px 0 20px 20px; }
-    li { margin-bottom: 8px; }
-    a.internal-link { color: #0070f3; text-decoration: none; }
-    a.internal-link:hover { text-decoration: underline; }
 
-    /* Contenedores por idioma */
     .lang { display: none; }
     .lang.active { display: block; }
   </style>
