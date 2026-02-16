@@ -221,20 +221,10 @@
 </div>
 
 <script src="menu.js"></script>
-
 <script>
+  // Lógica de cambio de idioma
   const langButtons = document.querySelectorAll('.lang-button');
   const langBlocks = document.querySelectorAll('.lang');
-  let currentLang = 'es';
-  if (['es','en','fr'].includes(location.hash.replace('#',''))) {
-    currentLang = location.hash.replace('#','');
-  }
-
-  langBlocks.forEach(block => {
-    block.classList.toggle('active', block.getAttribute('data-lang') === currentLang);
-  });
-
-  langButtons.forEach(btn => btn.style.fontWeight = btn.getAttribute('data-lang') === currentLang ? '700' : '500');
 
   langButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -242,15 +232,9 @@
       langBlocks.forEach(block => {
         block.classList.toggle('active', block.getAttribute('data-lang') === selected);
       });
-
-      langButtons.forEach(b => b.style.fontWeight = b.getAttribute('data-lang') === selected ? '700' : '500');
-
-
-      location.hash = selected;
     });
   });
 </script>
-
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG"></script>
 <script>
