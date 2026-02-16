@@ -91,6 +91,19 @@
  para una consultoría personalizada según tu proyecto y objetivos.</p>
 
   </main>
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG"></script>
+  
+  <script>  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
 
+  gtag('js', new Date());
+  gtag('config', 'G-N54X2MZQZG');
+
+  function trackEvent(name, params = {}) {
+    if (typeof gtag === "function") {
+      gtag("event", name, params);
+    }
+  }
+</script>
 </body>
 </html>
