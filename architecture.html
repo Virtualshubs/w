@@ -223,9 +223,17 @@
 <script src="menu.js"></script>
 
 <script>
-  // Lógica de cambio de idioma
   const langButtons = document.querySelectorAll('.lang-button');
   const langBlocks = document.querySelectorAll('.lang');
+  const pathParts = window.location.pathname.split('/');
+  let currentLang = 'es';
+  const lastPart = pathParts[pathParts.length - 1].toLowerCase();
+  if (['es', 'en', 'fr'].includes(lastPart)) currentLang = lastPart;
+  langBlocks.forEach(block => {
+    block.classList.toggle('active', block.getAttribute('data-lang') === currentLang);
+  });
+
+  langButtons.forEach(btn => btn.style.fontWeight = btn.getAttribute('data-lang') === currentLang ? '700' : '500');
 
   langButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -233,9 +241,17 @@
       langBlocks.forEach(block => {
         block.classList.toggle('active', block.getAttribute('data-lang') === selected);
       });
+
+      langButtons.forEach(b => b.style.fontWeight = b.getAttribute('data-lang') === selected ? '700' : '500');
+
+      let basePath = window.location.pathname;
+      basePath = basePath.replace(/\/(es|en|fr)\/?$/i, '');
+      const newUrl = `${basePath}/${selected}`;
+      history.replaceState(null, '', newUrl);
     });
   });
 </script>
+
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG"></script>
 <script>
