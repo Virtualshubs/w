@@ -5,15 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Por qué usar un gemelo digital | Knowledge Center - 3D Twins</title>
   <meta name="description" content="Beneficios y casos de uso de los gemelos digitales, cómo optimizan procesos, reducen costes y mejoran la toma de decisiones.">
-     <link
-      rel="icon"
-          href="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png"
-      type="image/x-icon"
-    />
+  <link rel="icon" href="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" type="image/x-icon" />
+
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { display: flex; font-family: 'Inter', sans-serif; color: #1a1a1a; height: 100vh; }
+    body { font-family: 'Inter', sans-serif; color: #1a1a1a; display: flex; flex-direction: column; height: 100vh; }
 
+    /* HEADER */
+    header {
+      height: 70px;
+      background: #ffffff;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+    }
+    header img { height: 32px; }
+    .home-button {
+      text-decoration: none;
+      font-weight: 500;
+      color: #333;
+      transition: color 0.2s;
+    }
+    .home-button:hover { color: #0070f3; }
+
+    .lang-switch { display: flex; gap: 10px; }
+    .lang-button {
+      cursor: pointer;
+      padding: 4px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #f9f9f9;
+      transition: all 0.2s;
+    }
+    .lang-button.active { background: #0070f3; color: #fff; border-color: #0070f3; }
+
+    /* CONTENEDOR GENERAL */
+    .container { display: flex; flex: 1; overflow: hidden; }
+
+    /* MENÚ LATERAL */
     nav {
       width: 260px;
       background: #f9f9f9;
@@ -24,91 +55,175 @@
     nav h2 { font-size: 1.4rem; margin-bottom: 20px; color: #111; }
     nav ul { list-style: none; }
     nav ul li { margin: 12px 0; }
-    nav ul li a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.2s; }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
     nav ul li a:hover { color: #0070f3; }
+    .active-link { color: #0070f3; font-weight: 700; }
 
-    main { flex: 1; padding: 40px; overflow-y: auto; background: #fff; }
+    /* CONTENIDO */
+    main {
+      flex: 1;
+      padding: 40px;
+      overflow-y: auto;
+      background: #fff;
+    }
     h1 { font-size: 2rem; margin-bottom: 20px; }
     h2 { font-size: 1.5rem; margin-top: 30px; margin-bottom: 12px; }
     h3 { font-size: 1.2rem; margin-top: 20px; margin-bottom: 8px; }
     p { margin-bottom: 16px; line-height: 1.6; }
     ul { margin: 12px 0 20px 20px; }
     li { margin-bottom: 8px; }
-
     a.internal-link { color: #0070f3; text-decoration: none; }
     a.internal-link:hover { text-decoration: underline; }
+    .lang { display: none; }
+    .lang.active { display: block; }
     img { max-width: 100%; height: auto; margin: 12px 0; border-radius: 4px; }
   </style>
 </head>
 <body>
 
-  <nav>
-    <h2>Knowledge Center</h2>
-    <ul id="menu">
-      <li><a href="what-is-digital-twin.html">Qué es un gemelo digital</a></li>
-      <li><a href="why-use-digital-twin.html">Por qué usar un gemelo digital</a></li>
-      <li><a href="architecture.html">Arquitectura de un gemelo digital</a></li>
-      <li><a href="data-models.html">Modelos de datos</a></li>
-      <li><a href="interoperability.html">Interoperabilidad</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="glossary.html" class="active-link">Glosario de términos</a></li>
-    </ul>
-  </nav>
+  <header>
+    <a href="https://3dtwins.es">
+      <img src="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" alt="Logo 3D Twins">
+    </a>
+    <div class="lang-switch">
+      <span class="lang-button active" data-lang="es">ES</span>
+      <span class="lang-button" data-lang="en">EN</span>
+      <span class="lang-button" data-lang="fr">FR</span>
+    </div>
+    <a href="https://web.3dtwins.tech" class="home-button">← Volver al Home</a>
+  </header>
 
+  <div class="container">
+    <nav>
+      <h2>Knowledge Center</h2>
+      <ul id="menu"></ul>
+    </nav>
 
-  <main id="content">
-    <h1>Por qué usar un gemelo digital</h1>
+    <main id="content">
 
-    <p>Los <strong>gemelos digitales</strong> no son solo representaciones virtuales, son herramientas estratégicas que permiten a empresas y organizaciones mejorar la eficiencia, reducir errores y optimizar recursos.</p>
+      <!-- Español -->
+      <div class="lang active" data-lang="es">
+        <h1>Por qué usar un gemelo digital</h1>
+        <p>Los <strong>gemelos digitales</strong> no son solo representaciones virtuales, son herramientas estratégicas que permiten a empresas y organizaciones mejorar la eficiencia, reducir errores y optimizar recursos.</p>
 
-    <h2>Nivel 1: Beneficios inmediatos</h2>
-    <ul>
-      <li><strong>Visualización de procesos:</strong> comprender cómo funcionan los sistemas antes de implementarlos físicamente.</li>
-      <li><strong>Simulación segura:</strong> probar cambios o escenarios sin riesgos para el mundo real.</li>
-      <li><strong>Mejora de la toma de decisiones:</strong> datos precisos y actualizados permiten decisiones más inteligentes.</li>
-    </ul>
+        <h2>Nivel 1: Beneficios inmediatos</h2>
+        <ul>
+          <li><strong>Visualización de procesos:</strong> comprender cómo funcionan los sistemas antes de implementarlos físicamente.</li>
+          <li><strong>Simulación segura:</strong> probar cambios o escenarios sin riesgos para el mundo real.</li>
+          <li><strong>Mejora de la toma de decisiones:</strong> datos precisos y actualizados permiten decisiones más inteligentes.</li>
+        </ul>
 
-    <h2>Nivel 2: Casos de uso por industria</h2>
-    <ul>
-      <li><strong>Manufactura:</strong> optimización de líneas de producción, mantenimiento predictivo.</li>
-      <li><strong>Retail y e-commerce:</strong> personalización de productos bajo demanda y pruebas de prototipos digitales.</li>
-      <li><strong>Construcción e infraestructura:</strong> simulación de proyectos antes de la ejecución, análisis de riesgos.</li>
-      <li><strong>Salud y laboratorios:</strong> seguimiento de equipos, simulación de tratamientos y pruebas virtuales.</li>
-    </ul>
+        <h2>Nivel 2: Casos de uso por industria</h2>
+        <ul>
+          <li><strong>Manufactura:</strong> optimización de líneas de producción, mantenimiento predictivo.</li>
+          <li><strong>Retail y e-commerce:</strong> personalización de productos bajo demanda y pruebas de prototipos digitales.</li>
+          <li><strong>Construcción e infraestructura:</strong> simulación de proyectos antes de la ejecución, análisis de riesgos.</li>
+          <li><strong>Salud y laboratorios:</strong> seguimiento de equipos, simulación de tratamientos y pruebas virtuales.</li>
+        </ul>
 
-    <h2>Nivel 3: Impacto estratégico</h2>
-    <p>Adoptar gemelos digitales permite:</p>
-    <ul>
-      <li>Reducir costes de operación y errores de diseño.</li>
-      <li>Acortar los ciclos de desarrollo de productos.</li>
-      <li>Proporcionar experiencias personalizadas al cliente final.</li>
-      <li>Establecer bases para inteligencia artificial y análisis predictivo sobre procesos físicos.</li>
-    </ul>
+        <h2>Nivel 3: Impacto estratégico</h2>
+        <ul>
+          <li>Reducir costes de operación y errores de diseño.</li>
+          <li>Acortar los ciclos de desarrollo de productos.</li>
+          <li>Proporcionar experiencias personalizadas al cliente final.</li>
+          <li>Establecer bases para inteligencia artificial y análisis predictivo sobre procesos físicos.</li>
+        </ul>
 
-    <h3>Enlaces relacionados</h3>
-    <ul>
-      <li><a href="what-is-digital-twin.html" class="internal-link">Qué es un gemelo digital</a></li>
-      <li><a href="architecture.html" class="internal-link">Arquitectura de un gemelo digital</a></li>
-      <li><a href="faq.html" class="internal-link">Preguntas frecuentes sobre gemelos digitales</a></li>
-    </ul>
+        <h3>Enlaces relacionados</h3>
+        <ul>
+          <li><a href="what-is-digital-twin.html" class="internal-link">Qué es un gemelo digital</a></li>
+          <li><a href="architecture.html" class="internal-link">Arquitectura de un gemelo digital</a></li>
+          <li><a href="faq.html" class="internal-link">Preguntas frecuentes sobre gemelos digitales</a></li>
+        </ul>
+      </div>
 
-    <h3 hidden>Ejemplo visual</h3>
-    <img src="https://via.placeholder.com/800x400.png?text=Beneficios+Gemelo+Digital" alt="Beneficios del gemelo digital" hidden>
+      <!-- Inglés -->
+      <div class="lang" data-lang="en">
+        <h1>Why Use a Digital Twin</h1>
+        <p><strong>Digital twins</strong> are not just virtual representations; they are strategic tools that help companies and organizations improve efficiency, reduce errors, and optimize resources.</p>
 
-  </main>
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG"></script>
-  
-  <script>  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
+        <h2>Level 1: Immediate benefits</h2>
+        <ul>
+          <li><strong>Process visualization:</strong> understand how systems work before implementing them physically.</li>
+          <li><strong>Safe simulation:</strong> test changes or scenarios without risk to the real world.</li>
+          <li><strong>Improved decision-making:</strong> accurate and updated data enables smarter choices.</li>
+        </ul>
 
-  gtag('js', new Date());
-  gtag('config', 'G-N54X2MZQZG');
+        <h2>Level 2: Industry use cases</h2>
+        <ul>
+          <li><strong>Manufacturing:</strong> production line optimization, predictive maintenance.</li>
+          <li><strong>Retail & e-commerce:</strong> on-demand product customization and digital prototype testing.</li>
+          <li><strong>Construction & infrastructure:</strong> simulate projects before execution, risk analysis.</li>
+          <li><strong>Healthcare & laboratories:</strong> equipment monitoring, treatment simulation, virtual testing.</li>
+        </ul>
 
-  function trackEvent(name, params = {}) {
-    if (typeof gtag === "function") {
-      gtag("event", name, params);
-    }
-  }
-</script>
+        <h2>Level 3: Strategic impact</h2>
+        <ul>
+          <li>Reduce operational costs and design errors.</li>
+          <li>Shorten product development cycles.</li>
+          <li>Provide personalized experiences for end customers.</li>
+          <li>Establish foundations for AI and predictive analytics on physical processes.</li>
+        </ul>
+      </div>
+
+      <!-- Francés -->
+      <div class="lang" data-lang="fr">
+        <h1>Pourquoi utiliser un jumeau numérique</h1>
+        <p>Les <strong>jumeaux numériques</strong> ne sont pas seulement des représentations virtuelles ; ce sont des outils stratégiques qui permettent aux entreprises et organisations d’améliorer l’efficacité, de réduire les erreurs et d’optimiser les ressources.</p>
+
+        <h2>Niveau 1 : Avantages immédiats</h2>
+        <ul>
+          <li><strong>Visualisation des processus :</strong> comprendre comment fonctionnent les systèmes avant de les mettre en œuvre physiquement.</li>
+          <li><strong>Simulation sécurisée :</strong> tester les changements ou scénarios sans risque pour le monde réel.</li>
+          <li><strong>Amélioration de la prise de décision :</strong> des données précises et mises à jour permettent des choix plus intelligents.</li>
+        </ul>
+
+        <h2>Niveau 2 : Cas d'utilisation par industrie</h2>
+        <ul>
+          <li><strong>Fabrication :</strong> optimisation des lignes de production, maintenance prédictive.</li>
+          <li><strong>Retail et e-commerce :</strong> personnalisation des produits à la demande et tests de prototypes numériques.</li>
+          <li><strong>Construction et infrastructures :</strong> simulation de projets avant exécution, analyse des risques.</li>
+          <li><strong>Santé et laboratoires :</strong> suivi des équipements, simulation de traitements et tests virtuels.</li>
+        </ul>
+
+        <h2>Niveau 3 : Impact stratégique</h2>
+        <ul>
+          <li>Réduire les coûts opérationnels et les erreurs de conception.</li>
+          <li>Raccourcir les cycles de développement de produits.</li>
+          <li>Fournir des expériences personnalisées au client final.</li>
+          <li>Établir des bases pour l’intelligence artificielle et l’analyse prédictive sur les processus physiques.</li>
+        </ul>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="menu.js"></script>
+
+  <script>
+    const langButtons = document.querySelectorAll('.lang-button');
+    const langBlocks = document.querySelectorAll('.lang');
+    langButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const selected = btn.getAttribute('data-lang');
+        langBlocks.forEach(block => block.classList.toggle('active', block.getAttribute('data-lang') === selected));
+        langButtons.forEach(b => b.classList.toggle('active', b === btn));
+      });
+    });
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-N54X2MZQZG');
+  </script>
+
 </body>
 </html>
