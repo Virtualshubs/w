@@ -5,11 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interoperabilidad | Knowledge Center - 3D Twins</title>
   <meta name="description" content="Aprende cómo los gemelos digitales pueden integrarse y comunicarse con múltiples sistemas, plataformas y herramientas, potenciando su valor y aplicabilidad.">
+  <link rel="icon" href="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" type="image/x-icon" />
+
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { display: flex; font-family: 'Inter', sans-serif; color: #1a1a1a; height: 100vh; }
+    body { font-family: 'Inter', sans-serif; color: #1a1a1a; display: flex; flex-direction: column; height: 100vh; }
 
-    /* Menú lateral */
+    /* HEADER */
+    header {
+      height: 70px;
+      background: #ffffff;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+    }
+    header img { height: 32px; }
+    .home-button {
+      text-decoration: none;
+      font-weight: 500;
+      color: #333;
+      transition: color 0.2s;
+    }
+    .home-button:hover { color: #0070f3; }
+
+    .lang-switch { display: flex; gap: 10px; }
+    .lang-button {
+      cursor: pointer;
+      padding: 4px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #f9f9f9;
+      transition: all 0.2s;
+    }
+    .lang-button.active { background: #0070f3; color: #fff; border-color: #0070f3; }
+
+    /* CONTENEDOR GENERAL */
+    .container { display: flex; flex: 1; overflow: hidden; }
+
+    /* MENÚ LATERAL */
     nav {
       width: 260px;
       background: #f9f9f9;
@@ -27,9 +62,9 @@
       transition: color 0.2s;
     }
     nav ul li a:hover { color: #0070f3; }
-    nav ul li a.active-link { color: #0070f3; font-weight: 700; }
+    .active-link { color: #0070f3; font-weight: 700; }
 
-    /* Área de contenido */
+    /* CONTENIDO */
     main {
       flex: 1;
       padding: 40px;
@@ -42,66 +77,146 @@
     p { margin-bottom: 16px; line-height: 1.6; }
     ul { margin: 12px 0 20px 20px; }
     li { margin-bottom: 8px; }
-
     a.internal-link { color: #0070f3; text-decoration: none; }
     a.internal-link:hover { text-decoration: underline; }
-
-    img { max-width: 100%; height: auto; margin: 12px 0; border-radius: 4px; }
+    .lang { display: none; }
+    .lang.active { display: block; }
   </style>
 </head>
 <body>
 
-  <nav>
-    <h2>Knowledge Center</h2>
-    <ul id="menu">
-      <li><a href="what-is-digital-twin.html">Qué es un gemelo digital</a></li>
-      <li><a href="why-use-digital-twin.html">Por qué usar un gemelo digital</a></li>
-      <li><a href="architecture.html">Arquitectura de un gemelo digital</a></li>
-      <li><a href="data-models.html">Modelos de datos</a></li>
-      <li><a href="interoperability.html">Interoperabilidad</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="glossary.html" class="active-link">Glosario de términos</a></li>
-    </ul>
-  </nav>
+  <header>
+    <a href="https://3dtwins.es">
+      <img src="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" alt="Logo 3D Twins">
+    </a>
+    <div class="lang-switch">
+      <span class="lang-button active" data-lang="es">ES</span>
+      <span class="lang-button" data-lang="en">EN</span>
+      <span class="lang-button" data-lang="fr">FR</span>
+    </div>
+    <a href="https://web.3dtwins.tech" class="home-button">← Volver al Home</a>
+  </header>
 
-  <main id="content">
-    <h1>Interoperabilidad</h1>
+  <div class="container">
+    <nav>
+      <h2>Knowledge Center</h2>
+      <ul id="menu"></ul>
+    </nav>
 
-    <p>La <strong>interoperabilidad</strong> es la capacidad de un gemelo digital para comunicarse y operar con múltiples sistemas, plataformas y herramientas, manteniendo consistencia y fiabilidad en la información. Es clave para maximizar su valor en entornos complejos o multi-plataforma.</p>
+    <main id="content">
+      <!-- Español -->
+      <div class="lang active" data-lang="es">
+        <h1>Interoperabilidad</h1>
+        <p>La <strong>interoperabilidad</strong> es la capacidad de un gemelo digital para comunicarse y operar con múltiples sistemas, plataformas y herramientas, manteniendo consistencia y fiabilidad en la información. Es clave para maximizar su valor en entornos complejos o multi-plataforma.</p>
 
-    <h2>Nivel 1: Comunicación entre sistemas</h2>
-    <p>Un gemelo digital puede integrarse con:</p>
-    <ul>
-      <li>Sistemas internos de la empresa (ERP, CRM, gestión de producción).</li>
-      <li>Herramientas de análisis y visualización de datos.</li>
-      <li>Plataformas de e-commerce o marketing interactivo.</li>
-    </ul>
+        <h2>Nivel 1: Comunicación entre sistemas</h2>
+        <ul>
+          <li>Sistemas internos de la empresa (ERP, CRM, gestión de producción).</li>
+          <li>Herramientas de análisis y visualización de datos.</li>
+          <li>Plataformas de e-commerce o marketing interactivo.</li>
+        </ul>
 
-    <h2>Nivel 2: Flexibilidad y adaptabilidad</h2>
-    <p>La interoperabilidad permite que un gemelo digital se adapte a distintos escenarios:</p>
-    <ul>
-      <li>Funcionar con distintos formatos de datos sin perder consistencia.</li>
-      <li>Colaborar con distintos departamentos, proveedores y socios.</li>
-      <li>Escalar a nuevos sistemas o integrar nuevas tecnologías sin rehacer el modelo.</li>
-    </ul>
+        <h2>Nivel 2: Flexibilidad y adaptabilidad</h2>
+        <ul>
+          <li>Funcionar con distintos formatos de datos sin perder consistencia.</li>
+          <li>Colaborar con distintos departamentos, proveedores y socios.</li>
+          <li>Escalar a nuevos sistemas o integrar nuevas tecnologías sin rehacer el modelo.</li>
+        </ul>
 
-    <h2>Nivel 3: Aplicaciones estratégicas</h2>
-    <p>La capacidad de interoperar aumenta las oportunidades de uso de un gemelo digital, por ejemplo:</p>
-    <ul>
-      <li>Compartir información con vendedores o clientes en tiempo real.</li>
-      <li>Integrar con soluciones de personalización bajo demanda.</li>
-      <li>Permitir experiencias inmersivas en marketing, ferias o eventos.</li>
-    </ul>
+        <h2>Nivel 3: Aplicaciones estratégicas</h2>
+        <ul>
+          <li>Compartir información con vendedores o clientes en tiempo real.</li>
+          <li>Integrar con soluciones de personalización bajo demanda.</li>
+          <li>Permitir experiencias inmersivas en marketing, ferias o eventos.</li>
+        </ul>
 
-    <h3>Enlaces relacionados</h3>
-    <ul>
-      <li><a href="what-is-digital-twin.html" class="internal-link">Qué es un gemelo digital</a></li>
-      <li><a href="architecture.html" class="internal-link">Arquitectura de un gemelo digital</a></li>
-      <li><a href="data-models.html" class="internal-link">Modelos de datos</a></li>
-      <li><a href="faq.html" class="internal-link">Preguntas frecuentes sobre gemelos digitales</a></li>
-    </ul>
+        <h3>Enlaces relacionados</h3>
+        <ul>
+          <li><a href="what-is-digital-twin.html" class="internal-link">Qué es un gemelo digital</a></li>
+          <li><a href="architecture.html" class="internal-link">Arquitectura de un gemelo digital</a></li>
+          <li><a href="data-models.html" class="internal-link">Modelos de datos</a></li>
+          <li><a href="faq.html" class="internal-link">Preguntas frecuentes sobre gemelos digitales</a></li>
+        </ul>
+      </div>
 
-  </main>
+      <!-- Inglés -->
+      <div class="lang" data-lang="en">
+        <h1>Interoperability</h1>
+        <p><strong>Interoperability</strong> is the ability of a digital twin to communicate and operate with multiple systems, platforms, and tools while maintaining consistency and reliability of information. It is key to maximize its value in complex or multi-platform environments.</p>
+
+        <h2>Level 1: Communication between systems</h2>
+        <ul>
+          <li>Internal company systems (ERP, CRM, production management).</li>
+          <li>Data analysis and visualization tools.</li>
+          <li>E-commerce platforms or interactive marketing tools.</li>
+        </ul>
+
+        <h2>Level 2: Flexibility and adaptability</h2>
+        <ul>
+          <li>Operate with different data formats without losing consistency.</li>
+          <li>Collaborate with different departments, suppliers, and partners.</li>
+          <li>Scale to new systems or integrate new technologies without redoing the model.</li>
+        </ul>
+
+        <h2>Level 3: Strategic applications</h2>
+        <ul>
+          <li>Share information with vendors or clients in real time.</li>
+          <li>Integrate with on-demand personalization solutions.</li>
+          <li>Enable immersive experiences in marketing, fairs, or events.</li>
+        </ul>
+      </div>
+
+      <!-- Francés -->
+      <div class="lang" data-lang="fr">
+        <h1>Interopérabilité</h1>
+        <p>L'<strong>interopérabilité</strong> est la capacité d’un jumeau numérique à communiquer et à fonctionner avec plusieurs systèmes, plateformes et outils tout en maintenant la cohérence et la fiabilité des informations. C’est essentiel pour maximiser sa valeur dans des environnements complexes ou multi-plateformes.</p>
+
+        <h2>Niveau 1 : Communication entre systèmes</h2>
+        <ul>
+          <li>Systèmes internes de l’entreprise (ERP, CRM, gestion de production).</li>
+          <li>Outils d’analyse et de visualisation de données.</li>
+          <li>Plateformes e-commerce ou marketing interactif.</li>
+        </ul>
+
+        <h2>Niveau 2 : Flexibilité et adaptabilité</h2>
+        <ul>
+          <li>Fonctionner avec différents formats de données sans perdre en cohérence.</li>
+          <li>Collaborer avec différents départements, fournisseurs et partenaires.</li>
+          <li>Monter en échelle vers de nouveaux systèmes ou intégrer de nouvelles technologies sans refaire le modèle.</li>
+        </ul>
+
+        <h2>Niveau 3 : Applications stratégiques</h2>
+        <ul>
+          <li>Partager des informations avec les vendeurs ou clients en temps réel.</li>
+          <li>Intégrer des solutions de personnalisation à la demande.</li>
+          <li>Permettre des expériences immersives dans le marketing, les salons ou événements.</li>
+        </ul>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="menu.js"></script>
+
+  <script>
+    const langButtons = document.querySelectorAll('.lang-button');
+    const langBlocks = document.querySelectorAll('.lang');
+    langButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const selected = btn.getAttribute('data-lang');
+        langBlocks.forEach(block => block.classList.toggle('active', block.getAttribute('data-lang') === selected));
+        langButtons.forEach(b => b.classList.toggle('active', b === btn));
+      });
+    });
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-N54X2MZQZG');
+  </script>
 
 </body>
 </html>
