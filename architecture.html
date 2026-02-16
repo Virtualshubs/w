@@ -66,7 +66,12 @@
     main { flex: 1; padding: 40px; overflow-y: auto; background: #fff; }
     h1 { font-size: 2rem; margin-bottom: 20px; }
     h2 { font-size: 1.4rem; margin-top: 30px; margin-bottom: 10px; }
+    h3 { font-size: 1.2rem; margin-top: 20px; margin-bottom: 8px; }
     p { margin-bottom: 16px; line-height: 1.6; }
+    ul { margin: 12px 0 20px 20px; }
+    li { margin-bottom: 8px; }
+    a.internal-link { color: #0070f3; text-decoration: none; }
+    a.internal-link:hover { text-decoration: underline; }
 
     /* Contenedores por idioma */
     .lang { display: none; }
@@ -77,7 +82,9 @@
 <body>
 
 <header>
-  <a href="https://3dtwins.es"><img src="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" alt="Logo 3D Twins"></a>
+  <a href="https://3dtwins.es">
+    <img src="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" alt="Logo 3D Twins">
+  </a>
   <div>
     <a href="https://web.3dtwins.tech" class="home-button">← Volver al Home</a>
     <span class="lang-button" data-lang="es">ES</span>
@@ -93,11 +100,11 @@
   </nav>
 
   <main id="content">
-
-    <!-- Español -->
+    <!-- ESPAÑOL -->
     <div class="lang active" data-lang="es">
       <h1>Arquitectura de un gemelo digital</h1>
-      <p>La <strong>arquitectura de un gemelo digital</strong> describe los componentes generales</p>
+      <p>La <strong>arquitectura de un gemelo digital</strong> describe los componentes generales y entornos donde puede implementarse. </p>
+
       <h2>Nivel 1: Componentes generales</h2>
       <p>Los gemelos digitales suelen estar compuestos por los siguientes bloques:</p>
       <ul>
@@ -106,12 +113,37 @@
         <li><strong>Interfaz de visualización:</strong> dashboards o aplicaciones para usuarios finales, clientes o analistas.</li>
         <li><strong>Motor de simulación y analítica:</strong> permite realizar predicciones, simulaciones y análisis estratégicos sin revelar la estructura interna del modelo.</li>
       </ul>
+
+      <h2>Nivel 2: Entornos de implementación</h2>
+      <p>Los gemelos digitales se pueden aplicar en múltiples sectores:</p>
+      <ul>
+        <li><strong>Manufactura y producción:</strong> optimización de procesos y prototipado virtual.</li>
+        <li><strong>Retail y comercio electrónico:</strong> visualización de productos interactivos y personalización bajo demanda.</li>
+        <li><strong>Logística y supply chain:</strong> simulación de flujos y predicción de cuellos de botella.</li>
+        <li><strong>Construcción e infraestructura:</strong> modelado de edificios, mantenimiento predictivo y planificación de obras.</li>
+        <li><strong>Salud y laboratorios:</strong> simulación de procesos clínicos o de investigación sin afectar entornos reales.</li>
+      </ul>
+
+      <h2>Nivel 3: Buenas prácticas</h2>
+      <ul>
+        <li>Escalar la arquitectura según volumen de datos y complejidad del gemelo.</li>
+        <li>Reutilizar gemelos para múltiples casos de uso dentro de la organización.</li>
+      </ul>
+
+      <h3>Enlaces relacionados</h3>
+      <ul>
+        <li><a href="what-is-digital-twin.html" class="internal-link">Qué es un gemelo digital</a></li>
+        <li><a href="why-use-digital-twin.html" class="internal-link">Por qué usar un gemelo digital</a></li>
+        <li><a href="data-models.html" class="internal-link">Modelos de datos</a></li>
+        <li><a href="interoperability.html" class="internal-link">Interoperabilidad</a></li>
+      </ul>
     </div>
 
-    <!-- Inglés -->
+    <!-- INGLÉS -->
     <div class="lang" data-lang="en">
       <h1>Digital Twin Architecture</h1>
-      <p>The <strong>digital twin architecture</strong> describes the general components and environments.</p>
+      <p>The <strong>digital twin architecture</strong> describes the general components and environments where it can be implemented. without exposing internal model details. </p>
+
       <h2>Level 1: General Components</h2>
       <p>Digital twins typically consist of the following blocks:</p>
       <ul>
@@ -120,12 +152,37 @@
         <li><strong>Visualization Interface:</strong> dashboards or applications for end users, clients, or analysts.</li>
         <li><strong>Simulation & Analytics Engine:</strong> enables predictions, simulations, and strategic analysis without revealing the internal model structure.</li>
       </ul>
+
+      <h2>Level 2: Implementation Environments</h2>
+      <p>Digital twins can be applied across multiple sectors:</p>
+      <ul>
+        <li><strong>Manufacturing & Production:</strong> process optimization and virtual prototyping.</li>
+        <li><strong>Retail & E-commerce:</strong> interactive product visualization and on-demand personalization.</li>
+        <li><strong>Logistics & Supply Chain:</strong> flow simulation and bottleneck prediction.</li>
+        <li><strong>Construction & Infrastructure:</strong> building modeling, predictive maintenance, and project planning.</li>
+        <li><strong>Health & Laboratories:</strong> simulation of clinical or research processes without affecting real environments.</li>
+      </ul>
+
+      <h2>Level 3: Best Practices</h2>
+      <ul>
+        <li>Scale architecture according to data volume and twin complexity.</li>
+        <li>Reuse twins for multiple use cases within the organization.</li>
+      </ul>
+
+      <h3>Related Links</h3>
+      <ul>
+        <li><a href="what-is-digital-twin.html" class="internal-link">What is a digital twin</a></li>
+        <li><a href="why-use-digital-twin.html" class="internal-link">Why use a digital twin</a></li>
+        <li><a href="data-models.html" class="internal-link">Data models</a></li>
+        <li><a href="interoperability.html" class="internal-link">Interoperability</a></li>
+      </ul>
     </div>
 
-    <!-- Francés -->
+    <!-- FRANCÉS -->
     <div class="lang" data-lang="fr">
       <h1>Architecture d'un jumeau numérique</h1>
-      <p>L'<strong>architecture d'un jumeau numérique</strong> décrit les composants généraux et les environnements.</p>
+      <p>L'<strong>architecture d'un jumeau numérique</strong> décrit les composants généraux et les environnements où il peut être implémenté.</p>
+
       <h2>Niveau 1 : Composants généraux</h2>
       <p>Les jumeaux numériques sont généralement composés des blocs suivants :</p>
       <ul>
@@ -133,6 +190,30 @@
         <li><strong>Sources de données :</strong> capteurs, systèmes ERP/CRM, bases de données externes ou internes.</li>
         <li><strong>Interface de visualisation :</strong> tableaux de bord ou applications pour utilisateurs finaux, clients ou analystes.</li>
         <li><strong>Moteur de simulation et d'analyse :</strong> permet de réaliser des prédictions, des simulations et des analyses stratégiques sans révéler la structure interne du modèle.</li>
+      </ul>
+
+      <h2>Niveau 2 : Environnements d'implémentation</h2>
+      <p>Les jumeaux numériques peuvent être appliqués dans plusieurs secteurs :</p>
+      <ul>
+        <li><strong>Production & Fabrication :</strong> optimisation des processus et prototypage virtuel.</li>
+        <li><strong>Retail & E-commerce :</strong> visualisation interactive des produits et personnalisation à la demande.</li>
+        <li><strong>Logistique & Supply Chain :</strong> simulation des flux et prédiction des goulets d'étranglement.</li>
+        <li><strong>Construction & Infrastructures :</strong> modélisation des bâtiments, maintenance prédictive et planification des projets.</li>
+        <li><strong>Santé & Laboratoires :</strong> simulation des processus cliniques ou de recherche sans affecter les environnements réels.</li>
+      </ul>
+
+      <h2>Niveau 3 : Bonnes pratiques</h2>
+      <ul>
+        <li>Adapter l'architecture en fonction du volume de données et de la complexité du jumeau.</li>
+        <li>Réutiliser les jumeaux pour plusieurs cas d'utilisation au sein de l'organisation.</li>
+      </ul>
+
+      <h3>Liens connexes</h3>
+      <ul>
+        <li><a href="what-is-digital-twin.html" class="internal-link">Qu'est-ce qu'un jumeau numérique</a></li>
+        <li><a href="why-use-digital-twin.html" class="internal-link">Pourquoi utiliser un jumeau numérique</a></li>
+        <li><a href="data-models.html" class="internal-link">Modèles de données</a></li>
+        <li><a href="interoperability.html" class="internal-link">Interopérabilité</a></li>
       </ul>
     </div>
 
