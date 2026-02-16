@@ -225,10 +225,11 @@
 <script>
   const langButtons = document.querySelectorAll('.lang-button');
   const langBlocks = document.querySelectorAll('.lang');
-  const pathParts = window.location.pathname.split('/');
   let currentLang = 'es';
-  const lastPart = pathParts[pathParts.length - 1].toLowerCase();
-  if (['es', 'en', 'fr'].includes(lastPart)) currentLang = lastPart;
+  if (['es','en','fr'].includes(location.hash.replace('#',''))) {
+    currentLang = location.hash.replace('#','');
+  }
+
   langBlocks.forEach(block => {
     block.classList.toggle('active', block.getAttribute('data-lang') === currentLang);
   });
@@ -244,10 +245,8 @@
 
       langButtons.forEach(b => b.style.fontWeight = b.getAttribute('data-lang') === selected ? '700' : '500');
 
-      let basePath = window.location.pathname;
-      basePath = basePath.replace(/\/(es|en|fr)\/?$/i, '');
-      const newUrl = `${basePath}/${selected}`;
-      history.replaceState(null, '', newUrl);
+
+      location.hash = selected;
     });
   });
 </script>
