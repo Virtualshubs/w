@@ -1,4 +1,5 @@
 [
+  { "title": "Inicio", "url": "knowledge.html" },
   { "title": "Qué es un gemelo digital", "url": "what-is-digital-twin.html" },
   { "title": "Por qué usar un gemelo digital", "url": "why-use-digital-twin.html" },
   { "title": "Arquitectura de un gemelo digital", "url": "architecture.html" },
