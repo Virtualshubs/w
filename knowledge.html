@@ -18,7 +18,7 @@
       height: 100vh;
     }
 
-    /* HEADER SUPERIOR */
+    /* HEADER */
     header {
       height: 70px;
       background: #ffffff;
@@ -29,27 +29,24 @@
       padding: 0 30px;
     }
 
-    header img {
-      height: 32px;
-    }
+    header img { height: 32px; }
 
-    .home-button {
-      text-decoration: none;
-      font-weight: 500;
-      color: #333;
-      transition: color 0.2s;
-    }
+    .home-button { text-decoration: none; font-weight: 500; color: #333; transition: color 0.2s; }
+    .home-button:hover { color: #0070f3; }
 
-    .home-button:hover {
-      color: #0070f3;
+    .lang-switch { display: flex; gap: 10px; }
+    .lang-button {
+      cursor: pointer;
+      padding: 4px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #f9f9f9;
+      transition: all 0.2s;
     }
+    .lang-button.active { background: #0070f3; color: #fff; border-color: #0070f3; }
 
     /* CONTENEDOR GENERAL */
-    .container {
-      display: flex;
-      flex: 1;
-      overflow: hidden;
-    }
+    .container { display: flex; flex: 1; overflow: hidden; }
 
     /* SIDEBAR */
     nav {
@@ -60,35 +57,12 @@
       overflow-y: auto;
     }
 
-    nav h2 {
-      font-size: 1.4rem;
-      margin-bottom: 20px;
-      color: #111;
-    }
-
-    nav ul {
-      list-style: none;
-    }
-
-    nav ul li {
-      margin: 12px 0;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    nav ul li a:hover {
-      color: #0070f3;
-    }
-
-    .active-link {
-      color: #0070f3;
-      font-weight: 600;
-    }
+    nav h2 { font-size: 1.4rem; margin-bottom: 20px; color: #111; }
+    nav ul { list-style: none; }
+    nav ul li { margin: 12px 0; }
+    nav ul li a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.2s; }
+    nav ul li a:hover { color: #0070f3; }
+    .active-link { color: #0070f3; font-weight: 600; }
 
     /* CONTENIDO */
     main {
@@ -98,22 +72,11 @@
       background: #fff;
     }
 
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      font-size: 1.4rem;
-      margin-top: 30px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      margin-bottom: 16px;
-      line-height: 1.6;
-    }
-
+    h1 { font-size: 2rem; margin-bottom: 20px; }
+    h2 { font-size: 1.4rem; margin-top: 30px; margin-bottom: 10px; }
+    p { margin-bottom: 16px; line-height: 1.6; }
+    .lang { display: none; }
+    .lang.active { display: block; }
   </style>
 </head>
 
@@ -123,6 +86,10 @@
     <a href="https://3dtwins.es">
       <img src="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" alt="Logo 3D Twins">
     </a>
+    <div class="lang-switch">
+      <span class="lang-button active" data-lang="es">ES</span>
+      <span class="lang-button" data-lang="en">EN</span>
+    </div>
     <a href="https://web.3dtwins.tech" class="home-button">← Volver al Home</a>
   </header>
 
@@ -134,37 +101,50 @@
     </nav>
 
     <main id="content">
-      <h1>Bienvenido al Knowledge Center de 3D Twins</h1>
-      <p>
-        En esta sección encontrarás toda la documentación sobre gemelos digitales 3D, desde conceptos básicos hasta aspectos técnicos avanzados.
-        Selecciona una entrada en el menú para comenzar.
-      </p>
 
-      <h2>Cómo usar este Knowledge Center</h2>
-      <p>
-        Cada entrada contiene información detallada sobre un aspecto de los gemelos digitales.
-        Puedes navegar por el menú lateral para acceder a cada tema.
-      </p>
+      <!-- Español -->
+      <div class="lang active" data-lang="es">
+        <h1>Bienvenido al Knowledge Center de 3D Twins</h1>
+        <p>En esta sección encontrarás toda la documentación sobre gemelos digitales 3D, desde conceptos básicos hasta aspectos técnicos avanzados. Selecciona una entrada en el menú para comenzar.</p>
+
+        <h2>Cómo usar este Knowledge Center</h2>
+        <p>Cada entrada contiene información detallada sobre un aspecto de los gemelos digitales. Puedes navegar por el menú lateral para acceder a cada tema.</p>
+      </div>
+
+      <!-- Inglés -->
+      <div class="lang" data-lang="en">
+        <h1>Welcome to the 3D Twins Knowledge Center</h1>
+        <p>Here you will find all the documentation about 3D digital twins, from basic concepts to advanced technical aspects. Select an entry from the menu to get started.</p>
+
+        <h2>How to use this Knowledge Center</h2>
+        <p>Each entry contains detailed information about a specific aspect of digital twins. You can navigate the sidebar menu to access each topic.</p>
+      </div>
+
     </main>
 
   </div>
 
   <script src="menu.js"></script>
-  
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG"></script>
-  
-  <script>  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
 
-  gtag('js', new Date());
-  gtag('config', 'G-N54X2MZQZG');
+  <script>
+    const langButtons = document.querySelectorAll('.lang-button');
+    const langBlocks = document.querySelectorAll('.lang');
+    langButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const selected = btn.getAttribute('data-lang');
+        langBlocks.forEach(block => block.classList.toggle('active', block.getAttribute('data-lang') === selected));
+        langButtons.forEach(b => b.classList.toggle('active', b === btn));
+      });
+    });
+  </script>
 
-  function trackEvent(name, params = {}) {
-    if (typeof gtag === "function") {
-      gtag("event", name, params);
-    }
-  }
-</script>
-  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-N54X2MZQZG');
+  </script>
+
 </body>
 </html>
