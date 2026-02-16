@@ -5,11 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FAQ | Knowledge Center - 3D Twins</title>
   <meta name="description" content="Preguntas frecuentes sobre gemelos digitales: conceptos básicos, aplicaciones y beneficios. Ideal para iniciarse y consultar casos de uso.">
+  <link rel="icon" href="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" type="image/x-icon" />
+
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { display: flex; font-family: 'Inter', sans-serif; color: #1a1a1a; height: 100vh; }
 
-    /* Menú lateral */
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    /* HEADER SUPERIOR */
+    header {
+      height: 70px;
+      background: #ffffff;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+    }
+
+    header img {
+      height: 32px;
+    }
+
+    .home-button {
+      text-decoration: none;
+      font-weight: 500;
+      color: #333;
+      transition: color 0.2s;
+    }
+
+    .home-button:hover {
+      color: #0070f3;
+    }
+
+    /* CONTENEDOR GENERAL */
+    .container {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* SIDEBAR */
     nav {
       width: 260px;
       background: #f9f9f9;
@@ -17,93 +59,231 @@
       box-shadow: 2px 0 5px rgba(0,0,0,0.05);
       overflow-y: auto;
     }
-    nav h2 { font-size: 1.4rem; margin-bottom: 20px; color: #111; }
-    nav ul { list-style: none; }
-    nav ul li { margin: 12px 0; }
+
+    nav h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      color: #111;
+    }
+
+    nav ul {
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 12px 0;
+    }
+
     nav ul li a {
       text-decoration: none;
       color: #333;
       font-weight: 500;
       transition: color 0.2s;
     }
-    nav ul li a:hover { color: #0070f3; }
-    nav ul li a.active-link { color: #0070f3; font-weight: 700; }
 
-    /* Área de contenido */
+    nav ul li a:hover {
+      color: #0070f3;
+    }
+
+    .active-link {
+      color: #0070f3;
+      font-weight: 600;
+    }
+
+    /* CONTENIDO */
     main {
       flex: 1;
       padding: 40px;
       overflow-y: auto;
       background: #fff;
     }
-    h1 { font-size: 2rem; margin-bottom: 20px; }
-    h2 { font-size: 1.5rem; margin-top: 30px; margin-bottom: 12px; }
-    p { margin-bottom: 16px; line-height: 1.6; }
-    ul { margin: 12px 0 20px 20px; }
-    li { margin-bottom: 8px; }
 
-    a.internal-link { color: #0070f3; text-decoration: none; }
-    a.internal-link:hover { text-decoration: underline; }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    ul {
+      margin: 12px 0 20px 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    a.internal-link {
+      color: #0070f3;
+      text-decoration: none;
+    }
+
+    a.internal-link:hover {
+      text-decoration: underline;
+    }
+
+    .lang { display: none; }
+    .lang.active { display: block; }
+    .lang-selector { margin-left: 20px; }
+    .lang-button { cursor: pointer; margin-left: 5px; text-decoration: underline; color: #0070f3; font-size: 0.9rem; }
   </style>
 </head>
+
 <body>
 
-  <nav>
-    <h2>Knowledge Center</h2>
-    <ul id="menu">
-      <li><a href="what-is-digital-twin.html">Qué es un gemelo digital</a></li>
-      <li><a href="why-use-digital-twin.html">Por qué usar un gemelo digital</a></li>
-      <li><a href="architecture.html">Arquitectura de un gemelo digital</a></li>
-      <li><a href="data-models.html">Modelos de datos</a></li>
-      <li><a href="interoperability.html">Interoperabilidad</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="glossary.html" class="active-link">Glosario de términos</a></li>
-    </ul>
-  </nav>
+  <header>
+    <a href="https://3dtwins.es">
+      <img src="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" alt="Logo 3D Twins">
+    </a>
+    <div>
+      <a href="https://web.3dtwins.tech" class="home-button">← Volver al Home</a>
+      <span class="lang-selector">
+        <span class="lang-button" data-lang="es">ES</span> | 
+        <span class="lang-button" data-lang="en">EN</span> | 
+        <span class="lang-button" data-lang="fr">FR</span>
+      </span>
+    </div>
+  </header>
 
+  <div class="container">
 
-  <main id="content">
-    <h1>Preguntas Frecuentes sobre Gemelos Digitales</h1>
+    <nav>
+      <h2>Knowledge Center</h2>
+      <ul id="menu"></ul>
+    </nav>
 
-    <h2>1. ¿Qué es un gemelo digital?</h2>
-    <p>Un gemelo digital es una réplica virtual de un objeto, sistema o proceso real que permite simular, monitorizar y optimizar su comportamiento usando datos en tiempo real.</p>
+    <main id="content">
 
-    <h2>2. ¿Para qué sirve un gemelo digital?</h2>
-    <p>Se utiliza para mejorar la toma de decisiones, reducir costes, personalizar productos bajo demanda, anticipar fallos o probar escenarios sin riesgo en el mundo real.</p>
+      <!-- Español -->
+      <div class="lang active" data-lang="es">
+        <h1>Preguntas Frecuentes sobre Gemelos Digitales</h1>
 
-    <h2>3. ¿Quién puede usar un gemelo digital?</h2>
-    <p>Desde fabricantes hasta vendedores, profesionales de marketing y equipos de innovación pueden usar gemelos digitales para experimentar, optimizar procesos o mejorar la experiencia de sus clientes.</p>
+        <h2>1. ¿Qué es un gemelo digital?</h2>
+        <p>Un gemelo digital es una réplica virtual de un objeto, sistema o proceso real que permite simular, monitorizar y optimizar su comportamiento usando datos en tiempo real.</p>
 
-    <h2>4. ¿Cómo puedo crear un gemelo digital de mi producto?</h2>
-    <p>Crear un gemelo digital implica digitalizar tu objeto o proceso, integrar datos relevantes y disponer de un entorno para simular y analizar su comportamiento. Si quieres <strong>consultoría personalizada</strong>, podemos ayudarte a definir la mejor estrategia para tu caso.</p>
+        <h2>2. ¿Para qué sirve un gemelo digital?</h2>
+        <p>Se utiliza para mejorar la toma de decisiones, reducir costes, personalizar productos bajo demanda, anticipar fallos o probar escenarios sin riesgo en el mundo real.</p>
 
-    <h2>5. ¿Se necesita un software especial?</h2>
-    <p>Existen herramientas específicas para generar gemelos digitales 3D, visualizar datos y simular escenarios. Nuestra plataforma <a href="../index.html" class="internal-link">3D Twins</a> permite hacer esto de manera interactiva y flexible.</p>
+        <h2>3. ¿Quién puede usar un gemelo digital?</h2>
+        <p>Desde fabricantes hasta vendedores, profesionales de marketing y equipos de innovación pueden usar gemelos digitales para experimentar, optimizar procesos o mejorar la experiencia de sus clientes.</p>
 
-    <h2>6. ¿Los gemelos digitales se pueden usar en marketing o ventas?</h2>
-    <p>Sí, los gemelos digitales son ideales para mostrar productos de forma interactiva, crear experiencias de usuario inmersivas y apoyar estrategias de venta y marketing digital.</p>
+        <h2>4. ¿Cómo puedo crear un gemelo digital de mi producto?</h2>
+        <p>Crear un gemelo digital implica digitalizar tu objeto o proceso, integrar datos relevantes y disponer de un entorno para simular y analizar su comportamiento. Si quieres <strong>consultoría personalizada</strong>, podemos ayudarte a definir la mejor estrategia para tu caso.</p>
 
-    <h2>7. ¿Puedo vincular un gemelo digital a blockchain o activos digitales?</h2>
-    <p>Opcionalmente, un gemelo digital puede asociarse a certificados digitales o colecciones únicas para reforzar la trazabilidad, autenticidad y valor de un producto, especialmente en arte o productos coleccionables.</p>
+        <h2>5. ¿Se necesita un software especial?</h2>
+        <p>Existen herramientas específicas para generar gemelos digitales 3D, visualizar datos y simular escenarios. Nuestra plataforma <a href="../index.html" class="internal-link">3D Twins</a> permite hacer esto de manera interactiva y flexible.</p>
 
-    <h2>8. ¿Cómo puedo empezar?</h2>
-    <p>Te recomendamos comenzar explorando nuestra documentación y, si quieres avanzar o implementar nuestra tecnología puedes usar nuestra herramienta 3D TWINS desarrollada especificamente para la creación, configuración y certificación de gemelos digitales, si tienes alguna duda <a href="mailto:info@3dtwins.es?subject=Consulta%20sobre%20gemelos%20digitales&body=Hola,%20quiero%20más%20información%20sobre%20los%20gemelos%20digitales.%0A%0AMis dudas son:" class="internal-link">contáctanos</a>
+        <h2>6. ¿Los gemelos digitales se pueden usar en marketing o ventas?</h2>
+        <p>Sí, los gemelos digitales son ideales para mostrar productos de forma interactiva, crear experiencias de usuario inmersivas y apoyar estrategias de venta y marketing digital.</p>
+
+        <h2>7. ¿Puedo vincular un gemelo digital a blockchain o activos digitales?</h2>
+        <p>Opcionalmente, un gemelo digital puede asociarse a certificados digitales o colecciones únicas para reforzar la trazabilidad, autenticidad y valor de un producto, especialmente en arte o productos coleccionables.</p>
+
+        <h2>8. ¿Cómo puedo empezar?</h2>
+        <p>Te recomendamos comenzar explorando nuestra documentación y, si quieres avanzar o implementar nuestra tecnología puedes usar nuestra herramienta 3D TWINS desarrollada especificamente para la creación, configuración y certificación de gemelos digitales, si tienes alguna duda <a href="mailto:info@3dtwins.es?subject=Consulta%20sobre%20gemelos%20digitales&body=Hola,%20quiero%20más%20información%20sobre%20los%20gemelos%20digitales.%0A%0AMis dudas son:" class="internal-link">contáctanos</a>
  para una consultoría personalizada según tu proyecto y objetivos.</p>
+      </div>
 
-  </main>
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG"></script>
-  
-  <script>  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
+      <!-- English -->
+      <div class="lang" data-lang="en">
+        <h1>Frequently Asked Questions about Digital Twins</h1>
 
-  gtag('js', new Date());
-  gtag('config', 'G-N54X2MZQZG');
+        <h2>1. What is a digital twin?</h2>
+        <p>A digital twin is a virtual replica of a real object, system, or process that allows simulating, monitoring and optimizing its behavior using real-time data.</p>
 
-  function trackEvent(name, params = {}) {
-    if (typeof gtag === "function") {
-      gtag("event", name, params);
+        <h2>2. What is a digital twin used for?</h2>
+        <p>It is used to improve decision-making, reduce costs, customize products on demand, anticipate failures, or test scenarios safely in the real world.</p>
+
+        <h2>3. Who can use a digital twin?</h2>
+        <p>From manufacturers to sellers, marketing professionals and innovation teams can use digital twins to experiment, optimize processes, or enhance customer experience.</p>
+
+        <h2>4. How can I create a digital twin of my product?</h2>
+        <p>Creating a digital twin involves digitizing your object or process, integrating relevant data, and having an environment to simulate and analyze its behavior. If you want <strong>personalized consulting</strong>, we can help define the best strategy for your case.</p>
+
+        <h2>5. Is special software needed?</h2>
+        <p>There are specific tools to generate 3D digital twins, visualize data, and simulate scenarios. Our platform <a href="../index.html" class="internal-link">3D Twins</a> allows doing this interactively and flexibly.</p>
+
+        <h2>6. Can digital twins be used in marketing or sales?</h2>
+        <p>Yes, digital twins are ideal to showcase products interactively, create immersive user experiences, and support sales and digital marketing strategies.</p>
+
+        <h2>7. Can I link a digital twin to blockchain or digital assets?</h2>
+        <p>Optionally, a digital twin can be associated with digital certificates or unique collections to reinforce traceability, authenticity, and asset value, especially in art or collectible products.</p>
+
+        <h2>8. How can I get started?</h2>
+        <p>We recommend exploring our documentation and, if you want to advance or implement our technology, you can use our 3D TWINS tool specifically developed for the creation, configuration, and certification of digital twins. If you have any questions, <a href="mailto:info@3dtwins.es?subject=Inquiry%20about%20digital%20twins&body=Hello,%20I%20want%20more%20information%20about%20digital%20twins.%0A%0AMy questions are:" class="internal-link">contact us</a>
+ for personalized consulting according to your project and goals.</p>
+      </div>
+
+      <!-- Français -->
+      <div class="lang" data-lang="fr">
+        <h1>Questions Fréquemment Posées sur les Jumeaux Numériques</h1>
+
+        <h2>1. Qu’est-ce qu’un jumeau numérique ?</h2>
+        <p>Un jumeau numérique est une réplique virtuelle d’un objet, système ou processus réel qui permet de simuler, surveiller et optimiser son comportement à l’aide de données en temps réel.</p>
+
+        <h2>2. À quoi sert un jumeau numérique ?</h2>
+        <p>Il est utilisé pour améliorer la prise de décision, réduire les coûts, personnaliser les produits à la demande, anticiper les défaillances ou tester des scénarios sans risque dans le monde réel.</p>
+
+        <h2>3. Qui peut utiliser un jumeau numérique ?</h2>
+        <p>Des fabricants aux vendeurs, professionnels du marketing et équipes d’innovation peuvent utiliser les jumeaux numériques pour expérimenter, optimiser les processus ou améliorer l’expérience client.</p>
+
+        <h2>4. Comment créer un jumeau numérique de mon produit ?</h2>
+        <p>Créer un jumeau numérique implique de numériser votre objet ou processus, d’intégrer les données pertinentes et de disposer d’un environnement pour simuler et analyser son comportement. Si vous souhaitez <strong>un accompagnement personnalisé</strong>, nous pouvons vous aider à définir la meilleure stratégie pour votre cas.</p>
+
+        <h2>5. Faut-il un logiciel spécial ?</h2>
+        <p>Il existe des outils spécifiques pour générer des jumeaux numériques 3D, visualiser des données et simuler des scénarios. Notre plateforme <a href="../index.html" class="internal-link">3D Twins</a> permet de le faire de manière interactive et flexible.</p>
+
+        <h2>6. Les jumeaux numériques peuvent-ils être utilisés dans le marketing ou les ventes ?</h2>
+        <p>Oui, les jumeaux numériques sont idéaux pour présenter des produits de manière interactive, créer des expériences immersives et soutenir les stratégies de vente et marketing digital.</p>
+
+        <h2>7. Puis-je relier un jumeau numérique à la blockchain ou aux actifs numériques ?</h2>
+        <p>Optionnellement, un jumeau numérique peut être associé à des certificats numériques ou à des collections uniques pour renforcer la traçabilité, l’authenticité et la valeur de l’actif, notamment dans l’art ou les produits de collection.</p>
+
+        <h2>8. Comment commencer ?</h2>
+        <p>Nous recommandons d’explorer notre documentation et, si vous souhaitez avancer ou implémenter notre technologie, vous pouvez utiliser notre outil 3D TWINS spécialement développé pour la création, la configuration et la certification des jumeaux numériques. Si vous avez des questions, <a href="mailto:info@3dtwins.es?subject=Demande%20d'information%20sur%20les%20jumeaux%20numériques&body=Bonjour,%20je%20veux%20plus%20d'informations%20sur%20les%20jumeaux%20numériques.%0A%0AMes%20questions%20sont:" class="internal-link">contactez-nous</a> pour un accompagnement personnalisé selon votre projet et vos objectifs.</p>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="menu.js"></script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-N54X2MZQZG');
+
+    function trackEvent(name, params = {}) {
+      if (typeof gtag === "function") {
+        gtag("event", name, params);
+      }
     }
-  }
-</script>
+
+    // Cambio de idioma
+    const langButtons = document.querySelectorAll('.lang-button');
+    const langBlocks = document.querySelectorAll('.lang');
+
+    langButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const selected = btn.getAttribute('data-lang');
+        langBlocks.forEach(block => {
+          block.classList.toggle('active', block.getAttribute('data-lang') === selected);
+        });
+      });
+    });
+  </script>
+
 </body>
 </html>
