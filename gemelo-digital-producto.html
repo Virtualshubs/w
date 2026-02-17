@@ -82,19 +82,17 @@
     .topic-link { color: #0070f3; text-decoration: none; }
     .topic-link:hover { text-decoration: underline; }
 
-    /* Marca de agua */
-    main::before {
-      content: "3D Twins";
-      position: absolute;
-      font-size: 5rem;
-      color: rgba(200,200,200,0.1);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(-30deg);
-      pointer-events: none;
-      z-index: 0;
-    }
-    main > * { position: relative; z-index: 1; }
+  main::before {
+  content: "";
+  background: url('https://viewer.3dtwins.tech/puntero_3dtwinsStar.png') no-repeat center;
+  opacity: 0.05;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+}
+main > * { position: relative; z-index: 1; }
+
+
   </style>
 </head>
 
