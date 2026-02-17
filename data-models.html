@@ -7,7 +7,7 @@
   <meta name="description" content="Aprende cómo los gemelos digitales funcionan como activos únicos y certificados, con aplicaciones en arte, colecciones privadas y Web3.">
   <link rel="icon" href="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" type="image/x-icon" />
 
- <style>
+  <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -21,7 +21,7 @@
     /* HEADER */
     header {
       height: 70px;
-       background: #1e1e1e;
+      background: #1e1e1e;
       border-bottom: 1px solid #eee;
       display: flex;
       align-items: center;
@@ -74,7 +74,17 @@
 
     h1 { font-size: 2rem; margin-bottom: 20px; }
     h2 { font-size: 1.4rem; margin-top: 30px; margin-bottom: 10px; }
+    h3 { font-size: 1.2rem; margin-top: 25px; margin-bottom: 10px; }
     p { margin-bottom: 16px; line-height: 1.6; }
+
+    /* Estilo tipo libro para cada sección */
+    .topic {
+      margin-bottom: 40px;
+      padding: 20px;
+      border-left: 4px solid #0070f3;
+      background: #f7f9fc;
+      border-radius: 6px;
+    }
 
     .lang { display: none; }
     .lang.active { display: block; }
@@ -83,35 +93,32 @@
 
 <body>
 
-  <header>
-    <a href="https://web.3dtwins.tech/gemelo-digital-producto.html">
-      <img src="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" alt="Logo 3D Twins">
-    </a>
-    <div>
-      <a href="https://web.3dtwins.tech" class="home-button">← Volver al Home</a>
-      <span class="lang-selector">
-        <span class="lang-button" data-lang="es">ES</span> | 
-        <span class="lang-button" data-lang="en">EN</span> | 
-        <span class="lang-button" data-lang="fr">FR</span>
-      </span>
-    </div>
-  </header>
+<header>
+  <a href="https://web.3dtwins.tech/gemelo-digital-producto.html">
+    <img src="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" alt="Logo 3D Twins">
+  </a>
+  <div class="lang-switch">
+    <span class="lang-button active" data-lang="es">ES</span>
+    <span class="lang-button" data-lang="en">EN</span>
+    <span class="lang-button" data-lang="fr">FR</span>
+  </div>
+  <a href="https://web.3dtwins.tech" class="home-button">← Volver al Home</a>
+</header>
 
-  <div class="container">
+<div class="container">
 
-    <nav>
-      <h2>Centro de conocimiento sobre gemelos digitales</h2>
-      <ul id="menu"></ul>
-    </nav>
+  <nav>
+    <h2>Centro de conocimiento sobre gemelos digitales</h2>
+    <ul id="menu"></ul>
+  </nav>
 
-    <main id="content">
+  <main id="content">
 
-      <!-- Español -->
-      <div class="lang active" data-lang="es">
-        <h1>Certificación digital = activo digital</h1>
+    <!-- Español -->
+    <div class="lang active" data-lang="es">
+      <h1>Certificación digital = activo digital</h1>
 
-        <p>Los <strong>gemelos digitales</strong> funcionan como <strong>activos digitales únicos</strong> vinculados a un objeto o producto real. Su modelo de datos define cómo se almacena y representa la información del activo, garantizando autenticidad, trazabilidad y valor.</p>
-
+      <div class="topic">
         <h2>Nivel 1: Activos únicos y colecciones privadas</h2>
         <p>Los gemelos digitales pueden formar parte de:</p>
         <ul>
@@ -119,7 +126,9 @@
           <li><strong>Activos oficiales:</strong> cada gemelo digital representa de manera inequívoca un objeto físico o un producto real.</li>
           <li><strong>Certificación del valor:</strong> vinculación a documentos, licencias o certificados que validan la autenticidad del activo.</li>
         </ul>
+      </div>
 
+      <div class="topic">
         <h2>Nivel 2: Aplicaciones en arte y productos exclusivos</h2>
         <p>Un gemelo digital 3D de una obra de arte o producto de lujo puede:</p>
         <ul>
@@ -127,7 +136,9 @@
           <li>Permitir visualización e interacción virtual sin exponer la obra física.</li>
           <li>Facilitar subastas, ventas o préstamos digitales a través de colecciones controladas.</li>
         </ul>
+      </div>
 
+      <div class="topic">
         <h2>Nivel 3: Vinculación opcional a blockchain y Web3</h2>
         <p>En entornos Web3 o de tokens digitales, un gemelo digital puede conectarse opcionalmente a:</p>
         <ul>
@@ -145,13 +156,13 @@
           <li><a href="faq.html" class="internal-link">Preguntas frecuentes sobre gemelos digitales</a></li>
         </ul>
       </div>
+    </div>
 
-      <!-- English -->
-      <div class="lang" data-lang="en">
-        <h1>Data Models</h1>
+    <!-- English -->
+    <div class="lang" data-lang="en">
+      <h1>Data Models</h1>
 
-        <p><strong>Digital twins</strong> act as <strong>unique digital assets</strong> linked to a real object or product. Their data model defines how the asset information is stored and represented, ensuring authenticity, traceability and value.</p>
-
+      <div class="topic">
         <h2>Level 1: Unique assets and private collections</h2>
         <p>Digital twins can be part of:</p>
         <ul>
@@ -159,7 +170,9 @@
           <li><strong>Official assets:</strong> each digital twin uniquely represents a physical object or real product.</li>
           <li><strong>Value certification:</strong> linked to documents, licenses or certificates that validate the asset's authenticity.</li>
         </ul>
+      </div>
 
+      <div class="topic">
         <h2>Level 2: Applications in art and exclusive products</h2>
         <p>A 3D digital twin of an artwork or luxury product can:</p>
         <ul>
@@ -167,7 +180,9 @@
           <li>Allow virtual visualization and interaction without exposing the physical work.</li>
           <li>Enable auctions, sales or digital lending through controlled collections.</li>
         </ul>
+      </div>
 
+      <div class="topic">
         <h2>Level 3: Optional blockchain and Web3 integration</h2>
         <p>In Web3 or tokenized environments, a digital twin can optionally connect to:</p>
         <ul>
@@ -185,13 +200,13 @@
           <li><a href="faq.html" class="internal-link">Frequently asked questions about digital twins</a></li>
         </ul>
       </div>
+    </div>
 
-      <!-- Français -->
-      <div class="lang" data-lang="fr">
-        <h1>Modèles de données</h1>
+    <!-- Français -->
+    <div class="lang" data-lang="fr">
+      <h1>Modèles de données</h1>
 
-        <p><strong>Jumeaux numériques</strong> fonctionnent comme <strong>actifs numériques uniques</strong> liés à un objet ou produit réel. Leur modèle de données définit comment l’information de l’actif est stockée et représentée, garantissant authenticité, traçabilité et valeur.</p>
-
+      <div class="topic">
         <h2>Niveau 1 : Actifs uniques et collections privées</h2>
         <p>Les jumeaux numériques peuvent faire partie de :</p>
         <ul>
@@ -199,7 +214,9 @@
           <li><strong>Actifs officiels :</strong> chaque jumeau numérique représente de manière unique un objet physique ou un produit réel.</li>
           <li><strong>Certification de la valeur :</strong> lié à des documents, licences ou certificats validant l’authenticité de l’actif.</li>
         </ul>
+      </div>
 
+      <div class="topic">
         <h2>Niveau 2 : Applications dans l’art et produits exclusifs</h2>
         <p>Un jumeau numérique 3D d’une œuvre d’art ou produit de luxe peut :</p>
         <ul>
@@ -207,7 +224,9 @@
           <li>Permettre la visualisation et l’interaction virtuelle sans exposer l’œuvre physique.</li>
           <li>Faciliter les enchères, ventes ou prêts numériques via des collections contrôlées.</li>
         </ul>
+      </div>
 
+      <div class="topic">
         <h2>Niveau 3 : Liaison optionnelle à la blockchain et Web3</h2>
         <p>Dans les environnements Web3 ou de tokens numériques, un jumeau numérique peut se connecter optionnellement à :</p>
         <ul>
@@ -225,37 +244,36 @@
           <li><a href="faq.html" class="internal-link">Questions fréquentes sur les jumeaux numériques</a></li>
         </ul>
       </div>
+    </div>
 
-    </main>
+  </main>
 
-  </div>
+</div>
 
-  <script src="menu.js"></script>
+<script src="menu.js"></script>
+<script>
+  const langButtons = document.querySelectorAll('.lang-button');
+  const langBlocks = document.querySelectorAll('.lang');
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-N54X2MZQZG');
-
-    function trackEvent(name, params = {}) {
-      if (typeof gtag === "function") {
-        gtag("event", name, params);
-      }
-    }
-    const langButtons = document.querySelectorAll('.lang-button');
-    const langBlocks = document.querySelectorAll('.lang');
-
-    langButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const selected = btn.getAttribute('data-lang');
-        langBlocks.forEach(block => {
-          block.classList.toggle('active', block.getAttribute('data-lang') === selected);
-        });
+  langButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selected = btn.getAttribute('data-lang');
+      langBlocks.forEach(block => {
+        block.classList.toggle('active', block.getAttribute('data-lang') === selected);
       });
+      langButtons.forEach(b => b.classList.toggle('active', b === btn));
     });
-  </script>
+  });
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-N54X2MZQZG');
+  function trackEvent(name, params = {}) { if(typeof gtag === "function") gtag("event", name, params); }
+</script>
 
 </body>
 </html>
