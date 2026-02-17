@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gemelos Digitales de producto | 3D Twins</title>
-  <meta name="description" content="Aprende sobre gemelos digitales 3D, su arquitectura, aplicaciones y casos de uso. Documentación técnica y tutoriales.">
+  <title>Gemelos Digitales de Producto | 3D Twins</title>
+  <meta name="description" content="Explora los gemelos digitales de producto 3D, su definición, arquitectura, aplicaciones y casos de uso. Hub de conocimiento con documentación técnica y tutoriales.">
   <link rel="icon" href="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" type="image/x-icon" />
 
   <style>
@@ -78,6 +78,23 @@
 
     .lang { display: none; }
     .lang.active { display: block; }
+
+    .topic-link { color: #0070f3; text-decoration: none; }
+    .topic-link:hover { text-decoration: underline; }
+
+    /* Marca de agua */
+    main::before {
+      content: "3D Twins";
+      position: absolute;
+      font-size: 5rem;
+      color: rgba(200,200,200,0.1);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-30deg);
+      pointer-events: none;
+      z-index: 0;
+    }
+    main > * { position: relative; z-index: 1; }
   </style>
 </head>
 
@@ -106,30 +123,89 @@
 
       <!-- Español -->
       <div class="lang active" data-lang="es">
-        <h1>Bienvenido al centro de conocimiento de 3D Twins</h1>
-        <p>En esta sección encontrarás toda la documentación sobre gemelos digitales 3D, desde conceptos básicos hasta aspectos técnicos avanzados. Selecciona una entrada en el menú para comenzar.
-        • ¿Qué es un Gemelo Digital?: Es una representación virtual o un modelo digital exacto de un objeto físico, un proceso o un sistema. No es solo un dibujo 3D, sino un modelo funcional que se comporta como su contraparte real.</p>
+        <h1>Gemelos Digitales de Producto</h1>
+        <p>Los gemelos digitales representan el futuro de la digitalización industrial y de producto. En esta página encontrarás una visión completa de los conceptos clave, arquitectura, aplicaciones, certificaciones y casos de uso, sirviendo como punto de entrada al resto del Knowledge Center.</p>
 
-        <h2>Cómo usar esta documentación</h2>
-        <p>Cada entrada contiene información detallada sobre un aspecto de los gemelos digitales. Puedes navegar por el menú lateral para acceder a cada tema.</p>
+        <h2>Temas principales</h2>
+
+        <h3>Qué es un gemelo digital</h3>
+        <p>Un <strong>gemelo digital</strong> es un modelo virtual de un objeto, proceso o sistema físico que permite simular, analizar y predecir su comportamiento real. <a class="topic-link" href="what-is-digital-twin.html">Leer más →</a></p>
+
+        <h3>Por qué usar un gemelo digital</h3>
+        <p>Los gemelos digitales permiten optimizar procesos, reducir errores y costes, y mejorar la toma de decisiones estratégicas. <a class="topic-link" href="why-use-digital-twin.html">Leer más →</a></p>
+
+        <h3>Arquitectura de un gemelo digital</h3>
+        <p>Incluye la estructura de datos, sensores, integración de sistemas y la plataforma que conecta el gemelo con su contraparte física. <a class="topic-link" href="architecture.html">Leer más →</a></p>
+
+        <h3>Certificación digital de gemelos digitales</h3>
+        <p>Los estándares y certificaciones aseguran la fiabilidad, seguridad y compatibilidad de los gemelos digitales en distintos sectores. <a class="topic-link" href="data-models.html">Leer más →</a></p>
+
+        <h3>Interoperabilidad</h3>
+        <p>Clave para que los gemelos digitales funcionen en distintos sistemas y plataformas, garantizando integración y reutilización de datos. <a class="topic-link" href="interoperability.html">Leer más →</a></p>
+
+        <h3>Glosario de términos</h3>
+        <p>Consulta definiciones de los términos más importantes relacionados con gemelos digitales. <a class="topic-link" href="glossary.html">Leer más →</a></p>
+
+        <h3>Preguntas frecuentes (FAQ)</h3>
+        <p>Resuelve dudas comunes sobre gemelos digitales y su implementación. <a class="topic-link" href="faq.html">Leer más →</a></p>
       </div>
 
       <!-- Inglés -->
       <div class="lang" data-lang="en">
-        <h1>Welcome to the 3D Twins Knowledge Center</h1>
-        <p>Here you will find all the documentation about 3D digital twins, from basic concepts to advanced technical aspects. Select an entry from the menu to get started.</p>
+        <h1>Product Digital Twins</h1>
+        <p>Digital twins are the future of industrial and product digitalization. This page provides a complete overview of key concepts, architecture, applications, certifications, and use cases, serving as the gateway to the rest of the Knowledge Center.</p>
 
-        <h2>How to use this Knowledge Center</h2>
-        <p>Each entry contains detailed information about a specific aspect of digital twins. You can navigate the sidebar menu to access each topic.</p>
+        <h2>Main Topics</h2>
+
+        <h3>What is a digital twin</h3>
+        <p>A <strong>digital twin</strong> is a virtual model of a physical object, process, or system that allows simulation, analysis, and prediction of its real-world behavior. <a class="topic-link" href="what-is-digital-twin.html">Read more →</a></p>
+
+        <h3>Why use a digital twin</h3>
+        <p>Digital twins help optimize processes, reduce errors and costs, and improve strategic decision-making. <a class="topic-link" href="why-use-digital-twin.html">Read more →</a></p>
+
+        <h3>Digital twin architecture</h3>
+        <p>Includes data structures, sensors, system integration, and the platform that connects the twin to its physical counterpart. <a class="topic-link" href="architecture.html">Read more →</a></p>
+
+        <h3>Digital twin certification</h3>
+        <p>Standards and certifications ensure the reliability, security, and compatibility of digital twins across sectors. <a class="topic-link" href="data-models.html">Read more →</a></p>
+
+        <h3>Interoperability</h3>
+        <p>Essential for digital twins to work across different systems and platforms, ensuring data integration and reuse. <a class="topic-link" href="interoperability.html">Read more →</a></p>
+
+        <h3>Glossary of terms</h3>
+        <p>Check definitions of the most important digital twin terminology. <a class="topic-link" href="glossary.html">Read more →</a></p>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <p>Find answers to common questions about digital twins and their implementation. <a class="topic-link" href="faq.html">Read more →</a></p>
       </div>
 
       <!-- Francés -->
       <div class="lang" data-lang="fr">
-        <h1>Bienvenue au Knowledge Center de 3D Twins</h1>
-        <p>Dans cette section, vous trouverez toute la documentation sur les jumeaux numériques 3D, des concepts de base aux aspects techniques avancés. Sélectionnez une entrée dans le menu pour commencer.</p>
+        <h1>Jumeaux numériques de produit</h1>
+        <p>Les jumeaux numériques représentent l'avenir de la numérisation industrielle et produit. Cette page fournit une vue d'ensemble complète des concepts clés, de l'architecture, des applications, des certifications et des cas d'utilisation, servant de portail vers le reste du Knowledge Center.</p>
 
-        <h2>Comment utiliser ce Knowledge Center</h2>
-        <p>Chaque entrée contient des informations détaillées sur un aspect spécifique des jumeaux numériques. Vous pouvez naviguer dans le menu latéral pour accéder à chaque sujet.</p>
+        <h2>Sujets principaux</h2>
+
+        <h3>Qu'est-ce qu'un jumeau numérique</h3>
+        <p>Un <strong>jumeau numérique</strong> est un modèle virtuel d'un objet, processus ou système physique qui permet de simuler, analyser et prédire son comportement réel. <a class="topic-link" href="what-is-digital-twin.html">Lire la suite →</a></p>
+
+        <h3>Pourquoi utiliser un jumeau numérique</h3>
+        <p>Les jumeaux numériques permettent d'optimiser les processus, de réduire les erreurs et les coûts, et d'améliorer la prise de décisions stratégiques. <a class="topic-link" href="why-use-digital-twin.html">Lire la suite →</a></p>
+
+        <h3>Architecture d'un jumeau numérique</h3>
+        <p>Inclut les structures de données, les capteurs, l'intégration des systèmes et la plateforme qui connecte le jumeau à son homologue physique. <a class="topic-link" href="architecture.html">Lire la suite →</a></p>
+
+        <h3>Certification numérique des jumeaux numériques</h3>
+        <p>Les normes et certifications garantissent la fiabilité, la sécurité et la compatibilité des jumeaux numériques dans différents secteurs. <a class="topic-link" href="data-models.html">Lire la suite →</a></p>
+
+        <h3>Interopérabilité</h3>
+        <p>Essentielle pour que les jumeaux numériques fonctionnent sur différents systèmes et plateformes, garantissant l'intégration et la réutilisation des données. <a class="topic-link" href="interoperability.html">Lire la suite →</a></p>
+
+        <h3>Glossaire des termes</h3>
+        <p>Consultez les définitions des termes les plus importants liés aux jumeaux numériques. <a class="topic-link" href="glossary.html">Lire la suite →</a></p>
+
+        <h3>FAQ</h3>
+        <p>Trouvez des réponses aux questions fréquentes sur les jumeaux numériques et leur mise en œuvre. <a class="topic-link" href="faq.html">Lire la suite →</a></p>
       </div>
 
     </main>
