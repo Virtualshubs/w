@@ -6,33 +6,31 @@
   <title>Qué es un gemelo digital | Knowledge Center - 3D Twins</title>
   <meta name="description" content="Introducción completa sobre qué es un gemelo digital, sus usos, beneficios y arquitectura básica.">
   <link rel="icon" href="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" type="image/x-icon" />
- <style>
+
+  <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Georgia', serif;
       color: #1a1a1a;
       display: flex;
       flex-direction: column;
-      height: 100vh;
+      min-height: 100vh;
+      background: #f4f4f4;
     }
 
-    /* HEADER */
     header {
       height: 70px;
-       background: #1e1e1e;
+      background: #1e1e1e;
       border-bottom: 1px solid #eee;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 30px;
     }
-
     header img { height: 32px; }
-
     .home-button { text-decoration: none; font-weight: 500; color: #fff; transition: color 0.2s; }
     .home-button:hover { color: #0070f3; }
-
     .lang-switch { display: flex; gap: 10px; }
     .lang-button {
       cursor: pointer;
@@ -44,18 +42,21 @@
     }
     .lang-button.active { background: #0070f3; color: #fff; border-color: #0070f3; }
 
-    /* CONTENEDOR GENERAL */
-    .container { display: flex; flex: 1; overflow: hidden; }
-
-    /* SIDEBAR */
-    nav {
-      width: 260px;
-      background: #f9f9f9;
-      padding: 25px;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.05);
-      overflow-y: auto;
+    .container {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
     }
 
+    nav {
+      width: 280px;
+      background: #fff;
+      padding: 25px;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+      overflow-y: auto;
+      position: sticky;
+      top: 0;
+    }
     nav h2 { font-size: 1.4rem; margin-bottom: 20px; color: #111; }
     nav ul { list-style: none; }
     nav ul li { margin: 12px 0; }
@@ -63,17 +64,30 @@
     nav ul li a:hover { color: #0070f3; }
     .active-link { color: #0070f3; font-weight: 600; }
 
-    /* CONTENIDO */
     main {
       flex: 1;
-      padding: 40px;
+      padding: 40px 60px;
       overflow-y: auto;
       background: #fff;
+      max-width: 900px;
+      margin: auto;
     }
 
-    h1 { font-size: 2rem; margin-bottom: 20px; }
-    h2 { font-size: 1.4rem; margin-top: 30px; margin-bottom: 10px; }
-    p { margin-bottom: 16px; line-height: 1.6; }
+    h1 { font-size: 2.4rem; margin-bottom: 24px; line-height: 1.3; }
+    h2 { font-size: 1.8rem; margin-top: 36px; margin-bottom: 16px; color: #0070f3; }
+    h3 { font-size: 1.4rem; margin-top: 28px; margin-bottom: 12px; color: #333; }
+    p { margin-bottom: 18px; line-height: 1.8; text-align: justify; }
+    ul { margin-left: 20px; margin-bottom: 18px; }
+    li { margin-bottom: 10px; }
+    a.internal-link { color: #0070f3; text-decoration: underline; }
+
+    .section-block {
+      background: #fafafa;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
 
     .lang { display: none; }
     .lang.active { display: block; }
@@ -95,110 +109,93 @@
 
   <div class="container">
     <nav>
-      <h2>Centro de conocimiento sobre gemelos digitales</h2>
-      <ul id="menu"></ul>
+      <h2>Capítulos</h2>
+      <ul id="menu">
+        <li><a href="#conceptos">Conceptos básicos</a></li>
+        <li><a href="#beneficios">Aplicaciones y beneficios</a></li>
+        <li><a href="#arquitectura">Arquitectura básica</a></li>
+      </ul>
     </nav>
 
     <main id="content">
-
       <!-- Español -->
       <div class="lang active" data-lang="es">
         <h1>Qué es un gemelo digital</h1>
-        <p>Un <strong>gemelo digital</strong> es una réplica virtual de un objeto, sistema o proceso físico. Permite monitorizar, simular y optimizar el comportamiento del objeto real utilizando datos en tiempo real. Es fundamental en industrias que buscan eficiencia, personalización y reducción de errores.</p>
+        <p>Un <strong>gemelo digital</strong> es una réplica virtual de un objeto, sistema o proceso físico que permite monitorizar, simular y optimizar el comportamiento del objeto real utilizando datos en tiempo real. Es fundamental en industrias que buscan eficiencia, personalización y reducción de errores.</p>
 
-        <h2>Nivel 1: Conceptos básicos</h2>
-        <ul>
-          <li>Visualizar productos o procesos antes de su fabricación.</li>
-          <li>Simular escenarios sin riesgo en el mundo real.</li>
-          <li>Mejorar la toma de decisiones con datos precisos.</li>
-        </ul>
+        <section id="conceptos" class="section-block">
+          <h2>Nivel 1: Conceptos básicos</h2>
+          <ul>
+            <li>Visualizar productos o procesos antes de su fabricación.</li>
+            <li>Simular escenarios sin riesgo en el mundo real.</li>
+            <li>Mejorar la toma de decisiones con datos precisos.</li>
+          </ul>
+        </section>
 
-        <h2>Nivel 2: Aplicaciones y beneficios</h2>
-        <ul>
-          <li><strong>Optimización de procesos:</strong> detectar ineficiencias antes de que ocurran.</li>
-          <li><strong>Personalización bajo demanda:</strong> los clientes pueden interactuar con versiones digitales de productos.</li>
-          <li><strong>Reducción de costes:</strong> simulando cambios antes de aplicarlos físicamente.</li>
-          <li><strong>Mantenimiento predictivo:</strong> anticipa fallos en maquinaria o sistemas complejos.</li>
-        </ul>
+        <section id="beneficios" class="section-block">
+          <h2>Nivel 2: Aplicaciones y beneficios</h2>
+          <ul>
+            <li><strong>Optimización de procesos:</strong> detectar ineficiencias antes de que ocurran.</li>
+            <li><strong>Personalización bajo demanda:</strong> los clientes pueden interactuar con versiones digitales de productos.</li>
+            <li><strong>Reducción de costes:</strong> simulando cambios antes de aplicarlos físicamente.</li>
+            <li><strong>Mantenimiento predictivo:</strong> anticipa fallos en maquinaria o sistemas complejos.</li>
+          </ul>
+        </section>
 
-        <h2>Nivel 3: Arquitectura básica</h2>
-        <ul>
-          <li>Modelo físico virtualizado (3D o lógico).</li>
-          <li>Flujo de datos en tiempo real desde sensores o sistemas ERP/CRM.</li>
-          <li>Motor de simulación y analítica.</li>
-          <li>Interfaz de visualización para usuarios o clientes.</li>
-        </ul>
-
-        <h3>Enlaces relacionados</h3>
-        <ul>
-          <li><a href="why-use-digital-twin.html" class="internal-link">Por qué usar un gemelo digital</a></li>
-          <li><a href="architecture.html" class="internal-link">Arquitectura de un gemelo digital</a></li>
-          <li><a href="faq.html" class="internal-link">Preguntas frecuentes sobre gemelos digitales</a></li>
-        </ul>
+        <section id="arquitectura" class="section-block">
+          <h2>Nivel 3: Arquitectura básica</h2>
+          <ul>
+            <li>Modelo físico virtualizado (3D o lógico).</li>
+            <li>Flujo de datos en tiempo real desde sensores o sistemas ERP/CRM.</li>
+            <li>Motor de simulación y analítica.</li>
+            <li>Interfaz de visualización para usuarios o clientes.</li>
+          </ul>
+          <h3>Enlaces relacionados</h3>
+          <ul>
+            <li><a href="why-use-digital-twin.html" class="internal-link">Por qué usar un gemelo digital</a></li>
+            <li><a href="architecture.html" class="internal-link">Arquitectura de un gemelo digital</a></li>
+            <li><a href="faq.html" class="internal-link">Preguntas frecuentes sobre gemelos digitales</a></li>
+          </ul>
+        </section>
       </div>
 
       <!-- Inglés -->
       <div class="lang" data-lang="en">
         <h1>What is a Digital Twin</h1>
-        <p>A <strong>digital twin</strong> is a virtual replica of a physical object, system, or process. It allows monitoring, simulating, and optimizing the behavior of the real object using real-time data. It is essential in industries seeking efficiency, personalization, and error reduction.</p>
+        <p>A <strong>digital twin</strong> is a virtual replica of a physical object, system, or process that allows monitoring, simulating, and optimizing the behavior of the real object using real-time data. It is essential in industries seeking efficiency, personalization, and error reduction.</p>
 
-        <h2>Level 1: Basic Concepts</h2>
-        <ul>
-          <li>Visualize products or processes before manufacturing.</li>
-          <li>Simulate scenarios safely without real-world risk.</li>
-          <li>Improve decision-making with accurate data.</li>
-        </ul>
+        <section id="concepts" class="section-block">
+          <h2>Level 1: Basic Concepts</h2>
+          <ul>
+            <li>Visualize products or processes before manufacturing.</li>
+            <li>Simulate scenarios safely without real-world risk.</li>
+            <li>Improve decision-making with accurate data.</li>
+          </ul>
+        </section>
 
-        <h2>Level 2: Applications and Benefits</h2>
-        <ul>
-          <li><strong>Process optimization:</strong> detect inefficiencies before they occur.</li>
-          <li><strong>On-demand personalization:</strong> clients can interact with digital versions of products.</li>
-          <li><strong>Cost reduction:</strong> simulating changes before physical application.</li>
-          <li><strong>Predictive maintenance:</strong> anticipate failures in machinery or complex systems.</li>
-        </ul>
+        <section id="benefits" class="section-block">
+          <h2>Level 2: Applications and Benefits</h2>
+          <ul>
+            <li><strong>Process optimization:</strong> detect inefficiencies before they occur.</li>
+            <li><strong>On-demand personalization:</strong> clients can interact with digital versions of products.</li>
+            <li><strong>Cost reduction:</strong> simulating changes before physical application.</li>
+            <li><strong>Predictive maintenance:</strong> anticipate failures in machinery or complex systems.</li>
+          </ul>
+        </section>
 
-        <h2>Level 3: Basic Architecture</h2>
-        <ul>
-          <li>Virtualized physical model (3D or logical).</li>
-          <li>Real-time data flow from sensors or ERP/CRM systems.</li>
-          <li>Simulation and analytics engine.</li>
-          <li>Visualization interface for users or clients.</li>
-        </ul>
-      </div>
-
-      <!-- Francés -->
-      <div class="lang" data-lang="fr">
-        <h1>Qu'est-ce qu’un jumeau numérique</h1>
-        <p>Un <strong>jumeau numérique</strong> est une réplique virtuelle d’un objet, système ou processus physique. Il permet de surveiller, simuler et optimiser le comportement de l’objet réel à l’aide de données en temps réel. Il est essentiel dans les industries recherchant l’efficacité, la personnalisation et la réduction des erreurs.</p>
-
-        <h2>Niveau 1 : Concepts de base</h2>
-        <ul>
-          <li>Visualiser des produits ou processus avant leur fabrication.</li>
-          <li>Simuler des scénarios sans risque réel.</li>
-          <li>Améliorer la prise de décision avec des données précises.</li>
-        </ul>
-
-        <h2>Niveau 2 : Applications et avantages</h2>
-        <ul>
-          <li><strong>Optimisation des processus :</strong> détecter les inefficacités avant qu’elles ne se produisent.</li>
-          <li><strong>Personnalisation à la demande :</strong> les clients peuvent interagir avec des versions numériques des produits.</li>
-          <li><strong>Réduction des coûts :</strong> simuler des changements avant de les appliquer physiquement.</li>
-          <li><strong>Maintenance prédictive :</strong> anticiper les pannes dans la machinerie ou les systèmes complexes.</li>
-        </ul>
-
-        <h2>Niveau 3 : Architecture de base</h2>
-        <ul>
-          <li>Modèle physique virtualisé (3D ou logique).</li>
-          <li>Flux de données en temps réel à partir de capteurs ou systèmes ERP/CRM.</li>
-          <li>Moteur de simulation et d’analytique.</li>
-          <li>Interface de visualisation pour les utilisateurs ou clients.</li>
-        </ul>
+        <section id="architecture" class="section-block">
+          <h2>Level 3: Basic Architecture</h2>
+          <ul>
+            <li>Virtualized physical model (3D or logical).</li>
+            <li>Real-time data flow from sensors or ERP/CRM systems.</li>
+            <li>Simulation and analytics engine.</li>
+            <li>Visualization interface for users or clients.</li>
+          </ul>
+        </section>
       </div>
 
     </main>
   </div>
-
-  <script src="menu.js"></script>
 
   <script>
     const langButtons = document.querySelectorAll('.lang-button');
@@ -211,14 +208,5 @@
       });
     });
   </script>
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-N54X2MZQZG');
-  </script>
-
 </body>
 </html>
