@@ -273,45 +273,55 @@
 
   <script src="menu.js"></script>
 
-  <script>
-    // Cambio de idioma
-    const langButtons = document.querySelectorAll('.lang-button');
-    const langBlocks = document.querySelectorAll('.lang');
+ <script>
+  // Cambio de idioma
+  const langButtons = document.querySelectorAll('.lang-button');
+  const langBlocks = document.querySelectorAll('.lang');
 
-    langButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const selected = btn.getAttribute('data-lang');
-        langBlocks.forEach(block => {
-          block.classList.toggle('active', block.getAttribute('data-lang') === selected);
-        });
-        langButtons.forEach(b => b.classList.toggle('active', b === btn));
+  langButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selected = btn.getAttribute('data-lang');
+      langBlocks.forEach(block => {
+        block.classList.toggle('active', block.getAttribute('data-lang') === selected);
       });
+      langButtons.forEach(b => b.classList.toggle('active', b === btn));
     });
+  });
 
-    // Expandir / contraer definición
-    document.querySelectorAll('dt').forEach(dt => {
+  // Expandir / contraer definición
+  function setupDT(dl) {
+    dl.querySelectorAll('dt').forEach(dt => {
       dt.addEventListener('click', () => dt.classList.toggle('active'));
     });
+  }
 
-    // Buscador
-    function setupSearch(langId) {
-      const input = document.getElementById(langId);
-      const dl = input.nextElementSibling;
-      input.addEventListener('input', () => {
-        const filter = input.value.toLowerCase();
-        dl.querySelectorAll('dt').forEach(dt => {
-          const dd = dt.nextElementSibling;
-          const text = dt.textContent.toLowerCase() + " " + dd.textContent.toLowerCase();
-          const match = text.includes(filter);
-          dt.style.display = match ? '' : 'none';
-          dd.style.display = match && dt.classList.contains('active') ? 'block' : 'none';
-        });
+  // Inicializamos todas las secciones
+  document.querySelectorAll('.lang').forEach(langBlock => {
+    setupDT(langBlock.querySelector('dl'));
+  });
+
+  // Buscador estanco
+  function setupSearch(inputId) {
+    const input = document.getElementById(inputId);
+    input.addEventListener('input', () => {
+      const filter = input.value.toLowerCase();
+      const langBlock = input.closest('.lang');
+      const dtList = langBlock.querySelectorAll('dt');
+      dtList.forEach(dt => {
+        const dd = dt.nextElementSibling;
+        const text = (dt.textContent + " " + dd.textContent).toLowerCase();
+        const match = text.includes(filter);
+        dt.style.display = match ? '' : 'none';
+        dd.style.display = match && dt.classList.contains('active') ? 'block' : 'none';
       });
-    }
+    });
+  }
 
-    ['search-es','search-en','search-fr'].forEach(setupSearch);
+  setupSearch('search-es');
+  setupSearch('search-en');
+  setupSearch('search-fr');
+</script>
 
-  </script>
 
 </body>
 </html>
