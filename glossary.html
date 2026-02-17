@@ -18,10 +18,10 @@
       height: 100vh;
     }
 
-    /* HEADER SUPERIOR */
+    /* HEADER */
     header {
       height: 70px;
-       background: #1e1e1e;
+      background: #1e1e1e;
       border-bottom: 1px solid #eee;
       display: flex;
       align-items: center;
@@ -37,12 +37,19 @@
     }
     .home-button:hover { color: #0070f3; }
 
-    /* CONTENEDOR GENERAL */
-    .container {
-      display: flex;
-      flex: 1;
-      overflow: hidden;
+    .lang-switch { display: flex; gap: 10px; }
+    .lang-button {
+      cursor: pointer;
+      padding: 4px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #f9f9f9;
+      transition: all 0.2s;
     }
+    .lang-button.active { background: #0070f3; color: #fff; border-color: #0070f3; }
+
+    /* CONTENEDOR GENERAL */
+    .container { display: flex; flex: 1; overflow: hidden; }
 
     /* SIDEBAR */
     nav {
@@ -52,11 +59,7 @@
       box-shadow: 2px 0 5px rgba(0,0,0,0.05);
       overflow-y: auto;
     }
-    nav h2 {
-      font-size: 1.4rem;
-      margin-bottom: 20px;
-      color: #111;
-    }
+    nav h2 { font-size: 1.4rem; margin-bottom: 20px; color: #111; }
     nav ul { list-style: none; }
     nav ul li { margin: 12px 0; }
     nav ul li a {
@@ -76,23 +79,44 @@
       background: #fff;
     }
     h1 { font-size: 2rem; margin-bottom: 20px; }
-    h2 { font-size: 1.4rem; margin-top: 30px; margin-bottom: 10px; }
-    p { margin-bottom: 16px; line-height: 1.6; }
-    dt { font-weight: 600; margin-top: 20px; }
-    dd { margin-left: 20px; margin-bottom: 12px; }
+    p { margin-bottom: 20px; line-height: 1.6; }
+
+    /* Estilo tipo diccionario */
+    dl { display: flex; flex-direction: column; gap: 20px; }
+    dt {
+      font-weight: 700;
+      font-size: 1.2rem;
+      background: #f0f4ff;
+      padding: 12px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    dt:hover { background: #dbe6ff; }
+    dd {
+      margin-left: 0;
+      padding: 12px 16px;
+      border-left: 4px solid #0070f3;
+      background: #f9f9f9;
+      border-radius: 0 8px 8px 0;
+      display: none;
+    }
+    dt.active + dd { display: block; }
+
+    /* Buscador */
+    .search-container {
+      margin-bottom: 25px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
 
     .lang { display: none; }
     .lang.active { display: block; }
-    .lang-switch { display: flex; gap: 10px; margin-bottom: 20px; }
-    .lang-button {
-      cursor: pointer;
-      padding: 4px 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      background: #f9f9f9;
-      transition: all 0.2s;
-    }
-    .lang-button.active { background: #0070f3; color: #fff; border-color: #0070f3; }
   </style>
 </head>
 <body>
@@ -101,12 +125,14 @@
     <a href="https://web.3dtwins.tech/gemelo-digital-producto.html">
       <img src="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" alt="Logo 3D Twins">
     </a>
-    <a href="https://web.3dtwins.tech" class="home-button">← Volver al Home</a>
-               <div class="lang-switch">
+    <div>
+      <a href="https://web.3dtwins.tech" class="home-button">← Volver al Home</a>
+      <div class="lang-switch">
         <span class="lang-button active" data-lang="es">ES</span>
         <span class="lang-button" data-lang="en">EN</span>
         <span class="lang-button" data-lang="fr">FR</span>
       </div>
+    </div>
   </header>
 
   <div class="container">
@@ -117,54 +143,44 @@
 
     <main id="content">
 
-
       <!-- Español -->
       <div class="lang active" data-lang="es">
         <h1>Glosario de Términos asociados a gemelos digitales 3D</h1>
         <p>Este glosario recopila los conceptos clave relacionados con gemelos digitales, activos digitales y certificación de objetos 3D.</p>
+        
+        <div class="search-container">
+          <input type="text" placeholder="Buscar término..." class="search-input" id="search-es">
+        </div>
+
         <dl>
           <dt>Activo Digital</dt>
           <dd>Representación virtual de un objeto físico o conceptual, certificable y rastreable, que puede integrarse en entornos digitales como e-commerce, redes sociales o plataformas 3D.</dd>
-
           <dt>Certificación de Origen</dt>
           <dd>Proceso técnico mediante el cual se genera un hash único que acredita la autenticidad y procedencia de un activo digital.</dd>
-
           <dt>Sellado de Autoría</dt>
           <dd>Integración de licencias de uso y derechos de propiedad directamente en el ADN digital del objeto.</dd>
-
           <dt>Despliegue Multicanal</dt>
           <dd>Distribución de un activo digital a través de diferentes plataformas y dispositivos manteniendo consistencia y control.</dd>
-
           <dt>Soberanía de Datos</dt>
           <dd>Modelo que permite que un activo opere desde una única fuente, con actualizaciones y métricas centralizadas.</dd>
-
           <dt>Interoperabilidad</dt>
           <dd>Capacidad de un activo digital para funcionar en distintos visores o plataformas sin necesidad de adaptación.</dd>
-
           <dt>Vitalidad del Activo</dt>
           <dd>Garantía de que el activo se mantiene íntegro, verificable y funcional a lo largo del tiempo, evitando falsificaciones o alteraciones.</dd>
-
           <dt>Colecciones Limitadas Certificadas</dt>
           <dd>Agrupaciones de activos digitales únicos vinculados a un objeto real, reforzando su autenticidad y valor de mercado.</dd>
-
           <dt>Configuradores</dt>
           <dd>Herramientas interactivas que permiten personalizar, explorar o modificar un activo digital en tiempo real.</dd>
-
           <dt>Campañas con soporte interactivo (QR)</dt>
           <dd>Estrategias de marketing que enlazan activos físicos con sus versiones digitales a través de códigos QR.</dd>
-
           <dt>Análisis y Tracking</dt>
           <dd>Medición del comportamiento del usuario y rendimiento de los activos digitales en entornos interactivos.</dd>
-
           <dt>Entidades creadas con IA funcionales</dt>
           <dd>Modelos generados por inteligencia artificial preparados para integrarse en entornos productivos reales.</dd>
-
           <dt>Origen Verificable</dt>
           <dd>Atributo que asegura que el modelo digital está vinculado permanentemente a su creador y su inspección original.</dd>
-
           <dt>Integridad del Modelo</dt>
           <dd>Protección del activo digital frente a modificaciones no autorizadas en su estructura de datos.</dd>
-
           <dt>Continuidad en el Tiempo</dt>
           <dd>Infraestructura que asegura la persistencia y compatibilidad del activo digital frente a la obsolescencia tecnológica.</dd>
         </dl>
@@ -174,49 +190,38 @@
       <div class="lang" data-lang="en">
         <h1>Glossary of Terms associated with 3D Digital Twins</h1>
         <p>This glossary compiles key concepts related to digital twins, digital assets, and 3D object certification.</p>
+        <div class="search-container">
+          <input type="text" placeholder="Search term..." class="search-input" id="search-en">
+        </div>
         <dl>
           <dt>Digital Asset</dt>
           <dd>Virtual representation of a physical or conceptual object, certifiable and traceable, that can be integrated into digital environments such as e-commerce, social networks, or 3D platforms.</dd>
-
           <dt>Origin Certification</dt>
           <dd>Technical process by which a unique hash is generated that certifies the authenticity and provenance of a digital asset.</dd>
-
           <dt>Authorship Seal</dt>
           <dd>Integration of usage licenses and ownership rights directly into the digital DNA of the object.</dd>
-
           <dt>Multichannel Deployment</dt>
           <dd>Distribution of a digital asset across different platforms and devices while maintaining consistency and control.</dd>
-
           <dt>Data Sovereignty</dt>
           <dd>Model that allows an asset to operate from a single source, with centralized updates and metrics.</dd>
-
           <dt>Interoperability</dt>
           <dd>Ability of a digital asset to function on different viewers or platforms without adaptation.</dd>
-
           <dt>Asset Vitality</dt>
           <dd>Guarantee that the asset remains intact, verifiable, and functional over time, avoiding falsifications or alterations.</dd>
-
           <dt>Certified Limited Collections</dt>
           <dd>Groups of unique digital assets linked to a real object, reinforcing authenticity and market value.</dd>
-
           <dt>Configurators</dt>
           <dd>Interactive tools that allow users to customize, explore, or modify a digital asset in real time.</dd>
-
           <dt>QR-supported Campaigns</dt>
           <dd>Marketing strategies linking physical assets with their digital versions through QR codes.</dd>
-
           <dt>Analytics & Tracking</dt>
           <dd>Measurement of user behavior and performance of digital assets in interactive environments.</dd>
-
           <dt>AI-generated Functional Entities</dt>
           <dd>Models generated by artificial intelligence ready to integrate into real production environments.</dd>
-
           <dt>Verifiable Origin</dt>
           <dd>Attribute ensuring that the digital model is permanently linked to its creator and original inspection.</dd>
-
           <dt>Model Integrity</dt>
           <dd>Protection of the digital asset against unauthorized modifications in its data structure.</dd>
-
           <dt>Continuity over Time</dt>
           <dd>Infrastructure ensuring persistence and compatibility of the digital asset against technological obsolescence.</dd>
         </dl>
@@ -226,49 +231,38 @@
       <div class="lang" data-lang="fr">
         <h1>Glossaire des termes associés aux jumeaux numériques 3D</h1>
         <p>Ce glossaire compile les concepts clés liés aux jumeaux numériques, aux actifs numériques et à la certification des objets 3D.</p>
+        <div class="search-container">
+          <input type="text" placeholder="Rechercher un terme..." class="search-input" id="search-fr">
+        </div>
         <dl>
           <dt>Actif Numérique</dt>
           <dd>Représentation virtuelle d’un objet physique ou conceptuel, certifiable et traçable, pouvant être intégré dans des environnements numériques tels que e-commerce, réseaux sociaux ou plateformes 3D.</dd>
-
           <dt>Certification d'Origine</dt>
           <dd>Processus technique par lequel un hash unique est généré, certifiant l’authenticité et la provenance d’un actif numérique.</dd>
-
           <dt>Sceau d’Auteur</dt>
           <dd>Intégration des licences d’utilisation et des droits de propriété directement dans l’ADN numérique de l’objet.</dd>
-
           <dt>Déploiement Multicanal</dt>
           <dd>Distribution d’un actif numérique sur différentes plateformes et appareils tout en maintenant cohérence et contrôle.</dd>
-
           <dt>Souveraineté des Données</dt>
           <dd>Modèle permettant à un actif de fonctionner depuis une source unique, avec des mises à jour et des métriques centralisées.</dd>
-
           <dt>Interopérabilité</dt>
           <dd>Capacité d’un actif numérique à fonctionner sur différents visualiseurs ou plateformes sans adaptation.</dd>
-
           <dt>Vitalité de l’Actif</dt>
           <dd>Garantie que l’actif reste intact, vérifiable et fonctionnel dans le temps, évitant falsifications ou altérations.</dd>
-
           <dt>Collections Limitées Certifiées</dt>
           <dd>Groupes d’actifs numériques uniques liés à un objet réel, renforçant l’authenticité et la valeur marchande.</dd>
-
           <dt>Configurateurs</dt>
           <dd>Outils interactifs permettant de personnaliser, explorer ou modifier un actif numérique en temps réel.</dd>
-
           <dt>Campagnes avec support interactif (QR)</dt>
           <dd>Stratégies marketing reliant les actifs physiques à leurs versions numériques via des QR codes.</dd>
-
           <dt>Analyse et Suivi</dt>
           <dd>Mesure du comportement des utilisateurs et de la performance des actifs numériques dans des environnements interactifs.</dd>
-
           <dt>Entités fonctionnelles générées par IA</dt>
           <dd>Modèles générés par intelligence artificielle prêts à s’intégrer dans des environnements de production réels.</dd>
-
           <dt>Origine Vérifiable</dt>
           <dd>Attribut garantissant que le modèle numérique est lié de manière permanente à son créateur et à son inspection originale.</dd>
-
           <dt>Intégrité du Modèle</dt>
           <dd>Protection de l’actif numérique contre les modifications non autorisées de sa structure de données.</dd>
-
           <dt>Continuité dans le Temps</dt>
           <dd>Infrastructure assurant la persistance et la compatibilité de l’actif numérique face à l’obsolescence technologique.</dd>
         </dl>
@@ -280,7 +274,7 @@
   <script src="menu.js"></script>
 
   <script>
-    // Lógica de cambio de idioma
+    // Cambio de idioma
     const langButtons = document.querySelectorAll('.lang-button');
     const langBlocks = document.querySelectorAll('.lang');
 
@@ -293,22 +287,31 @@
         langButtons.forEach(b => b.classList.toggle('active', b === btn));
       });
     });
-  </script>
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-N54X2MZQZG');
+    // Expandir / contraer definición
+    document.querySelectorAll('dt').forEach(dt => {
+      dt.addEventListener('click', () => dt.classList.toggle('active'));
+    });
 
-    function trackEvent(name, params = {}) {
-      if (typeof gtag === "function") {
-        gtag("event", name, params);
-      }
+    // Buscador
+    function setupSearch(langId) {
+      const input = document.getElementById(langId);
+      const dl = input.nextElementSibling;
+      input.addEventListener('input', () => {
+        const filter = input.value.toLowerCase();
+        dl.querySelectorAll('dt').forEach(dt => {
+          const dd = dt.nextElementSibling;
+          const text = dt.textContent.toLowerCase() + " " + dd.textContent.toLowerCase();
+          const match = text.includes(filter);
+          dt.style.display = match ? '' : 'none';
+          dd.style.display = match && dt.classList.contains('active') ? 'block' : 'none';
+        });
+      });
     }
+
+    ['search-es','search-en','search-fr'].forEach(setupSearch);
+
   </script>
 
 </body>
 </html>
-
