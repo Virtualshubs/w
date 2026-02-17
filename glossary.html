@@ -273,7 +273,7 @@
 
   <script src="menu.js"></script>
 
- <script>
+<script>
   // Cambio de idioma
   const langButtons = document.querySelectorAll('.lang-button');
   const langBlocks = document.querySelectorAll('.lang');
@@ -288,7 +288,7 @@
     });
   });
 
-  // Expandir / contraer definición
+  // Expandir / contraer definición con click
   function setupDT(dl) {
     dl.querySelectorAll('dt').forEach(dt => {
       dt.addEventListener('click', () => dt.classList.toggle('active'));
@@ -300,27 +300,45 @@
     setupDT(langBlock.querySelector('dl'));
   });
 
-  // Buscador estanco
+  // Buscador estilo diccionario
   function setupSearch(inputId) {
     const input = document.getElementById(inputId);
+
     input.addEventListener('input', () => {
       const filter = input.value.toLowerCase();
       const langBlock = input.closest('.lang');
       const dtList = langBlock.querySelectorAll('dt');
+
       dtList.forEach(dt => {
         const dd = dt.nextElementSibling;
         const text = (dt.textContent + " " + dd.textContent).toLowerCase();
-        const match = text.includes(filter);
-        dt.style.display = match ? '' : 'none';
-        dd.style.display = match && dt.classList.contains('active') ? 'block' : 'none';
+
+        if (text.includes(filter)) {
+          dt.style.display = '';
+          dd.style.display = 'block'; // expandimos automáticamente
+          dt.classList.add('active'); // marca como expandido
+        } else {
+          dt.style.display = 'none';
+          dd.style.display = 'none';
+          dt.classList.remove('active');
+        }
+
+        // Si el input está vacío, revertimos a estado inicial (contraído)
+        if (filter === '') {
+          dt.style.display = '';
+          dd.style.display = 'none';
+          dt.classList.remove('active');
+        }
       });
     });
   }
 
+  // Activamos el buscador para cada idioma
   setupSearch('search-es');
   setupSearch('search-en');
   setupSearch('search-fr');
 </script>
+
 
 
 </body>
