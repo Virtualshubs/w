@@ -70,29 +70,53 @@
       padding: 40px;
       overflow-y: auto;
       background: #fff;
+      position: relative;
     }
 
+    main::before {
+      content: "";
+      background: url('https://viewer.3dtwins.tech/puntero_3dtwinsStar.png') no-repeat center;
+      opacity: 0.25;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    main > * { position: relative; z-index: 1; }
+
     h1 { font-size: 2rem; margin-bottom: 20px; }
-    h2 { font-size: 1.4rem; margin-top: 30px; margin-bottom: 10px; }
+    h2 { font-size: 1.4rem; margin-top: 30px; margin-bottom: 20px; }
+    h3 { font-size: 1.2rem; margin-bottom: 10px; }
     p { margin-bottom: 16px; line-height: 1.6; }
 
     .lang { display: none; }
     .lang.active { display: block; }
 
-    .topic-link { color: #0070f3; text-decoration: none; }
+    .topic-link { color: #0070f3; text-decoration: none; font-weight: 600; }
     .topic-link:hover { text-decoration: underline; }
 
-  main::before {
-  content: "";
-  background: url('https://viewer.3dtwins.tech/puntero_3dtwinsStar.png') no-repeat center;
-  opacity: 0.25;
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-main > * { position: relative; z-index: 1; }
+    /* TEMAS PRINCIPALES: CARDS */
+    .topics-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
 
+    .topic-card {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .topic-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+
+    .topic-card p { font-size: 0.95rem; margin-bottom: 12px; }
 
   </style>
 </head>
@@ -127,26 +151,49 @@ main > * { position: relative; z-index: 1; }
 
         <h2>Temas principales</h2>
 
-        <h3>Qué es un gemelo digital</h3>
-        <p>Un <strong>gemelo digital</strong> es un modelo virtual de un objeto, proceso o sistema físico que permite simular, analizar y predecir su comportamiento real. <a class="topic-link" href="what-is-digital-twin.html">Leer más →</a></p>
+        <div class="topics-container">
+          <div class="topic-card">
+            <h3>Qué es un gemelo digital</h3>
+            <p>Un <strong>gemelo digital</strong> es un modelo virtual de un objeto, proceso o sistema físico que permite simular, analizar y predecir su comportamiento real.</p>
+            <a class="topic-link" href="what-is-digital-twin.html">Leer más →</a>
+          </div>
 
-        <h3>Por qué usar un gemelo digital</h3>
-        <p>Los gemelos digitales permiten optimizar procesos, reducir errores y costes, y mejorar la toma de decisiones estratégicas. <a class="topic-link" href="why-use-digital-twin.html">Leer más →</a></p>
+          <div class="topic-card">
+            <h3>Por qué usar un gemelo digital</h3>
+            <p>Los gemelos digitales permiten optimizar procesos, reducir errores y costes, y mejorar la toma de decisiones estratégicas.</p>
+            <a class="topic-link" href="why-use-digital-twin.html">Leer más →</a>
+          </div>
 
-        <h3>Arquitectura de un gemelo digital</h3>
-        <p>Incluye la estructura de datos, sensores, integración de sistemas y la plataforma que conecta el gemelo con su contraparte física. <a class="topic-link" href="architecture.html">Leer más →</a></p>
+          <div class="topic-card">
+            <h3>Arquitectura de un gemelo digital</h3>
+            <p>Incluye la estructura de datos, sensores, integración de sistemas y la plataforma que conecta el gemelo con su contraparte física.</p>
+            <a class="topic-link" href="architecture.html">Leer más →</a>
+          </div>
 
-        <h3>Certificación digital de gemelos digitales</h3>
-        <p>Los estándares y certificaciones aseguran la fiabilidad, seguridad y compatibilidad de los gemelos digitales en distintos sectores. <a class="topic-link" href="data-models.html">Leer más →</a></p>
+          <div class="topic-card">
+            <h3>Certificación digital de gemelos digitales</h3>
+            <p>Los estándares y certificaciones aseguran la fiabilidad, seguridad y compatibilidad de los gemelos digitales en distintos sectores.</p>
+            <a class="topic-link" href="data-models.html">Leer más →</a>
+          </div>
 
-        <h3>Interoperabilidad</h3>
-        <p>Clave para que los gemelos digitales funcionen en distintos sistemas y plataformas, garantizando integración y reutilización de datos. <a class="topic-link" href="interoperability.html">Leer más →</a></p>
+          <div class="topic-card">
+            <h3>Interoperabilidad</h3>
+            <p>Clave para que los gemelos digitales funcionen en distintos sistemas y plataformas, garantizando integración y reutilización de datos.</p>
+            <a class="topic-link" href="interoperability.html">Leer más →</a>
+          </div>
 
-        <h3>Glosario de términos</h3>
-        <p>Consulta definiciones de los términos más importantes relacionados con gemelos digitales. <a class="topic-link" href="glossary.html">Leer más →</a></p>
+          <div class="topic-card">
+            <h3>Glosario de términos</h3>
+            <p>Consulta definiciones de los términos más importantes relacionados con gemelos digitales.</p>
+            <a class="topic-link" href="glossary.html">Leer más →</a>
+          </div>
 
-        <h3>Preguntas frecuentes (FAQ)</h3>
-        <p>Resuelve dudas comunes sobre gemelos digitales y su implementación. <a class="topic-link" href="faq.html">Leer más →</a></p>
+          <div class="topic-card">
+            <h3>Preguntas frecuentes (FAQ)</h3>
+            <p>Resuelve dudas comunes sobre gemelos digitales y su implementación.</p>
+            <a class="topic-link" href="faq.html">Leer más →</a>
+          </div>
+        </div>
       </div>
 
       <!-- Inglés -->
@@ -156,26 +203,49 @@ main > * { position: relative; z-index: 1; }
 
         <h2>Main Topics</h2>
 
-        <h3>What is a digital twin</h3>
-        <p>A <strong>digital twin</strong> is a virtual model of a physical object, process, or system that allows simulation, analysis, and prediction of its real-world behavior. <a class="topic-link" href="what-is-digital-twin.html">Read more →</a></p>
+        <div class="topics-container">
+          <div class="topic-card">
+            <h3>What is a digital twin</h3>
+            <p>A <strong>digital twin</strong> is a virtual model of a physical object, process, or system that allows simulation, analysis, and prediction of its real-world behavior.</p>
+            <a class="topic-link" href="what-is-digital-twin.html">Read more →</a>
+          </div>
 
-        <h3>Why use a digital twin</h3>
-        <p>Digital twins help optimize processes, reduce errors and costs, and improve strategic decision-making. <a class="topic-link" href="why-use-digital-twin.html">Read more →</a></p>
+          <div class="topic-card">
+            <h3>Why use a digital twin</h3>
+            <p>Digital twins help optimize processes, reduce errors and costs, and improve strategic decision-making.</p>
+            <a class="topic-link" href="why-use-digital-twin.html">Read more →</a>
+          </div>
 
-        <h3>Digital twin architecture</h3>
-        <p>Includes data structures, sensors, system integration, and the platform that connects the twin to its physical counterpart. <a class="topic-link" href="architecture.html">Read more →</a></p>
+          <div class="topic-card">
+            <h3>Digital twin architecture</h3>
+            <p>Includes data structures, sensors, system integration, and the platform that connects the twin to its physical counterpart.</p>
+            <a class="topic-link" href="architecture.html">Read more →</a>
+          </div>
 
-        <h3>Digital twin certification</h3>
-        <p>Standards and certifications ensure the reliability, security, and compatibility of digital twins across sectors. <a class="topic-link" href="data-models.html">Read more →</a></p>
+          <div class="topic-card">
+            <h3>Digital twin certification</h3>
+            <p>Standards and certifications ensure the reliability, security, and compatibility of digital twins across sectors.</p>
+            <a class="topic-link" href="data-models.html">Read more →</a>
+          </div>
 
-        <h3>Interoperability</h3>
-        <p>Essential for digital twins to work across different systems and platforms, ensuring data integration and reuse. <a class="topic-link" href="interoperability.html">Read more →</a></p>
+          <div class="topic-card">
+            <h3>Interoperability</h3>
+            <p>Essential for digital twins to work across different systems and platforms, ensuring data integration and reuse.</p>
+            <a class="topic-link" href="interoperability.html">Read more →</a>
+          </div>
 
-        <h3>Glossary of terms</h3>
-        <p>Check definitions of the most important digital twin terminology. <a class="topic-link" href="glossary.html">Read more →</a></p>
+          <div class="topic-card">
+            <h3>Glossary of terms</h3>
+            <p>Check definitions of the most important digital twin terminology.</p>
+            <a class="topic-link" href="glossary.html">Read more →</a>
+          </div>
 
-        <h3>Frequently Asked Questions (FAQ)</h3>
-        <p>Find answers to common questions about digital twins and their implementation. <a class="topic-link" href="faq.html">Read more →</a></p>
+          <div class="topic-card">
+            <h3>Frequently Asked Questions (FAQ)</h3>
+            <p>Find answers to common questions about digital twins and their implementation.</p>
+            <a class="topic-link" href="faq.html">Read more →</a>
+          </div>
+        </div>
       </div>
 
       <!-- Francés -->
@@ -185,26 +255,49 @@ main > * { position: relative; z-index: 1; }
 
         <h2>Sujets principaux</h2>
 
-        <h3>Qu'est-ce qu'un jumeau numérique</h3>
-        <p>Un <strong>jumeau numérique</strong> est un modèle virtuel d'un objet, processus ou système physique qui permet de simuler, analyser et prédire son comportement réel. <a class="topic-link" href="what-is-digital-twin.html">Lire la suite →</a></p>
+        <div class="topics-container">
+          <div class="topic-card">
+            <h3>Qu'est-ce qu'un jumeau numérique</h3>
+            <p>Un <strong>jumeau numérique</strong> est un modèle virtuel d'un objet, processus ou système physique qui permet de simuler, analyser et prédire son comportement réel.</p>
+            <a class="topic-link" href="what-is-digital-twin.html">Lire la suite →</a>
+          </div>
 
-        <h3>Pourquoi utiliser un jumeau numérique</h3>
-        <p>Les jumeaux numériques permettent d'optimiser les processus, de réduire les erreurs et les coûts, et d'améliorer la prise de décisions stratégiques. <a class="topic-link" href="why-use-digital-twin.html">Lire la suite →</a></p>
+          <div class="topic-card">
+            <h3>Pourquoi utiliser un jumeau numérique</h3>
+            <p>Les jumeaux numériques permettent d'optimiser les processus, de réduire les erreurs et les coûts, et d'améliorer la prise de décisions stratégiques.</p>
+            <a class="topic-link" href="why-use-digital-twin.html">Lire la suite →</a>
+          </div>
 
-        <h3>Architecture d'un jumeau numérique</h3>
-        <p>Inclut les structures de données, les capteurs, l'intégration des systèmes et la plateforme qui connecte le jumeau à son homologue physique. <a class="topic-link" href="architecture.html">Lire la suite →</a></p>
+          <div class="topic-card">
+            <h3>Architecture d'un jumeau numérique</h3>
+            <p>Inclut les structures de données, les capteurs, l'intégration des systèmes et la plateforme qui connecte le jumeau à son homologue physique.</p>
+            <a class="topic-link" href="architecture.html">Lire la suite →</a>
+          </div>
 
-        <h3>Certification numérique des jumeaux numériques</h3>
-        <p>Les normes et certifications garantissent la fiabilité, la sécurité et la compatibilité des jumeaux numériques dans différents secteurs. <a class="topic-link" href="data-models.html">Lire la suite →</a></p>
+          <div class="topic-card">
+            <h3>Certification numérique des jumeaux numériques</h3>
+            <p>Les normes et certifications garantissent la fiabilité, la sécurité et la compatibilité des jumeaux numériques dans différents secteurs.</p>
+            <a class="topic-link" href="data-models.html">Lire la suite →</a>
+          </div>
 
-        <h3>Interopérabilité</h3>
-        <p>Essentielle pour que les jumeaux numériques fonctionnent sur différents systèmes et plateformes, garantissant l'intégration et la réutilisation des données. <a class="topic-link" href="interoperability.html">Lire la suite →</a></p>
+          <div class="topic-card">
+            <h3>Interopérabilité</h3>
+            <p>Essentielle pour que les jumeaux numériques fonctionnent sur différents systèmes et plateformes, garantissant l'intégration et la réutilisation des données.</p>
+            <a class="topic-link" href="interoperability.html">Lire la suite →</a>
+          </div>
 
-        <h3>Glossaire des termes</h3>
-        <p>Consultez les définitions des termes les plus importants liés aux jumeaux numériques. <a class="topic-link" href="glossary.html">Lire la suite →</a></p>
+          <div class="topic-card">
+            <h3>Glossaire des termes</h3>
+            <p>Consultez les définitions des termes les plus importants liés aux jumeaux numériques.</p>
+            <a class="topic-link" href="glossary.html">Lire la suite →</a>
+          </div>
 
-        <h3>FAQ</h3>
-        <p>Trouvez des réponses aux questions fréquentes sur les jumeaux numériques et leur mise en œuvre. <a class="topic-link" href="faq.html">Lire la suite →</a></p>
+          <div class="topic-card">
+            <h3>FAQ</h3>
+            <p>Trouvez des réponses aux questions fréquentes sur les jumeaux numériques et leur mise en œuvre.</p>
+            <a class="topic-link" href="faq.html">Lire la suite →</a>
+          </div>
+        </div>
       </div>
 
     </main>
