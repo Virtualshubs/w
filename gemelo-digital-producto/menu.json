@@ -1,10 +1,10 @@
 [
-  { "title": "Inicio", "url": "gemelo-digital-producto.html" },
-  { "title": "Glosario de términos", "url": "glossary.html" },
-  { "title": "Qué es un gemelo digital", "url": "what-is-digital-twin.html" },
-  { "title": "Por qué usar un gemelo digital", "url": "why-use-digital-twin.html" },
+  { "title": "Inicio", "url": "gemelo-digital-producto/index.html" },
+  { "title": "Glosario de términos", "url": "gemelo-digital-producto/glossary.html" },
+  { "title": "Qué es un gemelo digital", "url": "gemelo-digital-producto/what-is-digital-twin.html" },
+  { "title": "Por qué usar un gemelo digital", "url": "gemelo-digital-producto/why-use-digital-twin.html" },
   { "title": "Arquitectura de un gemelo digital", "url": "gemelo-digital-producto/architecture.html" },
-  { "title": "Certificación digital de gemelos digitales", "url": "data-models.html" },
-  { "title": "Interoperabilidad", "url": "interoperability.html" },
-  { "title": "FAQ", "url": "faq.html" }
+  { "title": "Certificación digital de gemelos digitales", "url": "gemelo-digital-producto/data-models.html" },
+  { "title": "Interoperabilidad", "url": "gemelo-digital-producto/interoperability.html" },
+  { "title": "FAQ", "url": "gemelo-digital-producto/faq.html" }
 ]
