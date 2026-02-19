@@ -1,5 +1,5 @@
 async function loadMenu() {
-  const response = await fetch('menu.json');
+  const response = await fetch('/gemelo-digital-producto/menu.json');
   const menuItems = await response.json();
 
   const menuContainer = document.getElementById("menu");
