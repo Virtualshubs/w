@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>3D Twins - Landing para Alex</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Muestra tus productos como nunca antes: interactivos, atractivos y listos para vender. Convierte tus catálogos y prototipos en 3D, sin depender de especialistas internos, y consigue resultados reales para tu empresa.">
+
+  <style>
+    /* Reset básico */
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333; line-height: 1.6; background: #fefefe;}
+    a {text-decoration: none; color: inherit;}
+
+    /* Contenedor general */
+    .container {width: 90%; max-width: 1200px; margin: 0 auto; padding: 2rem 0;}
+
+    /* Hero */
+    header {display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 2rem; background: #fafafa;}
+    header h1 {font-size: 2.5rem; margin-bottom: 1rem; color: #111;}
+    header p {font-size: 1.25rem; margin-bottom: 2rem; color: #555;}
+    .cta-btn {padding: 0.8rem 2rem; background: #00bfa5; color: #fff; border-radius: 5px; font-weight: bold; transition: 0.3s;}
+    .cta-btn:hover {background: #009e88;}
+
+    /* Secciones */
+    section {padding: 4rem 2rem; max-width: 1000px; margin: 0 auto;}
+    section h2 {font-size: 2rem; margin-bottom: 1rem; color: #111; text-align: center;}
+    section p {margin-bottom: 1rem; color: #555; text-align: center;}
+
+    /* Lista de puntos */
+    ul {list-style: none; padding-left: 0; margin-top: 1rem;}
+    li {margin-bottom: 1rem; padding-left: 1.5rem; position: relative;}
+    li::before {content: '•'; position: absolute; left: 0; color: #00bfa5; font-weight: bold;}
+
+    /* Cards beneficios */
+    .benefits {display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-top: 2rem;}
+    .benefit-card {background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center;}
+    .benefit-card h3 {margin-bottom: 1rem; color: #00bfa5;}
+    .benefit-card p {color: #555;}
+
+    /* Casos de uso */
+    .cases {display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-top: 2rem;}
+    .case-card {background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center;}
+    .case-card h4 {margin-bottom: 0.5rem; color: #111;}
+    .case-card p {color: #555;}
+
+    /* CTA final */
+    .final-cta {text-align: center; margin-top: 3rem;}
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header>
+    <h1>Muestra tus productos como nunca antes: interactivos y listos para vender</h1>
+    <p>Convierte tus catálogos y prototipos en 3D sin depender de especialistas internos y consigue resultados reales para tu empresa.</p>
+    <a href="#demo" class="cta-btn">Ver demo interactiva</a>
+  </header>
+
+  <!-- Problema / Dolor -->
+  <section id="problema">
+    <h2>¿Tus productos no comunican todo su potencial?</h2>
+    <p>Si tus clientes no pueden interactuar con tus productos antes de comprar, pierdes oportunidades de venta y tiempo valioso de tu equipo.</p>
+    <ul>
+      <li>Tus fotos planas ya no bastan para destacar frente a la competencia.</li>
+      <li>Pierdes tiempo creando versiones para web, catálogo o ferias.</li>
+      <li>Los clientes no interactúan con tu producto hasta verlo físicamente.</li>
+    </ul>
+  </section>
+
+  <!-- Solución / Propuesta de valor -->
+  <section id="solucion">
+    <h2>Convierte tus productos en experiencias interactivas que venden</h2>
+    <p>Transforma tus productos en gemelos digitales certificados que funcionan en web, app, AR y ferias, de forma rápida y visual, sin depender de especialistas.</p>
+    <ul>
+      <li>Reutiliza un mismo modelo 3D para diferentes canales.</li>
+      <li>Genera experiencias que hacen que tus clientes compren más rápido y con confianza.</li>
+      <li>Ahorra tiempo y recursos mientras aumentas la visibilidad de tu producto.</li>
+    </ul>
+  </section>
+
+  <!-- Beneficios -->
+  <section id="beneficios">
+    <h2>Esto es lo que vas a conseguir con nuestra plataforma</h2>
+    <div class="benefits">
+      <div class="benefit-card">
+        <h3>Eficiencia</h3>
+        <p>Crea y reutiliza tus modelos sin depender de especialistas internos, optimizando tu flujo de trabajo.</p>
+      </div>
+      <div class="benefit-card">
+        <h3>Ventas y conversión</h3>
+        <p>Tus productos se muestran más atractivos y confiables, generando más interacción y compras.</p>
+      </div>
+      <div class="benefit-card">
+        <h3>Innovación visible</h3>
+        <p>Conviértete en referente de innovación dentro de tu equipo y empresa, mostrando resultados tangibles.</p>
+      </div>
+      <div class="benefit-card">
+        <h3>Plug & play</h3>
+        <p>No necesitas conocimientos técnicos en 3D; tu producto brilla sin complicaciones.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Casos de uso / inspiración -->
+  <section id="casos">
+    <h2>Mira cómo empresas como la tuya están innovando</h2>
+    <div class="cases">
+      <div class="case-card">
+        <h4>Muebles</h4>
+        <p>Catálogo interactivo en web y showroom que aumenta la interacción de los clientes.</p>
+      </div>
+      <div class="case-card">
+        <h4>Gafas</h4>
+        <p>Prueba de color virtual para clientes que mejora la confianza de compra online.</p>
+      </div>
+      <div class="case-card">
+        <h4>Bolsos</h4>
+        <p>Modelos 3D reutilizados en ferias y redes sociales, ahorrando tiempo y recursos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section id="demo" class="final-cta">
+    <p>Descubre cómo tu producto puede interactuar y vender más hoy mismo.</p>
+    <a href="#demo" class="cta-btn">Probar demo en 3D</a>
+  </section>
+
+</body>
+</html>
