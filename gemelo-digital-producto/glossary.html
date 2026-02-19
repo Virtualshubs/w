@@ -18,7 +18,7 @@
       height: 100vh;
     }
 
-    /* HEADER */
+  
     header {
       height: 70px;
       background: #1e1e1e;
@@ -48,10 +48,10 @@
     }
     .lang-button.active { background: #0070f3; color: #fff; border-color: #0070f3; }
 
-    /* CONTENEDOR GENERAL */
+   
     .container { display: flex; flex: 1; overflow: hidden; }
 
-    /* SIDEBAR */
+  
     nav {
       width: 260px;
       background: #f9f9f9;
@@ -71,7 +71,7 @@
     nav ul li a:hover { color: #0070f3; }
     .active-link { color: #0070f3; font-weight: 600; }
 
-    /* CONTENIDO */
+
     main {
       flex: 1;
       padding: 40px;
@@ -81,7 +81,7 @@
     h1 { font-size: 2rem; margin-bottom: 20px; }
     p { margin-bottom: 20px; line-height: 1.6; }
 
-    /* Estilo tipo diccionario */
+  
     dl { display: flex; flex-direction: column; gap: 20px; }
     dt {
       font-weight: 700;
@@ -103,7 +103,7 @@
     }
     dt.active + dd { display: block; }
 
-    /* Buscador */
+   
     .search-container {
       margin-bottom: 25px;
     }
@@ -143,7 +143,7 @@
 
     <main id="content">
 
-      <!-- Español -->
+    
       <div class="lang active" data-lang="es">
         <h1>Glosario de Términos asociados a gemelos digitales 3D</h1>
         <p>Este glosario recopila los conceptos clave relacionados con gemelos digitales, activos digitales y certificación de objetos 3D.</p>
@@ -186,7 +186,7 @@
         </dl>
       </div>
 
-      <!-- Inglés -->
+    
       <div class="lang" data-lang="en">
         <h1>Glossary of Terms associated with 3D Digital Twins</h1>
         <p>This glossary compiles key concepts related to digital twins, digital assets, and 3D object certification.</p>
@@ -227,7 +227,7 @@
         </dl>
       </div>
 
-      <!-- Francés -->
+    
       <div class="lang" data-lang="fr">
         <h1>Glossaire des termes associés aux jumeaux numériques 3D</h1>
         <p>Ce glossaire compile les concepts clés liés aux jumeaux numériques, aux actifs numériques et à la certification des objets 3D.</p>
@@ -274,7 +274,7 @@
   <script src="menu.js"></script>
 
 <script>
-  // Cambio de idioma
+
   const langButtons = document.querySelectorAll('.lang-button');
   const langBlocks = document.querySelectorAll('.lang');
 
@@ -288,19 +288,18 @@
     });
   });
 
-  // Expandir / contraer definición con click
   function setupDT(dl) {
     dl.querySelectorAll('dt').forEach(dt => {
       dt.addEventListener('click', () => dt.classList.toggle('active'));
     });
   }
 
-  // Inicializamos todas las secciones
+
   document.querySelectorAll('.lang').forEach(langBlock => {
     setupDT(langBlock.querySelector('dl'));
   });
 
-  // Buscador estilo diccionario
+
   function setupSearch(inputId) {
     const input = document.getElementById(inputId);
 
@@ -315,15 +314,15 @@
 
         if (text.includes(filter)) {
           dt.style.display = '';
-          dd.style.display = 'block'; // expandimos automáticamente
-          dt.classList.add('active'); // marca como expandido
+          dd.style.display = 'block'; 
+          dt.classList.add('active'); 
         } else {
           dt.style.display = 'none';
           dd.style.display = 'none';
           dt.classList.remove('active');
         }
 
-        // Si el input está vacío, revertimos a estado inicial (contraído)
+  
         if (filter === '') {
           dt.style.display = '';
           dd.style.display = 'none';
@@ -333,7 +332,6 @@
     });
   }
 
-  // Activamos el buscador para cada idioma
   setupSearch('search-es');
   setupSearch('search-en');
   setupSearch('search-fr');
