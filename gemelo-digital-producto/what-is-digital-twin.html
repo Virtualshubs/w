@@ -111,6 +111,29 @@
 
     <main id="content">
 
+      <style>
+  .iframe-wrapper {
+    z-index: 20000;
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto 40px auto; /* margen inferior añadido */
+    padding-top: 56.25%; /* relación 16:9 */
+  }
+
+  .iframe-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+</style>
+
+<div class="iframe-wrapper">
+  <iframe src="https://viewer.3dtwins.tech/embeb.html?t=aHR0cHM6Ly92aWV3ZXIuM2R0d2lucy50ZWNoL2VtYmViLmh0bWw%2FbmFtZT1Nb2RlbG8lMjBkZXNkZSUyMFVSTCZjb25maWc9Y2FtYmlhcl9jb2xvciUzQSUyM2U2YmYzMyZxdWFudGl0eT0xJnRva2VuPTFjMGJhNTVhLTZiYjUtNDhhMi1iNDRjLWIyYzFmN2JkNjFlNyZtb2RlbFVybD1odHRwcyUzQSUyRiUyRnZpZXdlci4zZHR3aW5zLnRlY2glMkZib2xzb3BpZWwuZ2xi" allowfullscreen></iframe>
+</div>
     
       <div class="lang active" data-lang="es">
         <h1>Qué es un gemelo digital</h1>
