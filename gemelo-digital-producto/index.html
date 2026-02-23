@@ -166,6 +166,30 @@
 
     <main id="content">
 
+<style>
+  .iframe-wrapper {
+  z-index: 20000;
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding-top: 56.25%; /* relación 16:9 */
+    
+  }
+  .iframe-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+</style>
+
+<div class="iframe-wrapper">
+  <iframe src="https://viewer.3dtwins.tech/embeb.html?t=aHR0cHM6Ly92aWV3ZXIuM2R0d2lucy50ZWNoL2VtYmViLmh0bWw%2FbmFtZT1Nb2RlbG8lMjBkZXNkZSUyMFVSTCZjb25maWc9bWVzaF8wJTNBJTIzZmZmZmZmJnF1YW50aXR5PTEmdG9rZW49MzM4YTM1MzItNTAwYi00OTBkLWI0MDQtZmFjM2NlMjY4YTAzJm1vZGVsVXJsPWh0dHBzJTNBJTJGJTJGdmlld2VyLjNkdHdpbnMudGVjaCUyRmJhbGxvblNob3QuZ2xi" allowfullscreen></iframe>
+</div>
+
       <!-- Español -->
       <div class="lang" data-lang="es">
         <h1>Gemelos Digitales de Producto</h1>
