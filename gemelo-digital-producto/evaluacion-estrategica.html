@@ -409,24 +409,61 @@ p { margin-bottom: 16px; line-height: 1.6; }
 </div>
 <script src="menu.js"></script>
 <script>
+
+
 const langButtons = document.querySelectorAll('.lang-button');
 const langBlocks = document.querySelectorAll('.lang');
+
 langButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     const selected = btn.getAttribute('data-lang');
-    langBlocks.forEach(block => block.classList.toggle('active', block.getAttribute('data-lang') === selected));
-    langButtons.forEach(b => b.classList.toggle('active', b === btn));
+
+    langBlocks.forEach(block => 
+      block.classList.toggle('active', block.getAttribute('data-lang') === selected)
+    );
+
+    langButtons.forEach(b => 
+      b.classList.toggle('active', b === btn)
+    );
   });
 });
 
+
 const filters = document.querySelectorAll('.filter-item');
-filters.forEach(item => item.addEventListener('click', () => item.classList.toggle('active')));
+
+filters.forEach(item => {
+  item.addEventListener('click', () => {
+
+    item.classList.toggle('active');
+
+    const lang = document.querySelector('.lang.active').getAttribute('data-lang');
+    const section = item.closest('.filter-section').querySelector('h2').innerText;
+    const label = item.innerText;
+    const weight = item.dataset.weight;
+    const state = item.classList.contains('active') ? 'selected' : 'deselected';
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'diagnosis_option_click', {
+        language: lang,
+        section: section,
+        option_label: label,
+        weight: weight,
+        state: state
+      });
+    }
+
+  });
+});
+
+
 
 function generateResult() {
+
   const lang = document.querySelector('.lang.active').getAttribute('data-lang');
   const activeItems = document.querySelectorAll('.lang.active .filter-item.active');
 
-  const score = Array.from(activeItems).reduce((acc, el) => acc + parseInt(el.dataset.weight), 0);
+  const score = Array.from(activeItems)
+    .reduce((acc, el) => acc + parseInt(el.dataset.weight), 0);
 
   let profile = '';
   let description = '';
@@ -476,10 +513,33 @@ function generateResult() {
       : "An interoperable architecture connected to ERP, PIM and production systems is recommended.";
   }
 
-  const maxScore = Array.from(document.querySelectorAll('.lang.active .filter-item'))
-  .reduce((acc, el) => acc + parseInt(el.dataset.weight), 0);
 
-const percentile = Math.min(100, Math.round((score / maxScore) * 100));
+  const maxScore = Array.from(document.querySelectorAll('.lang.active .filter-item'))
+    .reduce((acc, el) => acc + parseInt(el.dataset.weight), 0);
+
+  const percentile = maxScore > 0 
+    ? Math.min(100, Math.round((score / maxScore) * 100))
+    : 0;
+
+
+  const selectedOptions = Array.from(activeItems).map(el => ({
+    section: el.closest('.filter-section').querySelector('h2').innerText,
+    label: el.innerText,
+    weight: el.dataset.weight
+  }));
+
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'diagnosis_completed', {
+      language: lang,
+      score: score,
+      percentile: percentile,
+      profile: profile,
+      total_selected: selectedOptions.length,
+      selected_options: JSON.stringify(selectedOptions)
+    });
+  }
+
 
 
   const resultText = `Score: ${score}
@@ -501,6 +561,7 @@ ${description}`;
   resultBox.scrollIntoView({behavior:'smooth'});
 
 
+  
   const emailBody = `Strategic Evaluation Results
 
 Score: ${score}
@@ -513,7 +574,21 @@ Language: ${lang.toUpperCase()}`;
                    : document.getElementById('emailConsult');
 
   emailLink.href = `mailto:info@3dtwins.es?subject=${encodeURIComponent(profile)}&body=${encodeURIComponent(emailBody)}`;
+
+
+  if (typeof gtag === 'function') {
+    emailLink.onclick = function() {
+      gtag('event', 'consultation_click', {
+        language: lang,
+        score: score,
+        percentile: percentile,
+        profile: profile
+      });
+    };
+  }
+
 }
+
 </script>
 
 </body>
