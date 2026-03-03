@@ -27,7 +27,9 @@
       justify-content: space-between;
       padding: 0 30px;
     }
-
+.lang { display: none; }
+.lang.active { display: block; }
+    
     header img { height: 32px; }
 
     .home-button { text-decoration: none; font-weight: 500; color: #fff; transition: color 0.2s; }
@@ -290,6 +292,7 @@
 <script>
 const langButtons = document.querySelectorAll('.lang-button');
 const langBlocks = document.querySelectorAll('.lang');
+
 langButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     const selected = btn.getAttribute('data-lang');
