@@ -126,6 +126,43 @@ p { margin-bottom: 16px; line-height: 1.6; }
 </div>
 </div>
 
+<!-- LAYER 5 -->
+<div class="filter-section">
+<h2>Product Category / Industry</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="2">Furniture</div>
+<div class="filter-item" data-weight="2">Retail physical product</div>
+<div class="filter-item" data-weight="2">Electronics</div>
+<div class="filter-item" data-weight="3">Industrial / Technical product</div>
+<div class="filter-item" data-weight="2">Accessories / Fashion</div>
+<div class="filter-item" data-weight="3">Configurable / Modular product</div>
+</div>
+</div>
+
+<!-- LAYER 6 -->
+<div class="filter-section">
+<h2>Company Size</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="1">0–10 employees</div>
+<div class="filter-item" data-weight="2">10–100 employees</div>
+<div class="filter-item" data-weight="3">100–1,000 employees</div>
+<div class="filter-item" data-weight="4">1,000+ employees</div>
+</div>
+</div>
+
+<!-- LAYER 7 -->
+<div class="filter-section">
+<h2>Business Model</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="3">Manufacturer</div>
+<div class="filter-item" data-weight="2">Brand (outsourced production)</div>
+<div class="filter-item" data-weight="1">Distributor</div>
+<div class="filter-item" data-weight="1">Retailer</div>
+<div class="filter-item" data-weight="2">Direct-to-Consumer (D2C)</div>
+</div>
+</div>
+
+  
 <button class="generate-btn" onclick="generateResult()">Generate Strategic Diagnosis</button>
 <div class="result-box" id="resultBox">
 <h2>Preliminary Diagnosis</h2>
@@ -180,6 +217,39 @@ p { margin-bottom: 16px; line-height: 1.6; }
 <div class="filter-item" data-weight="2">Modelos 3D existentes</div>
 <div class="filter-item" data-weight="3">Configurador básico</div>
 <div class="filter-item" data-weight="4">Estrategia 3D avanzada</div>
+</div>
+</div>
+
+  <div class="filter-section">
+<h2>Tipo de Producto / Nicho</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="2">Mobiliario</div>
+<div class="filter-item" data-weight="2">Retail producto físico</div>
+<div class="filter-item" data-weight="2">Electrónica</div>
+<div class="filter-item" data-weight="3">Producto industrial / técnico</div>
+<div class="filter-item" data-weight="2">Accesorios / Moda</div>
+<div class="filter-item" data-weight="3">Producto configurable / modular</div>
+</div>
+</div>
+
+<div class="filter-section">
+<h2>Tamaño de Empresa</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="1">0–10 empleados</div>
+<div class="filter-item" data-weight="2">10–100 empleados</div>
+<div class="filter-item" data-weight="3">100–1.000 empleados</div>
+<div class="filter-item" data-weight="4">1.000+ empleados</div>
+</div>
+</div>
+
+<div class="filter-section">
+<h2>Modelo de Negocio</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="3">Fabricante</div>
+<div class="filter-item" data-weight="2">Marca con producción externalizada</div>
+<div class="filter-item" data-weight="1">Distribuidor</div>
+<div class="filter-item" data-weight="1">Retailer</div>
+<div class="filter-item" data-weight="2">Directo al consumidor (D2C)</div>
 </div>
 </div>
 
@@ -240,6 +310,41 @@ p { margin-bottom: 16px; line-height: 1.6; }
 </div>
 </div>
 
+
+<div class="filter-section">
+<h2>Type de Produit / Secteur</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="2">Mobilier</div>
+<div class="filter-item" data-weight="2">Produit retail physique</div>
+<div class="filter-item" data-weight="2">Électronique</div>
+<div class="filter-item" data-weight="3">Produit industriel / technique</div>
+<div class="filter-item" data-weight="2">Accessoires / Mode</div>
+<div class="filter-item" data-weight="3">Produit configurable / modulaire</div>
+</div>
+</div>
+
+<div class="filter-section">
+<h2>Taille de l’Entreprise</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="1">0–10 employés</div>
+<div class="filter-item" data-weight="2">10–100 employés</div>
+<div class="filter-item" data-weight="3">100–1 000 employés</div>
+<div class="filter-item" data-weight="4">1 000+ employés</div>
+</div>
+</div>
+
+<div class="filter-section">
+<h2>Modèle Économique</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="3">Fabricant</div>
+<div class="filter-item" data-weight="2">Marque (production externalisée)</div>
+<div class="filter-item" data-weight="1">Distributeur</div>
+<div class="filter-item" data-weight="1">Retailer</div>
+<div class="filter-item" data-weight="2">Direct au consommateur (D2C)</div>
+</div>
+</div>
+  
+
 <button class="generate-btn" onclick="generateResult()">Générer le Diagnostic Stratégique</button>
 <div class="result-box" id="resultBoxFr">
 <h2>Diagnostic Préliminaire</h2>
@@ -268,24 +373,78 @@ filters.forEach(item => item.addEventListener('click', () => item.classList.togg
 function generateResult() {
   const lang = document.querySelector('.lang.active').getAttribute('data-lang');
   const activeItems = document.querySelectorAll('.lang.active .filter-item.active');
+
   const score = Array.from(activeItems).reduce((acc, el) => acc + parseInt(el.dataset.weight), 0);
 
   let profile='';
-  if(score<=5){ profile = lang==='es' ? "Implementación Exploratoria" : lang==='fr' ? "Mise en œuvre exploratoire" : "Exploratory Implementation"; }
-  else if(score<=12){ profile = lang==='es' ? "Estrategia Ligera" : lang==='fr' ? "Stratégie Intermédiaire" : "Intermediate Activation Strategy"; }
-  else if(score<=20){ profile = lang==='es' ? "Uso de Configuradores" : lang==='fr' ? "Stratégie Basée sur le Configurateur" : "Configurator-based Strategy"; }
-  else{ profile = lang==='es' ? "Implementación Enterprise" : lang==='fr' ? "Mise en œuvre Enterprise" : "Enterprise-level Implementation"; }
+  let description='';
 
-  const resultText = `Score: ${score}\nRecommended Strategy: ${profile}`;
-  const resultBox = lang==='es' ? document.getElementById('resultBoxEs') : lang==='fr' ? document.getElementById('resultBoxFr') : document.getElementById('resultBox');
-  const resultP = lang==='es' ? document.getElementById('resultTextEs') : lang==='fr' ? document.getElementById('resultTextFr') : document.getElementById('resultText');
+  if(score <= 10){
+    profile = lang==='es' ? "Perfil Exploratorio"
+            : lang==='fr' ? "Profil Exploratoire"
+            : "Exploratory Profile";
+
+    description = lang==='es'
+      ? "Tu organización puede validar el gemelo digital mediante un piloto estratégico."
+      : lang==='fr'
+      ? "Votre organisation peut valider le jumeau numérique via un pilote stratégique."
+      : "Your organization can validate digital twins through a structured pilot project.";
+  }
+  else if(score <= 20){
+    profile = lang==='es' ? "Estrategia Táctica"
+            : lang==='fr' ? "Stratégie Tactique"
+            : "Tactical Strategy";
+
+    description = lang==='es'
+      ? "La integración de visualización 3D y activaciones específicas puede generar impacto inmediato."
+      : lang==='fr'
+      ? "L’intégration 3D et les activations ciblées peuvent générer un impact rapide."
+      : "3D integration and targeted activations can generate measurable impact.";
+  }
+  else if(score <= 30){
+    profile = lang==='es' ? "Estrategia basada en Configurador"
+            : lang==='fr' ? "Stratégie basée sur le Configurateur"
+            : "Configurator-based Strategy";
+
+    description = lang==='es'
+      ? "Tu modelo permite implementar configuradores avanzados conectados a producción y marketing."
+      : lang==='fr'
+      ? "Votre modèle permet un configurateur avancé connecté à la production."
+      : "Your structure supports advanced configurator integration across systems.";
+  }
+  else{
+    profile = lang==='es' ? "Arquitectura Enterprise"
+            : lang==='fr' ? "Architecture Enterprise"
+            : "Enterprise Architecture";
+
+    description = lang==='es'
+      ? "Se recomienda una arquitectura interoperable conectada a ERP, PIM y sistemas de producción."
+      : lang==='fr'
+      ? "Une architecture interopérable connectée aux systèmes ERP et production est recommandée."
+      : "An interoperable architecture connected to ERP, PIM and production systems is recommended.";
+  }
+
+  const percentile = Math.min(100, Math.round((score/40)*100));
+
+  const resultText = `Score: ${score}\nPercentile readiness: ${percentile}%\nProfile: ${profile}\n\n${description}`;
+
+  const resultBox = lang==='es' ? document.getElementById('resultBoxEs')
+                   : lang==='fr' ? document.getElementById('resultBoxFr')
+                   : document.getElementById('resultBox');
+
+  const resultP = lang==='es' ? document.getElementById('resultTextEs')
+                 : lang==='fr' ? document.getElementById('resultTextFr')
+                 : document.getElementById('resultText');
 
   resultP.innerText = resultText;
   resultBox.style.display = 'block';
   resultBox.scrollIntoView({behavior:'smooth'});
 
-  const emailLink = lang==='es' ? document.getElementById('emailConsultEs') : lang==='fr' ? document.getElementById('emailConsultFr') : document.getElementById('emailConsult');
-  emailLink.href = `mailto:info@3dtwins.es?subject=${encodeURIComponent(lang==='es'?'Solicitud de Consultoría Gemelo Digital':lang==='fr'?'Demande de Consultation Jumeau Numérique':'Digital Twin Consultation Request')}&body=${encodeURIComponent(resultText)}`;
+  const emailLink = lang==='es' ? document.getElementById('emailConsultEs')
+                   : lang==='fr' ? document.getElementById('emailConsultFr')
+                   : document.getElementById('emailConsult');
+
+  emailLink.href = `mailto:info@3dtwins.es?subject=${encodeURIComponent(profile)}&body=${encodeURIComponent(resultText)}`;
 }
 </script>
 
