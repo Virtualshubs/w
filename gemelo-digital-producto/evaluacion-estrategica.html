@@ -78,7 +78,7 @@ p { margin-bottom: 16px; line-height: 1.6; }
 <h1>Strategic Evaluation of Digital Twin Implementation</h1>
 <p>This structured evaluation allows you to refine key parameters and obtain a preliminary recommendation based on the 3D Activation Framework.</p>
 
-<!-- LAYER 1 -->
+
 <div class="filter-section">
 <h2>Strategic Objectives</h2>
 <div class="filter-grid">
@@ -91,7 +91,7 @@ p { margin-bottom: 16px; line-height: 1.6; }
 </div>
 </div>
 
-<!-- LAYER 2 -->
+
 <div class="filter-section">
 <h2>Internal Capabilities</h2>
 <div class="filter-grid">
@@ -103,7 +103,6 @@ p { margin-bottom: 16px; line-height: 1.6; }
 </div>
 </div>
 
-<!-- LAYER 3 -->
 <div class="filter-section">
 <h2>Secondary Goals / Benefits</h2>
 <div class="filter-grid">
@@ -115,7 +114,7 @@ p { margin-bottom: 16px; line-height: 1.6; }
 </div>
 </div>
 
-<!-- LAYER 4 -->
+
 <div class="filter-section">
 <h2>Digital Maturity Level</h2>
 <div class="filter-grid">
@@ -126,7 +125,7 @@ p { margin-bottom: 16px; line-height: 1.6; }
 </div>
 </div>
 
-<!-- LAYER 5 -->
+
 <div class="filter-section">
 <h2>Product Category / Industry</h2>
 <div class="filter-grid">
@@ -139,7 +138,7 @@ p { margin-bottom: 16px; line-height: 1.6; }
 </div>
 </div>
 
-<!-- LAYER 6 -->
+
 <div class="filter-section">
 <h2>Company Size</h2>
 <div class="filter-grid">
@@ -150,7 +149,7 @@ p { margin-bottom: 16px; line-height: 1.6; }
 </div>
 </div>
 
-<!-- LAYER 7 -->
+
 <div class="filter-section">
 <h2>Business Model</h2>
 <div class="filter-grid">
@@ -162,6 +161,22 @@ p { margin-bottom: 16px; line-height: 1.6; }
 </div>
 </div>
 
+
+<div class="filter-section">
+<h2>Strategic Sector</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="3">Industrial Manufacturing</div>
+<div class="filter-item" data-weight="2">Retail / Consumer Goods</div>
+<div class="filter-item" data-weight="3">Healthcare / Medical</div>
+<div class="filter-item" data-weight="2">Research / R&D</div>
+<div class="filter-item" data-weight="2">Education / Academic</div>
+<div class="filter-item" data-weight="2">Marketing Agency</div>
+<div class="filter-item" data-weight="2">Strategic Consultancy</div>
+<div class="filter-item" data-weight="3">Technology / SaaS Company</div>
+<div class="filter-item" data-weight="3">3D Studio / Digital Fabrication</div>
+<div class="filter-item" data-weight="3">Product Design Studio</div>
+</div>
+</div>  
   
 <button class="generate-btn" onclick="generateResult()">Generate Strategic Diagnosis</button>
 <div class="result-box" id="resultBox">
@@ -252,7 +267,23 @@ p { margin-bottom: 16px; line-height: 1.6; }
 <div class="filter-item" data-weight="2">Directo al consumidor (b2c)</div>
 </div>
 </div>
-
+  
+<div class="filter-section">
+<h2>Sector Estratégico</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="3">Fabricación industrial</div>
+<div class="filter-item" data-weight="2">Retail / Bienes de consumo</div>
+<div class="filter-item" data-weight="3">Salud / Medicina</div>
+<div class="filter-item" data-weight="2">Investigación / I+D</div>
+<div class="filter-item" data-weight="2">Educación / Docencia</div>
+<div class="filter-item" data-weight="2">Agencia de marketing</div>
+<div class="filter-item" data-weight="2">Consultoría estratégica</div>
+<div class="filter-item" data-weight="3">Empresa tecnológica / SaaS</div>
+<div class="filter-item" data-weight="3">Estudio 3D / Fabricación digital</div>
+<div class="filter-item" data-weight="3">Estudio de diseño de producto</div>
+</div>
+</div>
+  
 <button class="generate-btn" onclick="generateResult()">Generar Diagnóstico Estratégico</button>
 <div class="result-box" id="resultBoxEs">
 <h2>Diagnóstico Preliminar</h2>
@@ -344,7 +375,22 @@ p { margin-bottom: 16px; line-height: 1.6; }
 </div>
 </div>
   
-
+<div class="filter-section">
+<h2>Secteur Stratégique</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="3">Fabrication industrielle</div>
+<div class="filter-item" data-weight="2">Retail / Biens de consommation</div>
+<div class="filter-item" data-weight="3">Santé / Médical</div>
+<div class="filter-item" data-weight="2">Recherche / R&D</div>
+<div class="filter-item" data-weight="2">Éducation / Académique</div>
+<div class="filter-item" data-weight="2">Agence marketing</div>
+<div class="filter-item" data-weight="2">Consulting stratégique</div>
+<div class="filter-item" data-weight="3">Entreprise technologique / SaaS</div>
+<div class="filter-item" data-weight="3">Studio 3D / Fabrication digitale</div>
+<div class="filter-item" data-weight="3">Studio de design produit</div>
+</div>
+</div> 
+  
 <button class="generate-btn" onclick="generateResult()">Générer le Diagnostic Stratégique</button>
 <div class="result-box" id="resultBoxFr">
 <h2>Diagnostic Préliminaire</h2>
@@ -424,9 +470,12 @@ function generateResult() {
       : "An interoperable architecture connected to ERP, PIM and production systems is recommended.";
   }
 
-  const percentile = Math.min(100, Math.round((score / 40) * 100));
+  const maxScore = Array.from(document.querySelectorAll('.lang.active .filter-item'))
+  .reduce((acc, el) => acc + parseInt(el.dataset.weight), 0);
 
-  // TEXTO COMPLETO QUE SE MUESTRA EN PANTALLA
+const percentile = Math.min(100, Math.round((score / maxScore) * 100));
+
+
   const resultText = `Score: ${score}
 Percentile readiness: ${percentile}%
 Profile: ${profile}
@@ -445,7 +494,7 @@ ${description}`;
   resultBox.style.display = 'block';
   resultBox.scrollIntoView({behavior:'smooth'});
 
-  // TEXTO REDUCIDO SOLO PARA EMAIL (SIN DESCRIPCIÓN)
+
   const emailBody = `Strategic Evaluation Results
 
 Score: ${score}
