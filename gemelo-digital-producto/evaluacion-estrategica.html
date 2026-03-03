@@ -1,57 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Evaluación Estratégica del Gemelo Digital | 3D Twins</title>
-  <meta name="description" content="Evaluación estratégica de la implementación de gemelos digitales de producto. Refina los parámetros clave y obtén una recomendación estructural basada en el Framework de Activación 3D.">
-  <link rel="icon" href="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" type="image/x-icon" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluación Estratégica del Gemelo Digital | 3D Twins</title>
+<link rel="icon" href="https://viewer.3dtwins.tech/puntero_3dtwinsStar.png" type="image/x-icon" />
 
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; color: #1a1a1a; display: flex; flex-direction: column; height: 100vh; }
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; color: #1a1a1a; display: flex; flex-direction: column; height: 100vh; }
 
-    header { height: 70px; background: #1e1e1e; border-bottom: 1px solid #eee; display: flex; align-items: center; justify-content: space-between; padding: 0 30px; }
-    header img { height: 32px; }
-    .home-button { text-decoration: none; font-weight: 500; color: #fff; transition: color 0.2s; }
-    .home-button:hover { color: #0070f3; }
-    .lang-switch { display: flex; gap: 10px; }
-    .lang-button { cursor: pointer; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px; background: #f9f9f9; transition: all 0.2s; }
-    .lang-button.active { background: #0070f3; color: #fff; border-color: #0070f3; }
+header { height: 70px; background: #1e1e1e; border-bottom: 1px solid #eee; display: flex; align-items: center; justify-content: space-between; padding: 0 30px; }
+header img { height: 32px; }
+.home-button { text-decoration: none; font-weight: 500; color: #fff; transition: color 0.2s; }
+.home-button:hover { color: #0070f3; }
+.lang-switch { display: flex; gap: 10px; }
+.lang-button { cursor: pointer; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px; background: #f9f9f9; transition: all 0.2s; }
+.lang-button.active { background: #0070f3; color: #fff; border-color: #0070f3; }
 
-    .lang { display: none; }
-    .lang.active { display: block; }
+.lang { display: none; }
+.lang.active { display: block; }
 
-    .container { display: flex; flex: 1; overflow: hidden; }
-    nav { width: 260px; background: #f9f9f9; padding: 25px; box-shadow: 2px 0 5px rgba(0,0,0,0.05); overflow-y: auto; }
-    nav h2 { font-size: 1.4rem; margin-bottom: 20px; color: #111; }
-    nav ul { list-style: none; }
-    nav ul li { margin: 12px 0; }
-    nav ul li a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.2s; }
-    nav ul li a:hover { color: #0070f3; }
-    .active-link { color: #0070f3; font-weight: 600; }
+.container { display: flex; flex: 1; overflow: hidden; }
+nav { width: 260px; background: #f9f9f9; padding: 25px; box-shadow: 2px 0 5px rgba(0,0,0,0.05); overflow-y: auto; }
+nav h2 { font-size: 1.4rem; margin-bottom: 20px; color: #111; }
+nav ul { list-style: none; }
+nav ul li { margin: 12px 0; }
+nav ul li a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.2s; }
+nav ul li a:hover { color: #0070f3; }
+.active-link { color: #0070f3; font-weight: 600; }
 
-    main { flex: 1; padding: 40px; overflow-y: auto; background: #fff; position: relative; }
-    main::before { content: ""; background: url('https://viewer.3dtwins.tech/puntero_3dtwinsStar.png') no-repeat center; opacity: 0.05; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; pointer-events: none; }
-    main > * { position: relative; z-index: 1; }
+main { flex: 1; padding: 40px; overflow-y: auto; background: #fff; position: relative; }
+main::before { content: ""; background: url('https://viewer.3dtwins.tech/puntero_3dtwinsStar.png') no-repeat center; opacity: 0.05; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; pointer-events: none; }
+main > * { position: relative; z-index: 1; }
 
-    h1 { font-size: 2rem; margin-bottom: 20px; }
-    h2 { font-size: 1.4rem; margin-top: 30px; margin-bottom: 20px; }
-    p { margin-bottom: 16px; line-height: 1.6; }
+h1 { font-size: 2rem; margin-bottom: 20px; }
+h2 { font-size: 1.4rem; margin-top: 30px; margin-bottom: 20px; }
+p { margin-bottom: 16px; line-height: 1.6; }
 
-    .filter-section { margin-bottom: 40px; }
-    .filter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
-    .filter-item { background: #f4f4f4; padding: 12px 16px; border-radius: 8px; cursor: pointer; border: 1px solid #e5e5e5; transition: all 0.2s; font-size: 0.95rem; }
-    .filter-item:hover { border-color: #0070f3; }
-    .filter-item.active { background: #0070f3; color: #fff; border-color: #0070f3; }
+.filter-section { margin-bottom: 40px; }
+.filter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.filter-item { background: #f4f4f4; padding: 12px 16px; border-radius: 8px; cursor: pointer; border: 1px solid #e5e5e5; transition: all 0.2s; font-size: 0.95rem; }
+.filter-item:hover { border-color: #0070f3; }
+.filter-item.active { background: #0070f3; color: #fff; border-color: #0070f3; }
 
-    .generate-btn { margin-top: 30px; padding: 14px 22px; background: #111; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem; transition: background 0.2s; }
-    .generate-btn:hover { background: #0070f3; }
+.generate-btn { margin-top: 30px; padding: 14px 22px; background: #111; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem; transition: background 0.2s; }
+.generate-btn:hover { background: #0070f3; }
 
-    .result-box { margin-top: 50px; padding: 30px; background: #f9f9f9; border-radius: 12px; border: 1px solid #e5e5e5; display: none; }
-    .cta-consult { margin-top: 20px; display: inline-block; padding: 12px 18px; background: #0070f3; color: #fff; text-decoration: none; border-radius: 6px; font-size: 0.9rem; }
-    .cta-consult:hover { background: #005ad1; }
-  </style>
+.result-box { margin-top: 50px; padding: 30px; background: #f9f9f9; border-radius: 12px; border: 1px solid #e5e5e5; display: none; }
+.cta-consult { margin-top: 20px; display: inline-block; padding: 12px 18px; background: #0070f3; color: #fff; text-decoration: none; border-radius: 6px; font-size: 0.9rem; }
+.cta-consult:hover { background: #005ad1; }
+</style>
 </head>
 
 <body>
@@ -73,97 +72,185 @@
 </nav>
 
 <main>
-  <!-- English -->
-  <div class="lang active" data-lang="en">
-    <h1>Strategic Evaluation of Digital Twin Implementation</h1>
-    <p>This structured evaluation allows you to refine key parameters and obtain a preliminary recommendation based on the 3D Activation Framework.</p>
 
-    <!-- LAYER 1 -->
-    <div class="filter-section">
-      <h2>Strategic Objectives</h2>
-      <div class="filter-grid">
-        <div class="filter-item" data-weight="2">Increase ecommerce conversion</div>
-        <div class="filter-item" data-weight="1">Event differentiation</div>
-        <div class="filter-item" data-weight="2">Omnichannel activation</div>
-        <div class="filter-item" data-weight="1">Commercial cost reduction</div>
-        <div class="filter-item" data-weight="1">Certification / Traceability</div>
-        <div class="filter-item" data-weight="2">Brand innovation</div>
-      </div>
-    </div>
+<!-- ================= ENGLISH ================= -->
+<div class="lang active" data-lang="en">
+<h1>Strategic Evaluation of Digital Twin Implementation</h1>
+<p>This structured evaluation allows you to refine key parameters and obtain a preliminary recommendation based on the 3D Activation Framework.</p>
 
-    <!-- LAYER 2 -->
-    <div class="filter-section">
-      <h2>Internal Capabilities</h2>
-      <div class="filter-grid">
-        <div class="filter-item" data-weight="2">Have product team</div>
-        <div class="filter-item" data-weight="2">Have marketing team</div>
-        <div class="filter-item" data-weight="2">Control over product & production</div>
-        <div class="filter-item" data-weight="2">Can personalize product</div>
-        <div class="filter-item" data-weight="1">Integrate 3D design into processes</div>
-      </div>
-    </div>
+<!-- LAYER 1 -->
+<div class="filter-section">
+<h2>Strategic Objectives</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="2">Increase ecommerce conversion</div>
+<div class="filter-item" data-weight="1">Event differentiation</div>
+<div class="filter-item" data-weight="2">Omnichannel activation</div>
+<div class="filter-item" data-weight="1">Commercial cost reduction</div>
+<div class="filter-item" data-weight="1">Certification / Traceability</div>
+<div class="filter-item" data-weight="2">Brand innovation</div>
+</div>
+</div>
 
-    <!-- LAYER 3 -->
-    <div class="filter-section">
-      <h2>Secondary Goals</h2>
-      <div class="filter-grid">
-        <div class="filter-item" data-weight="1">Improve catalog visualization</div>
-        <div class="filter-item" data-weight="1">Optimize component exchange</div>
-        <div class="filter-item" data-weight="1">Enhance customer experience</div>
-        <div class="filter-item" data-weight="1">Increase product engagement</div>
-        <div class="filter-item" data-weight="1">Support certification & traceability</div>
-      </div>
-    </div>
+<!-- LAYER 2 -->
+<div class="filter-section">
+<h2>Internal Capabilities</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="2">Have product team</div>
+<div class="filter-item" data-weight="2">Have marketing team</div>
+<div class="filter-item" data-weight="2">Control over product & production</div>
+<div class="filter-item" data-weight="2">Can personalize product</div>
+<div class="filter-item" data-weight="1">Integrate 3D design into processes</div>
+</div>
+</div>
 
-    <!-- LAYER 4 -->
-    <div class="filter-section">
-      <h2>Digital Maturity Level</h2>
-      <div class="filter-grid">
-        <div class="filter-item" data-weight="1">No 3D experience</div>
-        <div class="filter-item" data-weight="2">Existing 3D models</div>
-        <div class="filter-item" data-weight="3">Basic configurator</div>
-        <div class="filter-item" data-weight="4">Advanced 3D strategy</div>
-      </div>
-    </div>
+<!-- LAYER 3 -->
+<div class="filter-section">
+<h2>Secondary Goals / Benefits</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="1">Improve catalog visualization</div>
+<div class="filter-item" data-weight="1">Optimize component exchange</div>
+<div class="filter-item" data-weight="1">Enhance customer experience</div>
+<div class="filter-item" data-weight="1">Increase product engagement</div>
+<div class="filter-item" data-weight="1">Support certification & traceability</div>
+</div>
+</div>
 
-    <button class="generate-btn" onclick="generateResult()">Generate Strategic Diagnosis</button>
-    <div class="result-box" id="resultBox">
-      <h2>Preliminary Diagnosis</h2>
-      <p id="resultText"></p>
-      <a href="#" id="emailConsult" class="cta-consult">Request Strategic Consultation</a>
-    </div>
-  </div>
+<!-- LAYER 4 -->
+<div class="filter-section">
+<h2>Digital Maturity Level</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="1">No 3D experience</div>
+<div class="filter-item" data-weight="2">Existing 3D models</div>
+<div class="filter-item" data-weight="3">Basic configurator</div>
+<div class="filter-item" data-weight="4">Advanced 3D strategy</div>
+</div>
+</div>
 
-  <!-- Spanish -->
-  <div class="lang" data-lang="es">
-    <!-- similar content in Spanish ... -->
-    <h1>Evaluación Estratégica de la Implementación del Gemelo Digital</h1>
-    <p>Esta evaluación estructurada permite refinar los parámetros clave y obtener una recomendación preliminar basada en el Framework de Activación 3D.</p>
-    <!-- filters como antes... -->
-    <button class="generate-btn" onclick="generateResult()">Generar Diagnóstico Estratégico</button>
-    <div class="result-box" id="resultBoxEs">
-      <h2>Diagnóstico Preliminar</h2>
-      <p id="resultTextEs"></p>
-      <a href="#" id="emailConsultEs" class="cta-consult">Solicitar Consultoría Estratégica</a>
-    </div>
-  </div>
+<button class="generate-btn" onclick="generateResult()">Generate Strategic Diagnosis</button>
+<div class="result-box" id="resultBox">
+<h2>Preliminary Diagnosis</h2>
+<p id="resultText"></p>
+<a href="#" id="emailConsult" class="cta-consult">Request Strategic Consultation</a>
+</div>
+</div>
 
-  <!-- French -->
-  <div class="lang" data-lang="fr">
-    <h1>Évaluation Stratégique de la Mise en Œuvre du Jumeau Numérique</h1>
-    <p>Cette évaluation structurée vous permet d’affiner les paramètres clés et d’obtenir une recommandation préliminaire basée sur le Framework d’Activation 3D.</p>
-    <!-- filters adaptados a francés -->
-    <button class="generate-btn" onclick="generateResult()">Générer le Diagnostic Stratégique</button>
-    <div class="result-box" id="resultBoxFr">
-      <h2>Diagnostic Préliminaire</h2>
-      <p id="resultTextFr"></p>
-      <a href="#" id="emailConsultFr" class="cta-consult">Demander une Consultation Stratégique</a>
-    </div>
-  </div>
+<!-- ================= SPANISH ================= -->
+<div class="lang" data-lang="es">
+<h1>Evaluación Estratégica de la Implementación del Gemelo Digital</h1>
+<p>Esta evaluación estructurada permite refinar los parámetros clave y obtener una recomendación preliminar basada en el Framework de Activación 3D.</p>
+
+<div class="filter-section">
+<h2>Objetivos Estratégicos</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="2">Incrementar conversión ecommerce</div>
+<div class="filter-item" data-weight="1">Diferenciación en eventos</div>
+<div class="filter-item" data-weight="2">Activación omnicanal</div>
+<div class="filter-item" data-weight="1">Reducción de costes comerciales</div>
+<div class="filter-item" data-weight="1">Certificación / Trazabilidad</div>
+<div class="filter-item" data-weight="2">Innovación de marca</div>
+</div>
+</div>
+
+<div class="filter-section">
+<h2>Capacidades Internas</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="2">Tengo equipo de producto</div>
+<div class="filter-item" data-weight="2">Tengo equipo de marketing</div>
+<div class="filter-item" data-weight="2">Control sobre producto y fabricación</div>
+<div class="filter-item" data-weight="2">Puedo personalizar productos</div>
+<div class="filter-item" data-weight="1">Integrar diseño 3D en procesos</div>
+</div>
+</div>
+
+<div class="filter-section">
+<h2>Objetivos Secundarios / Beneficios</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="1">Mejorar visualización del catálogo</div>
+<div class="filter-item" data-weight="1">Optimizar intercambio de componentes</div>
+<div class="filter-item" data-weight="1">Mejorar experiencia del cliente</div>
+<div class="filter-item" data-weight="1">Aumentar engagement de producto</div>
+<div class="filter-item" data-weight="1">Apoyar certificación y trazabilidad</div>
+</div>
+</div>
+
+<div class="filter-section">
+<h2>Nivel de Madurez Digital</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="1">Sin experiencia 3D</div>
+<div class="filter-item" data-weight="2">Modelos 3D existentes</div>
+<div class="filter-item" data-weight="3">Configurador básico</div>
+<div class="filter-item" data-weight="4">Estrategia 3D avanzada</div>
+</div>
+</div>
+
+<button class="generate-btn" onclick="generateResult()">Generar Diagnóstico Estratégico</button>
+<div class="result-box" id="resultBoxEs">
+<h2>Diagnóstico Preliminar</h2>
+<p id="resultTextEs"></p>
+<a href="#" id="emailConsultEs" class="cta-consult">Solicitar Consultoría Estratégica</a>
+</div>
+</div>
+
+<!-- ================= FRENCH ================= -->
+<div class="lang" data-lang="fr">
+<h1>Évaluation Stratégique de la Mise en Œuvre du Jumeau Numérique</h1>
+<p>Cette évaluation structurée vous permet d’affiner les paramètres clés et d’obtenir une recommandation préliminaire basée sur le Framework d’Activation 3D.</p>
+
+<div class="filter-section">
+<h2>Objectifs Stratégiques</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="2">Augmenter la conversion ecommerce</div>
+<div class="filter-item" data-weight="1">Différenciation lors d’événements</div>
+<div class="filter-item" data-weight="2">Activation omnicanal</div>
+<div class="filter-item" data-weight="1">Réduction des coûts commerciaux</div>
+<div class="filter-item" data-weight="1">Certification / Traçabilité</div>
+<div class="filter-item" data-weight="2">Innovation de marque</div>
+</div>
+</div>
+
+<div class="filter-section">
+<h2>Capacités Internes</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="2">Équipe produit en place</div>
+<div class="filter-item" data-weight="2">Équipe marketing en place</div>
+<div class="filter-item" data-weight="2">Contrôle sur produit & production</div>
+<div class="filter-item" data-weight="2">Peut personnaliser le produit</div>
+<div class="filter-item" data-weight="1">Intégrer le design 3D dans les processus</div>
+</div>
+</div>
+
+<div class="filter-section">
+<h2>Objectifs Secondaires / Bénéfices</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="1">Améliorer la visualisation du catalogue</div>
+<div class="filter-item" data-weight="1">Optimiser l’échange de composants</div>
+<div class="filter-item" data-weight="1">Améliorer l’expérience client</div>
+<div class="filter-item" data-weight="1">Augmenter l’engagement produit</div>
+<div class="filter-item" data-weight="1">Soutenir la certification & traçabilité</div>
+</div>
+</div>
+
+<div class="filter-section">
+<h2>Niveau de Maturité Digitale</h2>
+<div class="filter-grid">
+<div class="filter-item" data-weight="1">Pas d’expérience 3D</div>
+<div class="filter-item" data-weight="2">Modèles 3D existants</div>
+<div class="filter-item" data-weight="3">Configurateur de base</div>
+<div class="filter-item" data-weight="4">Stratégie 3D avancée</div>
+</div>
+</div>
+
+<button class="generate-btn" onclick="generateResult()">Générer le Diagnostic Stratégique</button>
+<div class="result-box" id="resultBoxFr">
+<h2>Diagnostic Préliminaire</h2>
+<p id="resultTextFr"></p>
+<a href="#" id="emailConsultFr" class="cta-consult">Demander une Consultation Stratégique</a>
+</div>
+</div>
+
 </main>
 </div>
 
-<script src="menu.js"></script>
 <script>
 const langButtons = document.querySelectorAll('.lang-button');
 const langBlocks = document.querySelectorAll('.lang');
@@ -175,7 +262,6 @@ langButtons.forEach(btn => {
   });
 });
 
-// Filter selection logic
 const filters = document.querySelectorAll('.filter-item');
 filters.forEach(item => item.addEventListener('click', () => item.classList.toggle('active')));
 
@@ -198,21 +284,9 @@ function generateResult() {
   resultBox.style.display = 'block';
   resultBox.scrollIntoView({behavior:'smooth'});
 
-  // Email link
   const emailLink = lang==='es' ? document.getElementById('emailConsultEs') : lang==='fr' ? document.getElementById('emailConsultFr') : document.getElementById('emailConsult');
   emailLink.href = `mailto:info@3dtwins.es?subject=${encodeURIComponent(lang==='es'?'Solicitud de Consultoría Gemelo Digital':lang==='fr'?'Demande de Consultation Jumeau Numérique':'Digital Twin Consultation Request')}&body=${encodeURIComponent(resultText)}`;
-
-  // GA tracking
-  gtag('event','generate_diagnosis',{score:score,lang:lang});
 }
-</script>
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config','G-N54X2MZQZG');
 </script>
 
 </body>
