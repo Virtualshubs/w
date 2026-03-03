@@ -158,7 +158,7 @@ p { margin-bottom: 16px; line-height: 1.6; }
 <div class="filter-item" data-weight="2">Brand (outsourced production)</div>
 <div class="filter-item" data-weight="1">Distributor</div>
 <div class="filter-item" data-weight="1">Retailer</div>
-<div class="filter-item" data-weight="2">Direct-to-Consumer (D2C)</div>
+<div class="filter-item" data-weight="2">Direct-to-Consumer (b2c)</div>
 </div>
 </div>
 
@@ -249,7 +249,7 @@ p { margin-bottom: 16px; line-height: 1.6; }
 <div class="filter-item" data-weight="2">Marca con producción externalizada</div>
 <div class="filter-item" data-weight="1">Distribuidor</div>
 <div class="filter-item" data-weight="1">Retailer</div>
-<div class="filter-item" data-weight="2">Directo al consumidor (D2C)</div>
+<div class="filter-item" data-weight="2">Directo al consumidor (b2c)</div>
 </div>
 </div>
 
@@ -340,7 +340,7 @@ p { margin-bottom: 16px; line-height: 1.6; }
 <div class="filter-item" data-weight="2">Marque (production externalisée)</div>
 <div class="filter-item" data-weight="1">Distributeur</div>
 <div class="filter-item" data-weight="1">Retailer</div>
-<div class="filter-item" data-weight="2">Direct au consommateur (D2C)</div>
+<div class="filter-item" data-weight="2">Direct au consommateur (b2c)</div>
 </div>
 </div>
   
@@ -376,8 +376,8 @@ function generateResult() {
 
   const score = Array.from(activeItems).reduce((acc, el) => acc + parseInt(el.dataset.weight), 0);
 
-  let profile='';
-  let description='';
+  let profile = '';
+  let description = '';
 
   if(score <= 10){
     profile = lang==='es' ? "Perfil Exploratorio"
@@ -424,9 +424,14 @@ function generateResult() {
       : "An interoperable architecture connected to ERP, PIM and production systems is recommended.";
   }
 
-  const percentile = Math.min(100, Math.round((score/40)*100));
+  const percentile = Math.min(100, Math.round((score / 40) * 100));
 
-  const resultText = `Score: ${score}\nPercentile readiness: ${percentile}%\nProfile: ${profile}\n\n${description}`;
+  // TEXTO COMPLETO QUE SE MUESTRA EN PANTALLA
+  const resultText = `Score: ${score}
+Percentile readiness: ${percentile}%
+Profile: ${profile}
+
+${description}`;
 
   const resultBox = lang==='es' ? document.getElementById('resultBoxEs')
                    : lang==='fr' ? document.getElementById('resultBoxFr')
@@ -440,11 +445,19 @@ function generateResult() {
   resultBox.style.display = 'block';
   resultBox.scrollIntoView({behavior:'smooth'});
 
+  // TEXTO REDUCIDO SOLO PARA EMAIL (SIN DESCRIPCIÓN)
+  const emailBody = `Strategic Evaluation Results
+
+Score: ${score}
+Percentile readiness: ${percentile}%
+Profile: ${profile}
+Language: ${lang.toUpperCase()}`;
+
   const emailLink = lang==='es' ? document.getElementById('emailConsultEs')
                    : lang==='fr' ? document.getElementById('emailConsultFr')
                    : document.getElementById('emailConsult');
 
-  emailLink.href = `mailto:info@3dtwins.es?subject=${encodeURIComponent(profile)}&body=${encodeURIComponent(resultText)}`;
+  emailLink.href = `mailto:info@3dtwins.es?subject=${encodeURIComponent(profile)}&body=${encodeURIComponent(emailBody)}`;
 }
 </script>
 
