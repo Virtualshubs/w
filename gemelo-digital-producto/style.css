@@ -1,1 +1,132 @@
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      height: 70px;
+      background: #1e1e1e;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+    }
+
+    header img { height: 32px; }
+
+    .home-button { text-decoration: none; font-weight: 500; color: #fff; transition: color 0.2s; }
+    .home-button:hover { color: #0070f3; }
+
+    .lang-switch { display: flex; gap: 10px; }
+    .lang-button {
+      cursor: pointer;
+      padding: 4px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #f9f9f9;
+      transition: all 0.2s;
+    }
+    .lang-button.active { background: #0070f3; color: #fff; border-color: #0070f3; }
+
+    /* CONTENEDOR GENERAL */
+    .container { display: flex; flex: 1; overflow: hidden; }
+
+    /* SIDEBAR */
+    nav {
+      width: 260px;
+      background: #f9f9f9;
+      padding: 25px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+      overflow-y: auto;
+    }
+
+    nav h2 { font-size: 1.4rem; margin-bottom: 20px; color: #111; }
+    nav ul { list-style: none; }
+    nav ul li { margin: 12px 0; }
+    nav ul li a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.2s; }
+    nav ul li a:hover { color: #0070f3; }
+    .active-link { color: #0070f3; font-weight: 600; }
+
+    /* CONTENIDO */
+    main {
+      flex: 1;
+      padding: 40px;
+      overflow-y: auto;
+      background: #fff;
+      position: relative;
+    }
+
+    main::before {
+      content: "";
+      background: url('https://viewer.3dtwins.tech/puntero_3dtwinsStar.png') no-repeat center;
+      opacity: 0.05;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    main > * { position: relative; z-index: 1; }
+
+    h1 { font-size: 2rem; margin-bottom: 20px; }
+    h2 { font-size: 1.4rem; margin-top: 30px; margin-bottom: 20px; }
+    h3 { font-size: 1.1rem; margin-bottom: 10px; }
+    p { margin-bottom: 16px; line-height: 1.6; }
+
+    .lang { display: none; }
+    .lang.active { display: block; }
+
+    .topic-link { color: #0070f3; text-decoration: none; }
+    .topic-link:hover { text-decoration: underline; }
+
+    /* NUEVO DISEÑO DE CARDS */
+    .topics-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .topic-card {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .topic-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+    }
+
+    .topic-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: #111;
+    }
+
+    .topic-card p {
+      flex: 1;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    .topic-card a {
+      margin-top: 10px;
+      font-weight: 500;
+      color: #0070f3;
+      text-decoration: none;
+      align-self: flex-start;
+    }
+    .topic-card a:hover { text-decoration: underline; }
 
