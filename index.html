@@ -958,129 +958,82 @@ For custom developments and tailored certifications, request a meeting with our 
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
-
-/* SOLO enviamos eventos si el usuario aceptó cookies */
-
 function trackEvent(name, params = {}) {
-
   if(localStorage.getItem("cookies") !== "accepted") return;
-
   gtag("event", name, params);
-
 }
 
-/* HERO VIEW */
-
 window.addEventListener("load", () => {
-
   const hero = document.querySelector(".hero");
 
   if (hero) {
-
     const observer = new IntersectionObserver(entries => {
-
       entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
+        if (entry.isIntersecting) 
           trackEvent("hero_view", {
             section: "hero",
             page: "landing"
           });
-
           observer.disconnect();
-
         }
-
       });
 
     }, { threshold: 0.5 });
-
     observer.observe(hero);
-
   }
-
 });
 
-/* NAV CLICKS */
 
 document.querySelectorAll("nav span[data-lang]").forEach(item => {
-
   item.addEventListener("click", () => {
-
     trackEvent("nav_click", {
       label: item.textContent.trim()
     });
-
   });
-
 });
 
-/* USE CASE CLICKS */
+
 
 document.querySelectorAll(".card").forEach((card, index) => {
-
   card.addEventListener("click", () => {
-
     trackEvent("usecase_click", {
       position: index + 1,
       title: card.querySelector("h3")?.innerText || "unknown"
     });
-
   });
-
 });
 
-/* REGISTRO */
 
 document.addEventListener("DOMContentLoaded", () => {
-
   const submitBtn = document.getElementById("submitBtn");
-
   if (submitBtn) {
-
     submitBtn.addEventListener("click", () => {
-
       requestAnimationFrame(() => {
-
         trackEvent("register_click", {
           location: "landing"
         });
-
       });
-
     });
-
   }
-
 });
 
-/* WIDGET */
 
 const widgetBtn = document.getElementById("promoWidgetMinimized");
 
 if (widgetBtn) {
-
   widgetBtn.addEventListener("click", () => {
-
     trackEvent("widget_open", {
       source: "floating_button"
     });
-
   });
-
 }
 
 document.querySelectorAll(".promoWidgetButton").forEach(btn => {
-
   btn.addEventListener("click", () => {
-
     trackEvent("widget_cta_click", {
       destination: "3dtwins_website"
     });
-
   });
-
 });
 
 </script>
@@ -1089,67 +1042,35 @@ document.querySelectorAll(".promoWidgetButton").forEach(btn => {
 
 <script>
 
-/* Cargar Analytics SOLO tras consentimiento */
-
 function loadAnalytics(){
-
 var script = document.createElement('script');
-
 script.src = "https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG";
-
 script.async = true;
-
 document.head.appendChild(script);
-
 gtag('js', new Date());
-
 gtag('config', 'G-N54X2MZQZG');
-
 }
-
-
-/* aceptar cookies */
 
 function acceptCookies(){
-
 localStorage.setItem("cookies","accepted");
-
 document.getElementById("cookie-banner").style.display="none";
-
 loadAnalytics();
-
 }
-
-
-/* rechazar cookies */
 
 function rejectCookies(){
-
 localStorage.setItem("cookies","rejected");
-
 document.getElementById("cookie-banner").style.display="none";
-
 }
 
-
-/* comprobar consentimiento */
-
 window.addEventListener("load", function(){
-
 var consent = localStorage.getItem("cookies");
-
 if(consent === "accepted"){
-
 loadAnalytics();
-
 }
 
 if(!consent){
-
 document.getElementById("cookie-banner").style.display="block";
-
 }
-
 });
 
 </script>
