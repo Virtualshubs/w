@@ -25,6 +25,22 @@
   
 
 </head>
+  <div id="cookie-banner">
+  <div class="cookie-container">
+
+    <div>
+      Utilizamos cookies para analizar el tráfico y mejorar la experiencia de usuario.
+      Puedes aceptar, rechazar o configurar las cookies.
+      <a href="/politica-cookies.html" style="color:#4da3ff;">Más información</a>
+    </div>
+
+    <div class="cookie-buttons">
+      <button class="cookie-accept" onclick="acceptCookies()">Aceptar</button>
+      <button class="cookie-reject" onclick="rejectCookies()">Rechazar</button>
+    </div>
+
+  </div>
+</div>
 <body>
 <header>
 <div id="header-logo" onclick="goHome()">
@@ -1025,7 +1041,48 @@ For custom developments and tailored certifications, request a meeting with our 
   });
 </script>
 
+<script>
 
+function loadAnalytics(){
+
+var script = document.createElement('script');
+script.src = "https://www.googletagmanager.com/gtag/js?id=G-N54X2MZQZG";
+script.async = true;
+document.head.appendChild(script);
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-N54X2MZQZG');
+
+}
+
+function acceptCookies(){
+localStorage.setItem("cookies","accepted");
+document.getElementById("cookie-banner").style.display="none";
+loadAnalytics();
+}
+
+function rejectCookies(){
+localStorage.setItem("cookies","rejected");
+document.getElementById("cookie-banner").style.display="none";
+}
+
+window.onload = function(){
+
+var consent = localStorage.getItem("cookies");
+
+if(consent === "accepted"){
+loadAnalytics();
+}
+
+if(!consent){
+document.getElementById("cookie-banner").style.display="block";
+}
+
+}
+
+</script>
 
 </body>
 </html>
