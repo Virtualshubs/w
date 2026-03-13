@@ -167,7 +167,22 @@
           </div>
         </div>
       </div>
+<!-- Carga del SDK desde tu CDN -->
+<script src="https://cdn.3dtwins.tech/sdk.js"></script>
 
+<!-- Contenedor donde se mostrará la escena -->
+<div 
+  id="vh-container" 
+  class="vh-scene"
+  data-scene="aHR0cHM6Ly92aWV3ZXIuM2R0d2lucy50ZWNoL2VtYmViLmh0bWw%2FbmFtZT1CYWxsb24lMjBEb2c..."
+  style="width:100%; height:600px;">
+</div>
+
+<!-- Inicialización del SDK -->
+<script>
+  // Inicia la escena dentro del contenedor
+  VH.init({ containerId: 'vh-container' });
+</script>
     </main>
 
   </div>
