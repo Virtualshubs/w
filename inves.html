@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Bosque Cuántico Musical</title>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #000010;
+  }
+  canvas {
+    display: block;
+  }
+</style>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/three@0.134.0/build/three.min.js"></script>
+<script>
+
+// ----- ESCENA Y CÁMARA -----
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+camera.position.z = 50;
+
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// ----- PARTICULAS FRACTALES CUANTICAS -----
+const particleCount = 800;
+const particles = [];
+
+const geometry = new THREE.SphereGeometry(0.2, 8, 8);
+
+for(let i=0;i<particleCount;i++){
+  const material = new THREE.MeshStandardMaterial({
+    color: new THREE.Color(`hsl(${Math.random()*360},100%,50%)`),
+    emissive: new THREE.Color(`hsl(${Math.random()*360},100%,10%)`),
+    transparent: true,
+    opacity: 0.7
+  });
+
+  const mesh = new THREE.Mesh(geometry, material);
+
+  // Posición inicial fractal-ish
+  mesh.position.x = (Math.random()-0.5) * 60;
+  mesh.position.y = (Math.random()-0.5) * 60;
+  mesh.position.z = (Math.random()-0.5) * 60;
+
+  // Parámetros cuánticos simulados
+  mesh.userData = {
+    vel: new THREE.Vector3(
+      (Math.random()-0.5)*0.2,
+      (Math.random()-0.5)*0.2,
+      (Math.random()-0.5)*0.2
+    ),
+    statePhase: Math.random()*Math.PI*2,
+    magnitude: Math.pow(Math.random(),0.5)*3 + 0.5 // Pareto-ish
+  };
+
+  scene.add(mesh);
+  particles.push(mesh);
+}
+
+// ----- LUZ -----
+const ambient = new THREE.AmbientLight(0xaaaaaa,0.3);
+scene.add(ambient);
+
+const pointLight = new THREE.PointLight(0xffffff, 1, 200);
+pointLight.position.set(50,50,50);
+scene.add(pointLight);
+
+// ----- INTERACTIVIDAD -----
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
+function onMouseMove(event){
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+}
+window.addEventListener('mousemove', onMouseMove, false);
+
+// Click que provoca “colapso cuántico”
+window.addEventListener('click', () => {
+  particles.forEach(p=>{
+    if(Math.random() < 0.03){
+      p.userData.vel.multiplyScalar(-1);
+      p.material.color.offsetHSL(Math.random()*0.1,0,0);
+    }
+  });
+});
+
+// ----- ANIMACIÓN -----
+function animate(){
+  requestAnimationFrame(animate);
+
+  // Actualizar partículas
+  particles.forEach(p=>{
+    // Movimiento básico + resonancia cuántica
+    p.position.add(p.userData.vel);
+    p.userData.statePhase += 0.02;
+    p.scale.setScalar(Math.sin(p.userData.statePhase*2) * p.userData.magnitude + 1);
+
+    // Limites simples
+    ['x','y','z'].forEach(axis=>{
+      if(Math.abs(p.position[axis])>40){
+        p.userData.vel[axis] *= -1;
+      }
+    });
+  });
+
+  // Interacción: partículas cerca del mouse se iluminan
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObjects(particles);
+  particles.forEach(p=>{
+    p.material.emissiveIntensity = 0.2;
+  });
+  intersects.forEach(i=>{
+    i.object.material.emissiveIntensity = 1;
+  });
+
+  renderer.render(scene,camera);
+}
+
+animate();
+
+// ----- RESPONDER AL REDIMENSIONAR -----
+window.addEventListener('resize', ()=>{
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+</script>
+</body>
+</html>
+
